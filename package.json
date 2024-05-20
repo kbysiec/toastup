@@ -1,6 +1,9 @@
 {
   "name": "toastup",
   "private": true,
+  "workspaces": [
+    "core"
+  ],
   "scripts": {
     "lint:scripts": "eslint ./packages --ext .ts,.tsx",
     "lint:styles": "stylelint ./packages/**/*.{css,scss}",
@@ -11,7 +14,19 @@
     "uninstall-husky": "npm uninstall husky --no-save && git config --unset core.hooksPath && npx rimraf .husky"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.19.1",
+    "@typescript-eslint/parser": "^6.19.1",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
     "husky": "^8.0.3",
-    "lint-staged": "^15.2.0"
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.2.4",
+    "stylelint": "^16.2.0",
+    "stylelint-config-recommended": "^14.0.0",
+    "stylelint-config-sass-guidelines": "^11.0.0",
+    "stylelint-order": "^6.0.4",
+    "stylelint-prettier": "^5.0.0",
+    "typescript": "^5.3.3"
   }
 }
