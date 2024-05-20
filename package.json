@@ -1,5 +1,17 @@
 {
   "name": "toastup",
   "private": true,
-  "workspaces": []
+  "scripts": {
+    "lint:scripts": "eslint ./packages --ext .ts,.tsx",
+    "lint:styles": "stylelint ./packages/**/*.{css,scss}",
+    "format:scripts": "prettier ./packages/**/* --write",
+    "format:styles": "stylelint ./packages/**/*.{css,scss} --fix",
+    "format": "npm run format:scripts && npm run format:styles",
+    "prepare": "husky install && husky set .husky/pre-commit 'npx lint-staged' && git add .husky/pre-commit",
+    "uninstall-husky": "npm uninstall husky --no-save && git config --unset core.hooksPath && npx rimraf .husky"
+  },
+  "devDependencies": {
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0"
+  }
 }
