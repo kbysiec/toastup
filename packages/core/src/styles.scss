@@ -1,0 +1,479 @@
+$types: "base", "info", "success", "warning", "error";
+$namespace: "toastup";
+
+:root {
+  --toastup-base-gradient: linear-gradient(
+    to left,
+    #7229e5,
+    #854be3,
+    #9667e0,
+    #a582dd,
+    #b39bd8
+  );
+  --toastup-base-gradient-rtl: linear-gradient(
+    to right,
+    #7229e5,
+    #854be3,
+    #9667e0,
+    #a582dd,
+    #b39bd8
+  );
+  --toastup-info-gradient: linear-gradient(
+    to left,
+    #0084ff,
+    #1d90fe,
+    #359bfd,
+    #4ba5fa,
+    #60aff7
+  );
+  --toastup-info-gradient-rtl: linear-gradient(
+    to right,
+    #0084ff,
+    #1d90fe,
+    #359bfd,
+    #4ba5fa,
+    #60aff7
+  );
+  --toastup-success-gradient: linear-gradient(
+    to left,
+    #27c400,
+    #35d138,
+    #43de57,
+    #51ea73,
+    #60f78d
+  );
+  --toastup-success-gradient-rtl: linear-gradient(
+    to right,
+    #27c400,
+    #35d138,
+    #43de57,
+    #51ea73,
+    #60f78d
+  );
+  --toastup-warning-gradient: linear-gradient(
+    to left,
+    #ffba00,
+    #fcc227,
+    #fac93c,
+    #f8d04f,
+    #f7d760
+  );
+  --toastup-warning-gradient-rtl: linear-gradient(
+    to right,
+    #ffba00,
+    #fcc227,
+    #fac93c,
+    #f8d04f,
+    #f7d760
+  );
+  --toastup-error-gradient: linear-gradient(
+    to left,
+    #f94747,
+    #f94e4d,
+    #f85454,
+    #f85a5a,
+    #f76060
+  );
+  --toastup-error-gradient-rtl: linear-gradient(
+    to right,
+    #f94747,
+    #f94e4d,
+    #f85454,
+    #f85a5a,
+    #f76060
+  );
+
+  --toastup-box-shadow-1: #cfcfcf;
+  --toastup-box-shadow-2: #fff;
+  --toastup-body-color: #313131;
+  --toastup-hide-button-color: #cfcfcf;
+  --toastup-hide-button-color-hover: #313131;
+
+  --toastup-background-color-base: #fff;
+  --toastup-title-color-base: #7229e5;
+  --toastup-icon-color-base: #7229e5;
+  --toastup-border-color-base: var(--toastup-base-gradient);
+  --toastup-progress-bar-base: var(--toastup-base-gradient);
+  --toastup-progress-bar-progress-overlay-base: var(
+    --toastup-background-color-base
+  );
+  --toastup-progress-bar-progress-overlay-base-rtl: var(
+    --toastup-background-color-base
+  );
+  --toastup-border-color-base-rtl: var(--toastup-base-gradient-rtl);
+  --toastup-progress-bar-base-rtl: var(--toastup-base-gradient-rtl);
+
+  --toastup-background-color-info: var(--toastup-background-color-base);
+  --toastup-title-color-info: #0084ff;
+  --toastup-icon-color-info: #0084ff;
+  --toastup-border-color-info: var(--toastup-info-gradient);
+  --toastup-progress-bar-info: var(--toastup-info-gradient);
+  --toastup-progress-bar-progress-overlay-info: var(
+    --toastup-background-color-info
+  );
+  --toastup-progress-bar-progress-overlay-info-rtl: var(
+    --toastup-background-color-info
+  );
+  --toastup-border-color-info-rtl: var(--toastup-info-gradient-rtl);
+  --toastup-progress-bar-info-rtl: var(--toastup-info-gradient-rtl);
+
+  --toastup-background-color-success: var(--toastup-background-color-base);
+  --toastup-title-color-success: #27c400;
+  --toastup-icon-color-success: #27c400;
+  --toastup-border-color-success: var(--toastup-success-gradient);
+  --toastup-progress-bar-success: var(--toastup-success-gradient);
+  --toastup-progress-bar-progress-overlay-success: var(
+    --toastup-background-color-success
+  );
+  --toastup-progress-bar-progress-overlay-success-rtl: var(
+    --toastup-background-color-success
+  );
+  --toastup-border-color-success-rtl: var(--toastup-success-gradient-rtl);
+  --toastup-progress-bar-success-rtl: var(--toastup-success-gradient-rtl);
+
+  --toastup-background-color-warning: var(--toastup-background-color-base);
+  --toastup-title-color-warning: #ffba00;
+  --toastup-icon-color-warning: #ffba00;
+  --toastup-border-color-warning: var(--toastup-warning-gradient);
+  --toastup-progress-bar-warning: var(--toastup-warning-gradient);
+  --toastup-progress-bar-progress-overlay-warning: var(
+    --toastup-background-color-warning
+  );
+  --toastup-progress-bar-progress-overlay-warning-rtl: var(
+    --toastup-background-color-warning
+  );
+  --toastup-border-color-warning-rtl: var(--toastup-warning-gradient-rtl);
+  --toastup-progress-bar-warning-rtl: var(--toastup-warning-gradient-rtl);
+
+  --toastup-background-color-error: var(--toastup-background-color-base);
+  --toastup-title-color-error: #f94747;
+  --toastup-icon-color-error: #f94747;
+  --toastup-border-color-error: var(--toastup-error-gradient);
+  --toastup-progress-bar-error: var(--toastup-error-gradient);
+  --toastup-progress-bar-progress-overlay-error: var(
+    --toastup-background-color-error
+  );
+  --toastup-progress-bar-progress-overlay-error-rtl: var(
+    --toastup-background-color-error
+  );
+  --toastup-border-color-error-rtl: var(--toastup-error-gradient-rtl);
+  --toastup-progress-bar-error-rtl: var(--toastup-error-gradient-rtl);
+}
+
+@each $type in $types {
+  .#{$namespace}__toast-type--#{$type} {
+    .#{$namespace}__toast {
+      &-container {
+        background: var(--toastup-border-color-#{$type});
+      }
+
+      &-content {
+        background: var(--toastup-background-color-#{$type});
+        color: var(--toastup-body-color);
+      }
+
+      &-title {
+        color: var(--toastup-title-color-#{$type});
+      }
+
+      &-progress-bar-progress-overlay {
+        background: var(--toastup-progress-bar-progress-overlay-#{$type});
+      }
+
+      &-progress-bar-foreground {
+        background: var(--toastup-progress-bar-#{$type});
+      }
+
+      &-icon--fill {
+        fill: var(--toastup-icon-color-#{$type});
+      }
+
+      &-icon--stroke {
+        stroke: var(--toastup-icon-color-#{$type});
+      }
+    }
+  }
+}
+
+.#{$namespace}__toast {
+  opacity: 0;
+  position: absolute;
+
+  &--default {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    margin: 0 1rem 1rem;
+    padding: 2px;
+    width: 100%;
+    z-index: 999;
+  }
+
+  &--visible {
+    opacity: 1 !important;
+    z-index: 9999;
+  }
+
+  &-container {
+    align-items: center;
+    border-radius: 0.5rem;
+    box-shadow:
+      5px 11px 21px -4px var(--toastup-box-shadow-1),
+      0 10px 7px -4px var(--toastup-box-shadow-2);
+    display: flex;
+    opacity: 1;
+    width: 100%;
+    z-index: 999;
+  }
+
+  &-title {
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 1em;
+    text-transform: capitalize;
+  }
+
+  &-message {
+    word-wrap: anywhere;
+  }
+
+  &-icon {
+    align-items: center;
+    display: flex;
+    height: 2.1rem;
+    justify-content: center;
+    line-height: normal;
+    margin: 0 0.7rem 0 0;
+    max-width: 1.8rem;
+    overflow: hidden;
+    width: 2.1rem;
+  }
+
+  &-hide-button {
+    background: none;
+    border: 0;
+    color: var(--toastup-hide-button-color);
+    cursor: pointer;
+    font-family: sans-serif;
+    position: absolute;
+    right: 0.3rem;
+    top: 0.3rem;
+    transition: color 0.2s ease-in-out;
+
+    &:hover {
+      color: var(--toastup-hide-button-color-hover);
+    }
+  }
+
+  &-body {
+    width: 100%;
+
+    &--invisible {
+      opacity: 0;
+    }
+
+    &--visible {
+      opacity: 1 !important;
+    }
+  }
+
+  &-content {
+    align-items: center;
+    border-radius: 0.4rem 0.4rem 0.3rem 0.3rem;
+    display: flex;
+    height: 100%;
+    line-height: 100%;
+    margin: 2px;
+    max-height: 20rem;
+    min-height: 2rem;
+    overflow: hidden;
+    padding: 1rem;
+    position: relative;
+    white-space: pre-wrap;
+    width: 100%;
+  }
+
+  &-progress-bar {
+    bottom: 0;
+    height: 0.25rem;
+    left: 0;
+    position: absolute;
+    right: 0;
+    width: 100%;
+  }
+
+  &-progress-bar-progress-overlay {
+    animation: progress-bar linear 1 forwards;
+    bottom: 0;
+    height: 0.25rem;
+    opacity: 0.7;
+    position: absolute;
+    right: 0;
+    width: calc(100% * var(--progressValue, 0));
+  }
+
+  &-progress-bar-foreground {
+    bottom: 0;
+    height: 0.25rem;
+    left: 0;
+    position: absolute;
+    transition: background-color 0.25s ease-in-out;
+    width: 100%;
+  }
+
+  &--repositioning {
+    transition:
+      transform 0.15s ease 0.05s,
+      opacity 0.1s ease !important;
+  }
+
+  &--quick-repositioning {
+    transition: transform 0.1s ease-in-out !important;
+  }
+
+  &--dragging {
+    transition: transform 0.1s linear !important;
+  }
+
+  &--rtl {
+    display: flex;
+    justify-content: flex-end;
+
+    .#{$namespace}__toast-hide-button {
+      left: 0.3rem;
+      right: inherit;
+    }
+
+    .#{$namespace}__toast-content {
+      flex-direction: row-reverse;
+      text-align: right;
+    }
+
+    .#{$namespace}__toast-icon {
+      margin: 0 0 0 0.7rem;
+    }
+
+    .#{$namespace}__toast-progress-bar-progress-overlay {
+      left: 0;
+      right: auto;
+    }
+
+    .#{$namespace}__toast-progress-bar-foreground {
+      left: auto;
+      right: 0;
+    }
+
+    @each $type in $types {
+      &.#{$namespace}__toast-type--#{$type} {
+        .#{$namespace}__toast-container {
+          background: var(--toastup-border-color-#{$type}-rtl);
+        }
+
+        .#{$namespace}__toast-progress-bar-progress-overlay {
+          background: var(--toastup-progress-bar-progress-overlay-#{$type}-rtl);
+        }
+
+        .#{$namespace}__toast-progress-bar-foreground {
+          background: var(--toastup-progress-bar-#{$type}-rtl);
+        }
+      }
+    }
+  }
+
+  &-theme--dark {
+    --toastup-body-color: #d8d8d8;
+    --toastup-hide-button-color: #d8d8d8;
+    --toastup-hide-button-color-hover: #fff;
+
+    @each $type in $types {
+      --toastup-background-color-#{$type}: #313131;
+      --toastup-title-color-#{$type}: #d8d8d8;
+      --toastup-progress-bar-progress-overlay-#{$type}: #313131;
+      --toastup-progress-bar-progress-overlay-#{$type}-rtl: #313131;
+    }
+    --toastup-icon-color-base: #b39bd8;
+  }
+
+  &-theme--colorful {
+    --toastup-body-color: #000;
+    --toastup-hide-button-color: #000;
+    --toastup-hide-button-color-hover: #d8d8d8;
+
+    @each $type in $types {
+      --toastup-background-color-#{$type}: transparent;
+      --toastup-title-color-#{$type}: #000;
+      --toastup-icon-color-#{$type}: #000;
+      --toastup-progress-bar-#{$type}: #000;
+      --toastup-progress-bar-#{$type}-rtl: #000;
+      --toastup-progress-bar-progress-overlay-#{$type}: var(
+        --toastup-border-color-#{$type}
+      );
+      --toastup-progress-bar-progress-overlay-#{$type}-rtl: var(
+        --toastup-border-color-#{$type}-rtl
+      );
+    }
+  }
+}
+
+@keyframes progress-bar {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* toaster */
+[class^="#{$namespace}__toaster-"] {
+  max-height: 100vh;
+  position: fixed;
+  width: 20em;
+
+  .#{$namespace}__toast {
+    bottom: inherit;
+    left: inherit;
+    right: inherit;
+    top: inherit;
+  }
+}
+
+[class^="#{$namespace}__toaster-"][class*="top"] {
+  top: 0;
+
+  .#{$namespace}__toast {
+    margin: 1rem 1rem 0;
+  }
+}
+
+[class^="#{$namespace}__toaster-"][class*="bottom"] {
+  bottom: 0;
+
+  .#{$namespace}__toast {
+    margin: 0 1rem 1rem;
+  }
+}
+
+[class^="#{$namespace}__toaster-"][class$="left"] {
+  left: 0;
+}
+
+[class^="#{$namespace}__toaster-"][class$="right"] {
+  right: 0;
+}
+
+[class^="#{$namespace}__toaster-"][class$="center"] {
+  left: 0;
+  margin-left: auto;
+  margin-right: auto;
+  right: 0;
+}
+
+@media screen and (max-width: 800px) {
+  [class^="#{$namespace}__toaster-"] {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+    width: calc(100% - 2rem);
+  }
+}

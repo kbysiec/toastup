@@ -1,0 +1,44 @@
+{
+  "name": "@toastup/core",
+  "version": "0.0.4",
+  "main": "./dist/toastup-core.cjs",
+  "module": "./dist/toastup-core.mjs",
+  "exports": {
+    ".": {
+      "require": "./dist/toastup-core.cjs",
+      "import": "./dist/toastup-core.mjs"
+    },
+    "./dist/": {
+      "import": "./dist/",
+      "require": "./dist/"
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite --host",
+    "build": "vite build && dts-bundle-generator --config ./dts-bundle-generator.config.ts",
+    "test": "vitest",
+    "test:coverage": "vitest --coverage"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.3.0",
+    "@types/jsdom": "^21.1.6",
+    "@types/node": "^20.11.6",
+    "@vitest/coverage-v8": "^1.2.1",
+    "copyfiles": "^2.4.1",
+    "csstype": "^3.1.3",
+    "dts-bundle-generator": "^9.2.4",
+    "jsdom": "^24.0.0",
+    "postcss": "^8.4.33",
+    "postcss-scss": "^4.0.9",
+    "rimraf": "^5.0.5",
+    "sass": "^1.70.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.12",
+    "vitest": "^1.2.1"
+  }
+}
