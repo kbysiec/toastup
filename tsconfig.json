@@ -14,11 +14,8 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
-    "forceConsistentCasingInFileNames": true,
-    "types": ["vite/client", "node"]
+    "forceConsistentCasingInFileNames": true
   },
-  "include": ["src"],
-  "exclude": ["**/*.test.ts", "node_modules", "test/**", ".history/**"],
   "paths": {
     "@toastup/*": ["packages/*/src/index.ts"]
   },
