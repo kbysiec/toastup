@@ -1,0 +1,71 @@
+{
+  "name": "@toastup/react",
+  "private": true,
+  "version": "0.0.1",
+  "main": "./dist/toastup-react.cjs",
+  "module": "./dist/toastup-react.mjs",
+  "exports": {
+    ".": {
+      "require": "./dist/toastup-react.cjs",
+      "import": "./dist/toastup-react.mjs"
+    },
+    "./dist/": {
+      "import": "./dist/",
+      "require": "./dist/"
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite --host",
+    "build": "vite build && dts-bundle-generator --config ./dts-bundle-generator.config.ts",
+    "typings": "dts-bundle-generator --config ./dts-bundle-generator.config.ts && dts-bundle-generator --config ./dts-bundle-generator.config.ts -o ./dist/index.d.mts",
+    "test": "vitest",
+    "test:coverage": "vitest --coverage"
+  },
+  "peerDependencies": {
+    "@toastup/core": "workspace:^0.0.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.4.5",
+    "@testing-library/react": "^15.0.7",
+    "@types/jsdom": "^21.1.6",
+    "@types/node": "^20.11.6",
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "@typescript-eslint/eslint-plugin": "^6.19.1",
+    "@typescript-eslint/parser": "^6.19.1",
+    "@vitejs/plugin-react": "^4.2.1",
+    "@vitest/coverage-v8": "^1.2.1",
+    "copyfiles": "^2.4.1",
+    "csstype": "^3.1.3",
+    "dts-bundle-generator": "^9.2.4",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-react-app": "^7.0.1",
+    "eslint-plugin-prettier": "^5.1.3",
+    "husky": "^8.0.3",
+    "jsdom": "^24.0.0",
+    "lint-staged": "^15.2.0",
+    "postcss": "^8.4.33",
+    "postcss-scss": "^4.0.9",
+    "prettier": "^3.2.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sass": "^1.70.0",
+    "stylelint": "^16.2.0",
+    "stylelint-config-recommended": "^14.0.0",
+    "stylelint-config-sass-guidelines": "^11.0.0",
+    "stylelint-order": "^6.0.4",
+    "stylelint-prettier": "^5.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3",
+    "uglify-js": "^3.17.4",
+    "vite": "^5.0.12",
+    "vitest": "^1.6.0"
+  }
+}

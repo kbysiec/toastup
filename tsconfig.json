@@ -14,14 +14,17 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
-    "forceConsistentCasingInFileNames": true
-  },
-  "paths": {
-    "@toastup/*": ["packages/*/src/index.ts"]
+    "forceConsistentCasingInFileNames": true,
+    "paths": {
+      "@toastup/*": ["packages/*/src/index.ts"]
+    }
   },
   "references": [
     {
       "path": "packages/core"
+    },
+    {
+      "path": "packages/react"
     }
   ]
 }
