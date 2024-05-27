@@ -210,7 +210,7 @@ $namespace: "toastup";
   }
 
   &--visible {
-    opacity: 1 !important;
+    opacity: 1;
     z-index: 9999;
   }
 
@@ -323,12 +323,12 @@ $namespace: "toastup";
 
   &--repositioning {
     transition:
-      transform 0.15s ease 0.05s,
-      opacity 0.1s ease !important;
+      transform 0.2s ease-in-out 0.15s,
+      opacity 0.2s ease-in-out !important;
   }
 
   &--quick-repositioning {
-    transition: transform 0.1s ease-in-out !important;
+    transition: transform 0.15s ease-in-out !important;
   }
 
   &--dragging {
