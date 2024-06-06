@@ -1,9 +1,9 @@
-import { cssClassNames } from "@/constants";
-import { pause, unpause } from "@/toast";
-import { toastQueue } from "@/toastQueue";
-import { updateToastTranslate } from "@/toastUtils";
-import { ToastEntity } from "@/types";
-import { sleep } from "@/utils";
+import { cssClassNames } from "../constants";
+import { pause, unpause } from "../toast";
+import { toastQueue } from "../toastQueue";
+import { updateToastTranslate } from "../toastUtils";
+import { ToastEntity } from "../types";
+import { sleep } from "../utils";
 
 function getDragX(event: TouchEvent) {
   return event.targetTouches && event.targetTouches.length >= 1

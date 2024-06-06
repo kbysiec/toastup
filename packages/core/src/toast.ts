@@ -1,27 +1,27 @@
-import { slideVerticallyIn } from "@/animations/inAnimation";
-import { slideHorizontalWithFadeInBody } from "@/animations/inBodyAnimation";
-import { slideVerticallyOut } from "@/animations/outAnimation";
-import { displayOrder, events, position, theme, type } from "@/constants";
-import { eventManager } from "@/eventManager";
-import { handleAddedToast } from "@/handlers/addHandler";
-import { handleClickToast } from "@/handlers/clickHandler";
+import { slideVerticallyIn } from "./animations/inAnimation";
+import { slideHorizontalWithFadeInBody } from "./animations/inBodyAnimation";
+import { slideVerticallyOut } from "./animations/outAnimation";
+import { displayOrder, events, position, theme, type } from "./constants";
+import { eventManager } from "./eventManager";
+import { handleAddedToast } from "./handlers/addHandler";
+import { handleClickToast } from "./handlers/clickHandler";
 import {
   duringDragging,
   startDragging,
   stopDragging,
-} from "@/handlers/dragHandler";
-import { handleHideToast } from "@/handlers/hideHandler";
-import { handleMountedToast } from "@/handlers/mountHandler";
-import { handleShowToast } from "@/handlers/showHandler";
-import { toastQueue } from "@/toastQueue";
+} from "./handlers/dragHandler";
+import { handleHideToast } from "./handlers/hideHandler";
+import { handleMountedToast } from "./handlers/mountHandler";
+import { handleShowToast } from "./handlers/showHandler";
+import { toastQueue } from "./toastQueue";
 import {
   ToastCallback,
   ToastConfig,
   ToastEntity,
   ToastOnlyProps,
   ToastPublicProps,
-} from "@/types";
-import { uuid } from "@/utils";
+} from "./types";
+import { uuid } from "./utils";
 
 export function add<T extends ToastConfig>(overriddenConfig: Partial<T> = {}) {
   overriddenConfig.id = overriddenConfig.id ? overriddenConfig.id : uuid();

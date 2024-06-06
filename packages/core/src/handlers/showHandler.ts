@@ -1,27 +1,27 @@
-import { register } from "@/actionManager";
+import { register } from "../actionManager";
 import {
   actionType,
   animationElementSelector,
   cssClassNames,
   displayOrder,
   measureType,
-} from "@/constants";
-import { executeToastCallback } from "@/toast";
+} from "../constants";
+import { executeToastCallback } from "../toast";
 import {
   assureToastsPosition,
   getToastsForReposition,
   repositionToasts,
   toggleToastsRepositionTransition,
-} from "@/toastPositionManager";
-import { toastQueue } from "@/toastQueue";
+} from "../toastPositionManager";
+import { toastQueue } from "../toastQueue";
 import {
   setToastVisibility,
   sleepForAnimationTime,
   toggleAnimation,
   updateToastTranslate,
-} from "@/toastUtils";
-import { Action, MeasureType, ToastEntity } from "@/types";
-import { getOuter, sleep } from "@/utils";
+} from "../toastUtils";
+import { Action, MeasureType, ToastEntity } from "../types";
+import { getOuter, sleep } from "../utils";
 
 function getToastWithHighestTranslateY(
   toasts: ToastEntity[],

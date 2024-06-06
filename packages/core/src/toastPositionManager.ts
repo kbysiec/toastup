@@ -1,7 +1,7 @@
-import { actionType, cssClassNames, displayOrder } from "@/constants";
-import { updateToastTranslate } from "@/toastUtils";
-import { ActionType, ToastEntity } from "@/types";
-import { sleep } from "@/utils";
+import { actionType, cssClassNames, displayOrder } from "./constants";
+import { updateToastTranslate } from "./toastUtils";
+import { ActionType, ToastEntity } from "./types";
+import { sleep } from "./utils";
 
 function repositionToast(
   toast: ToastEntity,

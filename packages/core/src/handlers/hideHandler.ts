@@ -1,20 +1,20 @@
-import { register } from "@/actionManager";
-import { actionType } from "@/constants";
-import { executeToastCallback } from "@/toast";
+import { register } from "../actionManager";
+import { actionType } from "../constants";
+import { executeToastCallback } from "../toast";
 import {
   assureToastsPosition,
   getToastsForReposition,
   repositionToasts,
   toggleToastsRepositionTransition,
-} from "@/toastPositionManager";
-import { toastQueue } from "@/toastQueue";
+} from "../toastPositionManager";
+import { toastQueue } from "../toastQueue";
 import {
   setToastVisibility,
   sleepForAnimationTime,
   toggleAnimation,
-} from "@/toastUtils";
-import { Action, HidePayload, ToastEntity } from "@/types";
-import { sleep } from "@/utils";
+} from "../toastUtils";
+import { Action, HidePayload, ToastEntity } from "../types";
+import { sleep } from "../utils";
 
 async function hideToast(toast: ToastEntity, withAnimation: boolean) {
   executeToastCallback(toast, t => t.onHiding);

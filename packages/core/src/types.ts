@@ -10,7 +10,7 @@ import {
   position,
   theme,
   type,
-} from "@/constants";
+} from "./constants";
 
 declare global {
   interface DocumentEventMap {

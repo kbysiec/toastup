@@ -1,4 +1,4 @@
-import { Action } from "@/types";
+import { Action } from "./types";
 
 let isBusy = false;
 const actionQueue: Action[] = [];

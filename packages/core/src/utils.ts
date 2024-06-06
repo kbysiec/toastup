@@ -1,4 +1,4 @@
-import { MeasureType } from "@/types";
+import { MeasureType } from "./types";
 
 // source: https://github.com/portexe/PortalsAndToast/blob/f0f7479a4beef5471a19c2d72edb6f3f72aca872/src/core/helpers.js
 export const uuid = () => {
