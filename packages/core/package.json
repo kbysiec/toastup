@@ -1,25 +1,26 @@
 {
   "name": "@toastup/core",
   "version": "0.0.4",
-  "main": "./dist/toastup-core.cjs",
-  "module": "./dist/toastup-core.mjs",
+  "main": "./src/index.ts",
+  "module": "./src/index.ts",
   "exports": {
     ".": {
-      "require": "./dist/toastup-core.cjs",
-      "import": "./dist/toastup-core.mjs"
+      "import": "./src/index.ts",
+      "require": "./src/index.ts"
     },
-    "./dist/": {
-      "import": "./dist/",
-      "require": "./dist/"
+    "./src/": {
+      "import": "./src/",
+      "require": "./src/"
     }
   },
   "types": "./dist/index.d.ts",
   "files": [
-    "dist"
+    "src"
   ],
   "scripts": {
     "dev": "vite --host",
     "build": "vite build && dts-bundle-generator --config ./dts-bundle-generator.config.ts",
+    "typings": "dts-bundle-generator --config ./dts-bundle-generator.config.ts",
     "test": "vitest",
     "test:coverage": "vitest --coverage"
   },
