@@ -25,7 +25,7 @@
     "test:coverage": "vitest --coverage"
   },
   "dependencies": {
-    "@toastup/core": "workspace:^0.0.4"
+    "@toastup/core": "workspace:^"
   },
   "peerDependencies": {
     "react": "^18.2.0",
