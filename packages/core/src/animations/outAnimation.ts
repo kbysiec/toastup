@@ -1,6 +1,5 @@
-import { animationType } from "@/constants";
-import { ToastOutAnimation } from "@/types";
-import "./outAnimation.scss";
+import { animationType } from "../constants";
+import { ToastOutAnimation } from "../types";
 
 export const fadeOut: ToastOutAnimation = {
   type: animationType.out,

@@ -1,6 +1,5 @@
-import { animationType } from "@/constants";
-import { ToastInBodyAnimation } from "@/types";
-import "./inBodyAnimation.scss";
+import { animationType } from "../constants";
+import { ToastInBodyAnimation } from "../types";
 
 export const zoomInBody: ToastInBodyAnimation = {
   type: animationType.body,

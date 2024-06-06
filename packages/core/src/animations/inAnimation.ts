@@ -1,7 +1,6 @@
 // import "animate.css";
-import { animationType } from "@/constants";
-import { ToastInAnimation } from "@/types";
-import "./inAnimation.scss";
+import { animationType } from "../constants";
+import { ToastInAnimation } from "../types";
 
 export const fadeIn: ToastInAnimation = {
   type: animationType.in,
