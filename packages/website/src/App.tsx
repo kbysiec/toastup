@@ -20,7 +20,7 @@ import "animate.css";
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 
-import "@toastup/core/dist/style.css";
+import "@toastup/core/src/styles.scss";
 import "react-toastify/dist/ReactToastify.css";
 
 // import "@toastup/core/dist/style.css";
@@ -335,7 +335,7 @@ export function App() {
           <button onClick={notify}>Notify !</button>
         </div>
       </div>
-      <Toaster />
+      <Toaster overloadingStackMaxNumber={2} />
       <ToastContainer />
     </>
   );
