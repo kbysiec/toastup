@@ -11,7 +11,32 @@ import {
 } from "./types";
 import { getTransformOtherThan, sleep } from "./utils";
 
-export const updateToastTranslate = (
+export const updateToastTranslateAndOpacity = (
+  toast: ToastEntity,
+  translateXValue: number,
+  translateYValue: number,
+  withStyle = true
+) => {
+  updateToastTranslate(toast, translateXValue, translateYValue, withStyle);
+  updateToastOpacity(toast);
+};
+
+const updateToastOpacity = (toast: ToastEntity) => {
+  if (!toast.element || !toast.element) return;
+
+  toast.element.style.setProperty(
+    "opacity",
+    toast.exceedVisibleToastsLimit ? "0" : "",
+    "important"
+  );
+  toast.element.style.setProperty(
+    "pointer-events",
+    toast.exceedVisibleToastsLimit ? "none" : "",
+    "important"
+  );
+};
+
+const updateToastTranslate = (
   toast: ToastEntity,
   translateXValue: number,
   translateYValue: number,
@@ -31,9 +56,22 @@ export const updateToastTranslate = (
     "translate"
   );
 
-  toast.element.style.transform = `translate(${translateXValue}px, ${translateYValue}px)${
-    transformOtherThanTranslate ? ` ${transformOtherThanTranslate}` : ""
-  }`;
+  toast.element.style.setProperty(
+    "transform",
+    `translate(${translateXValue}px, ${translateYValue}px)${
+      transformOtherThanTranslate ? ` ${transformOtherThanTranslate}` : ""
+    }`
+  );
+  toast.element.style.setProperty(
+    "opacity",
+    toast.exceedVisibleToastsLimit ? "0" : "",
+    "important"
+  );
+  toast.element.style.setProperty(
+    "pointer-events",
+    toast.exceedVisibleToastsLimit ? "none" : "",
+    "important"
+  );
 };
 
 export function toggleAnimation<T extends ToastAnimation>(
@@ -114,4 +152,26 @@ export function setToastVisibility(toast: ToastEntity, isVisible: boolean) {
 
   // containerEl.classList.toggle(`${cssClassNames.containerVisible}`, isVisible);
   toast.element.classList.toggle(`${cssClassNames.toastVisible}`, isVisible);
+}
+
+// export function setToastOverloadingStackXXX(toast: ToastEntity) {
+//   if (!toast.element || !toast.element) return;
+
+//   toast.element.classList.toggle(
+//     `${cssClassNames.toastOverloadingStackXXX}`,
+//     toast.isOverloadingStack
+//   );
+// }
+
+export function updateToastsExceedingVisibleLimit(
+  toast: ToastEntity,
+  toasts: ToastEntity[],
+  actType: ActionType
+) {
+  const toastsArr = actType === actionType.add ? [toast, ...toasts] : toasts;
+  toastsArr.sort((a, b) => a.index - b.index);
+
+  toastsArr.forEach(
+    (t, i) => (t.exceedVisibleToastsLimit = toast.visibleToasts <= i)
+  );
 }

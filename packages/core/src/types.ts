@@ -93,7 +93,7 @@ export type ToastAnimation =
   | ToastOutAnimation
   | ToastInBodyAnimation;
 
-export interface ToastConfig {
+export interface PrivateToastConfig {
   id: string;
   message: string;
   title: string;
@@ -136,7 +136,10 @@ export interface ToastConfig {
   onShow: ToastCallback;
   onHide: ToastCallback;
   onClick: ToastCallback;
+  visibleToasts: number;
 }
+
+export type ToastConfig = Omit<PrivateToastConfig, "visibleToasts">;
 
 export interface ToastOnlyProps {
   element: HTMLElement | null;
@@ -165,6 +168,7 @@ export interface ToastOnlyProps {
   startDragging: ToastDragHandler;
   stopDragging: ToastDragHandler;
   duringDragging: ToastDragHandler;
+  exceedVisibleToastsLimit: boolean;
 }
 
 export interface ComponentProps {
@@ -172,7 +176,7 @@ export interface ComponentProps {
 }
 
 export interface ToastEntity
-  extends ToastConfig,
+  extends PrivateToastConfig,
     ToastOnlyProps,
     ComponentProps {
   hide: ToastHideHandler;
@@ -209,6 +213,8 @@ const toastPrivateProps = [
   "content",
   "body",
   "toast",
+  // "isOverloadingStack",
+  // "overloadingStackMaxNumber",
 ] as const;
 
 export type ToastPublicProps = Omit<
@@ -227,14 +233,18 @@ export type RemovePayload = {
 };
 
 export type Payload =
-  | Partial<ToastConfig>
+  | Partial<PrivateToastConfig>
   | ToastEntity
   | RemovePayload
   | HidePayload
   | string;
 
 const toastOnlyConfigProps = ["id"] as const;
+interface ToasterOnlyConfig {
+  visibleToasts?: number;
+}
 
 export type ToasterConfig = Partial<
-  Omit<ToastConfig, (typeof toastOnlyConfigProps)[number]>
->;
+  Omit<PrivateToastConfig, (typeof toastOnlyConfigProps)[number]>
+> &
+  ToasterOnlyConfig;

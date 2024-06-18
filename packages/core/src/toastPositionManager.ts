@@ -1,5 +1,5 @@
 import { actionType, cssClassNames, displayOrder } from "./constants";
-import { updateToastTranslate } from "./toastUtils";
+import { updateToastTranslateAndOpacity } from "./toastUtils";
 import { ActionType, ToastEntity } from "./types";
 import { sleep } from "./utils";
 
@@ -15,7 +15,7 @@ function repositionToast(
     : touchedToast.dimensions.height * -1 * typeMultiplier;
   const translateY = toast.translate.y + translateYOffset;
 
-  updateToastTranslate(toast, toast.translate.x, translateY);
+  updateToastTranslateAndOpacity(toast, toast.translate.x, translateY);
 }
 
 export function repositionToasts(
@@ -24,6 +24,10 @@ export function repositionToasts(
   actType: ActionType
 ) {
   toasts.forEach(t => repositionToast(t, toast, actType));
+  // toasts.forEach(t => {
+  // setToastOverloadingStackXXX(t);
+  // repositionToast(t, toast, actType);
+  // });
 }
 
 function setToastIndex(toast: ToastEntity, toasts: ToastEntity[]) {
@@ -101,9 +105,20 @@ export function getToastsForReposition(
   );
 }
 
-function getToastsForAssurePosition(toasts: ToastEntity[], toast: ToastEntity) {
+export function getVisibleToastsWithSamePosition(
+  toasts: ToastEntity[],
+  toast: ToastEntity
+) {
   return toasts.filter(t => t.isVisible && toast.position === t.position);
 }
+
+// export function getToastsForShowXXX(toasts: ToastEntity[], toast: ToastEntity) {
+//   return toasts.filter(t => t.isVisible && toast.position === t.position);
+// }
+
+// export function getToastsForHideXXX(toasts: ToastEntity[], toast: ToastEntity) {
+//   return getVisibleToastsWithSamePosition(toasts, toast);
+// }
 
 function assureToastPosition(
   toast: ToastEntity,
@@ -117,7 +132,7 @@ function assureToastPosition(
       ? prev.translate.y + prev.dimensions.height
       : prev.translate.y + prev.dimensions.height * -1;
   }
-  updateToastTranslate(toast, toast.translate.x, translateY);
+  updateToastTranslateAndOpacity(toast, toast.translate.x, translateY);
 }
 
 export async function assureToastsPosition(
@@ -125,7 +140,7 @@ export async function assureToastsPosition(
   toasts: ToastEntity[]
 ) {
   const delayAfterRepositionInMs = 150;
-  const toastsForPosition = getToastsForAssurePosition(toasts, toast);
+  const toastsForPosition = getVisibleToastsWithSamePosition(toasts, toast);
   toastsForPosition.sort((a, b) => a.index - b.index);
 
   toggleToastsRepositionTransition(toastsForPosition, true, true);

@@ -267,7 +267,7 @@ describe("showHandler", () => {
     const assureToastsPositionStub = vi.fn();
     const setToastVisibilityStub = vi.fn();
     const sleepStub = vi.fn();
-    const updateToastTranslateStub = vi.fn();
+    const updateToastTranslateAndOpacityStub = vi.fn();
 
     beforeEach(() => {
       const toast2 = {
@@ -296,8 +296,8 @@ describe("showHandler", () => {
       vi.spyOn(toastUtils, "setToastVisibility").mockImplementation(
         setToastVisibilityStub
       );
-      vi.spyOn(toastUtils, "updateToastTranslate").mockImplementation(
-        updateToastTranslateStub
+      vi.spyOn(toastUtils, "updateToastTranslateAndOpacity").mockImplementation(
+        updateToastTranslateAndOpacityStub
       );
       vi.spyOn(toastUtils, "toggleAnimation").mockImplementation(
         toggleAnimationStub

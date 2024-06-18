@@ -4,6 +4,7 @@ import { executeToastCallback } from "../toast";
 import {
   assureToastsPosition,
   getToastsForReposition,
+  getVisibleToastsWithSamePosition,
   repositionToasts,
   toggleToastsRepositionTransition,
 } from "../toastPositionManager";
@@ -12,6 +13,7 @@ import {
   setToastVisibility,
   sleepForAnimationTime,
   toggleAnimation,
+  updateToastsExceedingVisibleLimit,
 } from "../toastUtils";
 import { Action, HidePayload, ToastEntity } from "../types";
 import { sleep } from "../utils";
@@ -36,6 +38,17 @@ async function hideAndReposition(toast: ToastEntity, withAnimation: boolean) {
   const toastsFromTheSameGroup = getToastsForReposition(
     toasts,
     toast,
+    actionType.remove
+  );
+
+  const visibleToastsWithSamePosition = getVisibleToastsWithSamePosition(
+    toasts,
+    toast
+  );
+  visibleToastsWithSamePosition.sort((a, b) => a.index - b.index);
+  updateToastsExceedingVisibleLimit(
+    toast,
+    visibleToastsWithSamePosition,
     actionType.remove
   );
 

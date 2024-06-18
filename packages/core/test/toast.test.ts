@@ -23,7 +23,7 @@ import {
   unpause,
 } from "../src/toast";
 import { toastQueue } from "../src/toastQueue";
-import { PartialBy, ToastConfig, ToastEntity } from "../src/types";
+import { PartialBy, PrivateToastConfig, ToastEntity } from "../src/types";
 import * as utils from "../src/utils";
 import { toastBase } from "./mocks";
 
@@ -82,7 +82,7 @@ describe("toast", () => {
 
   describe("getToastPropsForCreate", () => {
     it("should return toast props necessary for getting toast", () => {
-      const config: ToastConfig = {
+      const config: PrivateToastConfig = {
         id: "123",
         message: "Awesome 🎉",
         title: type.base,
@@ -125,6 +125,7 @@ describe("toast", () => {
         onShow: undefined,
         onHide: undefined,
         onClick: undefined,
+        visibleToasts: 5,
       };
 
       const expectedProps = {
@@ -197,8 +198,9 @@ describe("toast", () => {
 
   describe("getDefaultConfig", () => {
     it("should return default config for toast", () => {
-      const defaultConfig: PartialBy<ToastConfig, "id"> = getDefaultConfig();
-      const expectedConfig: PartialBy<ToastConfig, "id"> = {
+      const defaultConfig: PartialBy<PrivateToastConfig, "id"> =
+        getDefaultConfig();
+      const expectedConfig: PartialBy<PrivateToastConfig, "id"> = {
         id: "123",
         message: "Awesome 🎉",
         title: type.base,
@@ -241,6 +243,7 @@ describe("toast", () => {
         onShow: undefined,
         onHide: undefined,
         onClick: undefined,
+        visibleToasts: 5,
       };
 
       const defaultConfigId = defaultConfig.id as string;

@@ -1,7 +1,7 @@
 import { cssClassNames } from "../constants";
 import { pause, unpause } from "../toast";
 import { toastQueue } from "../toastQueue";
-import { updateToastTranslate } from "../toastUtils";
+import { updateToastTranslateAndOpacity } from "../toastUtils";
 import { ToastEntity } from "../types";
 import { sleep } from "../utils";
 
@@ -35,7 +35,12 @@ function resetToastDragState(toast: ToastEntity) {
   if (toast.element?.style) {
     toast.element.style.opacity = "";
   }
-  updateToastTranslate(toast, toast.translate.x, toast.translate.y, false);
+  updateToastTranslateAndOpacity(
+    toast,
+    toast.translate.x,
+    toast.translate.y,
+    false
+  );
 }
 
 export function toggleToastDragTransition(
@@ -74,7 +79,7 @@ export async function stopDragging(_event: TouchEvent, id: string) {
 
   if (shouldHandleDragEnd) {
     updateDragDeltaForSmoothAnimation(toast);
-    updateToastTranslate(
+    updateToastTranslateAndOpacity(
       toast,
       toast.dragDetails.delta,
       toast.translate.y,
@@ -101,7 +106,7 @@ export function duringDragging(event: TouchEvent, id: string) {
   toast.dragDetails.wasMoved = true;
   toast.dragDetails.delta = getToastDragDelta(toast);
 
-  updateToastTranslate(
+  updateToastTranslateAndOpacity(
     toast,
     toast.dragDetails.delta,
     toast.translate.y,

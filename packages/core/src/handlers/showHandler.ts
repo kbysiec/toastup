@@ -10,6 +10,7 @@ import { executeToastCallback } from "../toast";
 import {
   assureToastsPosition,
   getToastsForReposition,
+  getVisibleToastsWithSamePosition,
   repositionToasts,
   toggleToastsRepositionTransition,
 } from "../toastPositionManager";
@@ -18,7 +19,8 @@ import {
   setToastVisibility,
   sleepForAnimationTime,
   toggleAnimation,
-  updateToastTranslate,
+  updateToastTranslateAndOpacity,
+  updateToastsExceedingVisibleLimit,
 } from "../toastUtils";
 import { Action, MeasureType, ToastEntity } from "../types";
 import { getOuter, sleep } from "../utils";
@@ -125,7 +127,7 @@ async function showAndRepositionReversedOrder(
     x: toast.translate.x,
     y: toasts.length ? getStartTranslateYForReversedOrder(toast, toasts) : 0,
   };
-  updateToastTranslate(toast, translate.x, translate.y);
+  updateToastTranslateAndOpacity(toast, translate.x, translate.y);
 
   toast.delayBeforeShow && (await sleep(toast.delayBeforeShow));
   await showToast(toast);
@@ -147,6 +149,17 @@ async function showAndReposition(toast: ToastEntity) {
   const toastsFromTheSameGroup = getToastsForReposition(
     toasts,
     toast,
+    actionType.add
+  );
+
+  const visibleToastsWithSamePosition = getVisibleToastsWithSamePosition(
+    toasts,
+    toast
+  );
+  visibleToastsWithSamePosition.sort((a, b) => a.index - b.index);
+  updateToastsExceedingVisibleLimit(
+    toast,
+    visibleToastsWithSamePosition,
     actionType.add
   );
 

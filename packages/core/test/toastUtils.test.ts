@@ -13,7 +13,7 @@ import {
   setToastVisibility,
   sleepForAnimationTime,
   toggleAnimation,
-  updateToastTranslate,
+  updateToastTranslateAndOpacity,
 } from "../src/toastUtils";
 import * as utils from "../src/utils";
 import { toastBase } from "./mocks";
@@ -78,11 +78,11 @@ describe("toastUtils", () => {
     // });
   });
 
-  describe("updateToastTranslate", () => {
+  describe("updateToastTranslateAndOpacity", () => {
     it("should do nothing if the given toast has no element", () => {
       const toast = { ...toastBase, element: null };
 
-      updateToastTranslate(toast, 100, 150);
+      updateToastTranslateAndOpacity(toast, 100, 150);
 
       expect(getTransformOtherThanStub).not.toBeCalled();
     });
@@ -93,7 +93,7 @@ describe("toastUtils", () => {
       toast.translate = { x: 0, y: 100 };
       toast.element.style.transform = "scale(1)";
 
-      updateToastTranslate(toast, 100, 150);
+      updateToastTranslateAndOpacity(toast, 100, 150);
 
       expect(toast.translate).toEqual({ x: 100, y: 150 });
       expect(toast.element?.style.transform).toEqual(
@@ -107,12 +107,29 @@ describe("toastUtils", () => {
       toast.translate = { x: 0, y: 100 };
       toast.element.style.transform = "scale(1)";
 
-      updateToastTranslate(toast, 100, 150, false);
+      updateToastTranslateAndOpacity(toast, 100, 150, false);
 
       expect(toast.translate).toEqual({ x: 0, y: 100 });
       expect(toast.element?.style.transform).toEqual(
         "translate(100px, 150px) scale(1)"
       );
+    });
+
+    it("should update opacity and pointer events for given toast", () => {
+      getTransformOtherThanStub.mockImplementation(() => "scale(1)");
+      toast.position = position.topLeft;
+      toast.exceedVisibleToastsLimit = true;
+
+      updateToastTranslateAndOpacity(toast, 100, 150, false);
+
+      expect(toast.element?.style.opacity).toEqual("0");
+      expect(toast.element?.style.getPropertyPriority("opacity")).toEqual(
+        "important"
+      );
+      expect(toast.element?.style.pointerEvents).toEqual("none");
+      expect(
+        toast.element?.style.getPropertyPriority("pointer-events")
+      ).toEqual("important");
     });
   });
 

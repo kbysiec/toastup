@@ -23,7 +23,7 @@ import { toastBase } from "../mocks";
 
 describe("dragHandler", () => {
   const toggleToastDragTransitionStub = vi.fn();
-  const updateToastTranslateStub = vi.fn();
+  const updateToastTranslateAndOpacityStub = vi.fn();
   const pauseStub = vi.fn();
   const unpauseStub = vi.fn();
 
@@ -46,8 +46,8 @@ describe("dragHandler", () => {
     vi.spyOn(toastQueue, "get").mockReturnValue(queue);
     vi.spyOn(toast, "pause").mockImplementation(pauseStub);
     vi.spyOn(toast, "unpause").mockImplementation(unpauseStub);
-    vi.spyOn(toastUtils, "updateToastTranslate").mockImplementation(
-      updateToastTranslateStub
+    vi.spyOn(toastUtils, "updateToastTranslateAndOpacity").mockImplementation(
+      updateToastTranslateAndOpacityStub
     );
   });
 
@@ -161,7 +161,7 @@ describe("dragHandler", () => {
       const event = {} as unknown as TouchEvent;
       await stopDragging(event, toast.id);
 
-      expect(updateToastTranslateStub).not.toHaveBeenCalled();
+      expect(updateToastTranslateAndOpacityStub).not.toHaveBeenCalled();
     });
 
     it("should do nothing if there is not a toast for given id", async () => {
@@ -171,7 +171,7 @@ describe("dragHandler", () => {
       const event = {} as unknown as TouchEvent;
       await stopDragging(event, toast.id);
 
-      expect(updateToastTranslateStub).not.toHaveBeenCalled();
+      expect(updateToastTranslateAndOpacityStub).not.toHaveBeenCalled();
     });
   });
 
@@ -214,7 +214,7 @@ describe("dragHandler", () => {
 
       duringDragging(event, toast.id);
 
-      expect(updateToastTranslateStub).not.toHaveBeenCalled();
+      expect(updateToastTranslateAndOpacityStub).not.toHaveBeenCalled();
     });
   });
 
