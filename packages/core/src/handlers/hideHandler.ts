@@ -30,7 +30,7 @@ async function hideToast(toast: ToastEntity, withAnimation: boolean) {
 }
 
 async function hideAndReposition(toast: ToastEntity, withAnimation: boolean) {
-  const delayAfterRepositionInMs = 200;
+  const DELAY_AFTER_REPOSITION_IN_MS = 200;
   await hideToast(toast, withAnimation);
 
   const toastMap = toastQueue.get();
@@ -54,7 +54,7 @@ async function hideAndReposition(toast: ToastEntity, withAnimation: boolean) {
 
   toggleToastsRepositionTransition(toastsFromTheSameGroup, true);
   repositionToasts(toastsFromTheSameGroup, toast, actionType.remove);
-  await sleep(delayAfterRepositionInMs);
+  await sleep(DELAY_AFTER_REPOSITION_IN_MS);
   toggleToastsRepositionTransition(toastsFromTheSameGroup, false);
 }
 

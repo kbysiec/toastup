@@ -31,8 +31,8 @@ export function repositionToasts(
 }
 
 function setToastIndex(toast: ToastEntity, toasts: ToastEntity[]) {
-  if (toast.order !== displayOrder.reversed) return;
-  toast.index = toasts.length;
+  const ASSURANCE_LAST_INDEX = 999;
+  toast.index = toasts.length + ASSURANCE_LAST_INDEX;
 }
 
 function incrementToastsIndexByOne(toasts: ToastEntity[]) {
@@ -47,7 +47,8 @@ export function reindexToastsForPosition(
   toast: ToastEntity,
   toasts: ToastEntity[]
 ) {
-  setToastIndex(toast, toasts);
+  toast.order === displayOrder.reversed && setToastIndex(toast, toasts);
+
   const toastsForReindex = getToastsForReindex(toasts, toast);
   toast.order === displayOrder.normal &&
     incrementToastsIndexByOne(toastsForReindex);
@@ -139,7 +140,7 @@ export async function assureToastsPosition(
   toast: ToastEntity,
   toasts: ToastEntity[]
 ) {
-  const delayAfterRepositionInMs = 150;
+  const DELAY_AFTER_REPOSITION_IN_MS = 150;
   const toastsForPosition = getVisibleToastsWithSamePosition(toasts, toast);
   toastsForPosition.sort((a, b) => a.index - b.index);
 
@@ -147,6 +148,6 @@ export async function assureToastsPosition(
   toastsForPosition.forEach((t, i) =>
     assureToastPosition(t, i, toastsForPosition)
   );
-  await sleep(delayAfterRepositionInMs);
+  await sleep(DELAY_AFTER_REPOSITION_IN_MS);
   toggleToastsRepositionTransition(toastsForPosition, false, true);
 }
