@@ -7,7 +7,7 @@
     "lib": ["ESNext", "DOM"],
     "moduleResolution": "Node",
     "strict": true,
-    "sourceMap": true,
+    "sourceMap": false,
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "noUnusedLocals": true,
@@ -18,12 +18,16 @@
       "@toastup/*": ["packages/*/src/index.ts"]
     }
   },
+  "files": [],
   "references": [
     {
-      "path": "packages/core"
+      "path": "packages/core/tsconfig.json"
     },
     {
-      "path": "packages/react"
+      "path": "packages/react/tsconfig.json"
+    },
+    {
+      "path": "packages/website/tsconfig.json"
     }
   ]
 }
