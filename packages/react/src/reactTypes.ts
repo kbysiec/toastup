@@ -43,7 +43,7 @@ export interface BodyProps extends ComponentProps {
   role: string;
 }
 
-export type ToastProps = ToastEntity & {
+export type ToastComponentProps = ToastEntity & {
   children: React.ReactNode;
   ref: React.RefObject<HTMLDivElement>;
 };
@@ -54,13 +54,13 @@ export type ReactComponent<T> =
 // | (() => React.ReactNode)
 
 type ReactConfigProps = {
-  toast?: ReactComponent<ToastProps>;
+  toast?: ReactComponent<ToastComponentProps>;
   icon?: ReactComponent<IconProps>;
   hideButton?: ReactComponent<HideButtonProps>;
   content?: ReactComponent<ContentProps>;
   body?: ReactComponent<BodyProps>;
 };
 
-export type ReactConfig = ToastConfig & ReactConfigProps;
+export type ReactToastConfig = ToastConfig & ReactConfigProps;
 export type ReactToast = ToastEntity & ReactConfigProps;
 export type ReactToasterConfig = ToasterConfig & ReactConfigProps;

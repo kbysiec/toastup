@@ -7,7 +7,7 @@ import {
   isHTMLElement,
 } from "@toastup/core";
 import React, { useCallback, useEffect, useRef } from "react";
-import { ReactComponent, ReactToast, ToastProps } from "../reactTypes";
+import { ReactComponent, ReactToast, ToastComponentProps } from "../reactTypes";
 import { Body as DefaultBody } from "./Body";
 import { Container } from "./Container";
 import { Content as DefaultContent } from "./Content";
@@ -132,7 +132,9 @@ const ToastComponent = React.memo((props: ReactToast) => {
     ),
   });
 
-  const DefaultToast: React.FC<ToastProps> = (props: ToastProps) => {
+  const DefaultToast: React.FC<ToastComponentProps> = (
+    props: ToastComponentProps
+  ) => {
     const {
       id,
       hide,

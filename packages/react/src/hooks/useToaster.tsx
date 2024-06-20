@@ -9,7 +9,11 @@ import {
   uuid,
 } from "@toastup/core";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { ReactConfig, ReactToast, ReactToasterConfig } from "../reactTypes";
+import {
+  ReactToast,
+  ReactToastConfig,
+  ReactToasterConfig,
+} from "../reactTypes";
 
 export function useToaster(toasterConfig: ReactToasterConfig) {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -19,16 +23,13 @@ export function useToaster(toasterConfig: ReactToasterConfig) {
   const toastManagerListenersRegistered = useRef(false);
 
   const getConfig = useCallback(
-    (overriddenConfig: Partial<ReactConfig>) => {
-      const config = getCoalesced<ReactConfig, Partial<ReactConfig>>(
-        getDefaultConfig(),
-        toasterConfig,
-        overriddenConfig
-      );
-      config.title = overriddenConfig.title
-        ? overriddenConfig.title
-        : config.type;
-      config.id = overriddenConfig.id ? overriddenConfig.id : uuid();
+    (toastConfig: Partial<ReactToastConfig>) => {
+      const config: ReactToastConfig = getCoalesced<
+        ReactToastConfig,
+        Partial<ReactToastConfig>
+      >(getDefaultConfig(), toasterConfig, toastConfig);
+      config.title = toastConfig.title ? toastConfig.title : config.type;
+      config.id = toastConfig.id ? toastConfig.id : uuid();
 
       return config;
     },
@@ -53,7 +54,7 @@ export function useToaster(toasterConfig: ReactToasterConfig) {
   );
 
   const getToast = useCallback(
-    (config: Partial<ReactConfig>) => {
+    (config: Partial<ReactToastConfig>) => {
       const toastConfig = getConfig(config);
       const toastPropsForCreate = getToastPropsForCreate(toastConfig);
       const toast: ReactToast = {
@@ -68,7 +69,7 @@ export function useToaster(toasterConfig: ReactToasterConfig) {
   );
 
   const handleAddToast = useCallback(
-    (config: Partial<ReactConfig>) => {
+    (config: Partial<ReactToastConfig>) => {
       const toast = getToast(config);
 
       setToastIds(ids => {
@@ -106,7 +107,7 @@ export function useToaster(toasterConfig: ReactToasterConfig) {
   }, [handleDidMountToast]);
 
   useEffect(() => {
-    const callback = (event: CustomEvent<Partial<ReactConfig>>) => {
+    const callback = (event: CustomEvent<Partial<ReactToastConfig>>) => {
       handleAddToast(event.detail);
     };
     eventManager.on(events.add, callback);
