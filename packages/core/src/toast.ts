@@ -15,11 +15,11 @@ import { handleMountedToast } from "./handlers/mountHandler";
 import { handleShowToast } from "./handlers/showHandler";
 import { toastQueue } from "./toastQueue";
 import {
-  PrivateToastConfig,
   ToastCallback,
   ToastConfig,
   ToastEntity,
   ToastOnlyProps,
+  ToastProps,
   ToastPublicProps,
 } from "./types";
 import { uuid } from "./utils";
@@ -67,7 +67,7 @@ export function unpause(id: string) {
   togglePause(id, false);
 }
 
-export function getToastPropsForCreate(config: PrivateToastConfig) {
+export function getToastPropsForCreate(config: ToastConfig) {
   const commonProps: ToastOnlyProps = {
     element: null,
     uuid: uuid(),
@@ -95,12 +95,13 @@ export function getToastPropsForCreate(config: PrivateToastConfig) {
       wasMoved: false,
     },
     exceedVisibleToastsLimit: false,
+    visibleToasts: 5,
   };
   return commonProps;
 }
 
 export function getDefaultConfig() {
-  const defaultConfig: PrivateToastConfig = {
+  const defaultConfig: ToastProps = {
     id: uuid(),
     message: "Awesome 🎉",
     title: type.base,
@@ -143,7 +144,7 @@ export function getDefaultConfig() {
     onShow: undefined,
     onHide: undefined,
     onClick: undefined,
-    visibleToasts: 5,
+    // visibleToasts: 5,
   };
 
   return defaultConfig;
@@ -193,8 +194,6 @@ function getPublicProps(toast: ToastEntity) {
     removeOnDraggingPercent: toast.removeOnDraggingPercent,
     dragDetails: { ...toast.dragDetails },
     theme: toast.theme,
-    exceedVisibleToastsLimit: toast.exceedVisibleToastsLimit,
-    visibleToasts: toast.visibleToasts,
   };
   return props;
 }
