@@ -1,3 +1,5 @@
+import "@toastup/core/style";
+
 export * from "@toastup/core";
 export * from "./components/Body";
 export * from "./components/Container";

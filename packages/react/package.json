@@ -6,12 +6,17 @@
   "module": "./dist/toastup-react.mjs",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "require": "./dist/toastup-react.cjs",
       "import": "./dist/toastup-react.mjs"
     },
     "./dist/": {
       "import": "./dist/",
       "require": "./dist/"
+    },
+    "./style": {
+      "import": "./dist/style.css",
+      "require": "./dist/style.css"
     }
   },
   "types": "./dist/index.d.ts",
@@ -21,8 +26,10 @@
   "scripts": {
     "dev": "vite --host",
     "build": "vite build && dts-bundle-generator --config ./dts-bundle-generator.config.ts",
+    "build:w": "vite build",
     "test": "vitest",
-    "test:coverage": "vitest --coverage"
+    "test:coverage": "vitest --coverage",
+    "typings": "dts-bundle-generator --config ./dts-bundle-generator.config.ts"
   },
   "dependencies": {
     "@toastup/core": "workspace:^"
@@ -68,5 +75,6 @@
     "uglify-js": "^3.17.4",
     "vite": "^5.0.12",
     "vitest": "^1.6.0"
-  }
+  },
+  "license": "MIT"
 }
