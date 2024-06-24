@@ -7,12 +7,6 @@ import {
 } from "@toastup/core";
 import { reactEvents } from "./constants";
 
-// declare global {
-//   interface DocumentEventMap {
-//     [reactEvents.reactDidMount]: CustomEvent;
-//   }
-// }
-
 const reactEventValues = Object.values(reactEvents).flat();
 export type ReactEventType = (typeof reactEventValues)[number];
 
