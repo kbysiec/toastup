@@ -28,18 +28,21 @@ import * as utils from "../src/utils";
 import { toastBase } from "./mocks";
 
 describe("toast", () => {
-  const emitStub = vi.fn();
   const onStub = vi.fn();
   const offStub = vi.fn();
+  const emitStub = vi.fn();
+  const eventManagerStub = {
+    on: onStub,
+    off: offStub,
+    emit: emitStub,
+  };
 
   let queue: Map<string, ToastEntity>;
 
   beforeEach(() => {
     queue = new Map<string, ToastEntity>();
 
-    vi.spyOn(eventManager, "on").mockImplementation(onStub);
-    vi.spyOn(eventManager, "off").mockImplementation(offStub);
-    vi.spyOn(eventManager, "emit").mockImplementation(emitStub);
+    vi.spyOn(eventManager, "get").mockReturnValue(eventManagerStub);
     vi.spyOn(utils, "uuid").mockReturnValue("123");
     vi.spyOn(toastQueue, "get").mockReturnValue(queue);
   });

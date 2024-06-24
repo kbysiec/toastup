@@ -12,17 +12,18 @@ import {
   type,
 } from "./constants";
 
-declare global {
-  interface DocumentEventMap {
-    [events.add]: CustomEvent;
-    [events.added]: CustomEvent;
-    [events.remove]: CustomEvent;
-    [events.mounted]: CustomEvent;
-    [events.show]: CustomEvent;
-    [events.hide]: CustomEvent;
-    [events.click]: CustomEvent;
-  }
-}
+// declare global {
+//   interface DocumentEventMap {
+//     [events.add]: CustomEvent;
+//     [events.added]: CustomEvent;
+//     [events.remove]: CustomEvent;
+//     [events.removeAll]: CustomEvent;
+//     [events.mounted]: CustomEvent;
+//     [events.show]: CustomEvent;
+//     [events.hide]: CustomEvent;
+//     [events.click]: CustomEvent;
+//   }
+// }
 
 export type PartialBy<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
 export type RequireOnlyOne<T, Keys extends keyof T = keyof T> = Pick<
@@ -233,11 +234,16 @@ export type RemovePayload = {
   withAnimation: boolean;
 };
 
+export type RemoveAllPayload = {
+  withAnimation: boolean;
+};
+
 export type Payload =
   | Partial<ToastProps>
   | ToastEntity
-  | RemovePayload
   | HidePayload
+  | RemovePayload
+  | RemoveAllPayload
   | string;
 
 const toastOnlyConfigProps = ["id"] as const;

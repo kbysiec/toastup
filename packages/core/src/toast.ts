@@ -26,14 +26,16 @@ import { uuid } from "./utils";
 
 export function add<T extends ToastConfig>(overriddenConfig: Partial<T> = {}) {
   overriddenConfig.id = overriddenConfig.id ? overriddenConfig.id : uuid();
-  eventManager.emit(events.add, overriddenConfig);
+  const eventMgr = eventManager.get();
+  eventMgr.emit(events.add, overriddenConfig);
 
   return overriddenConfig.id;
 }
 
 export function remove(id?: string) {
   if (id) {
-    eventManager.emit(events.remove, { toastId: id, withAnimation: true });
+    const eventMgr = eventManager.get();
+    eventMgr.emit(events.remove, { toastId: id, withAnimation: true });
   } else {
     const toastMap = toastQueue.get();
     Array.from(toastMap.values()).forEach(toast => hideToastImmediately(toast));
@@ -41,6 +43,8 @@ export function remove(id?: string) {
 }
 
 export function registerToastupEventHandlers() {
+  const eventMgr = eventManager.get();
+
   const callbacks = {
     [events.added]: handleAddedToast,
     [events.mounted]: handleMountedToast,
@@ -52,7 +56,7 @@ export function registerToastupEventHandlers() {
   Object.keys(callbacks).forEach(key => {
     const ev = key as keyof typeof callbacks;
     const cb = callbacks[ev];
-    eventManager.on(ev, cb);
+    eventMgr.on(ev, cb);
   });
 }
 

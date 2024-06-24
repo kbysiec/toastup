@@ -1,16 +1,20 @@
 import { EventCallback, EventType, Payload } from "./types";
 
-export const eventManager = {
-  on(type: EventType, callback: EventCallback) {
-    document.addEventListener(type, callback);
+const get = <T extends string = EventType>() => ({
+  on: (type: T, callback: EventCallback) => {
+    document.addEventListener(type, callback as EventListener);
   },
-  off(type: EventType, callback: EventCallback) {
-    document.removeEventListener(type, callback);
+  off: (type: T, callback: EventCallback) => {
+    document.removeEventListener(type, callback as EventListener);
   },
-  emit(type: EventType, payload: Payload) {
+  emit: (type: T, payload: Payload) => {
     const event = new CustomEvent(type, {
       detail: payload,
     });
     document.dispatchEvent(event);
   },
+});
+
+export const eventManager = {
+  get,
 };

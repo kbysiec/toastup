@@ -1,3 +1,4 @@
+import { reactEvents } from "@/constants";
 import {
   ComponentProps,
   cssClassNames,
@@ -7,7 +8,12 @@ import {
   isHTMLElement,
 } from "@toastup/core";
 import React, { useCallback, useEffect, useRef } from "react";
-import { ReactComponent, ReactToast, ToastComponentProps } from "../reactTypes";
+import {
+  ReactComponent,
+  ReactEventType,
+  ReactToast,
+  ToastComponentProps,
+} from "../reactTypes";
 import { Body as DefaultBody } from "./Body";
 import { Container } from "./Container";
 import { Content as DefaultContent } from "./Content";
@@ -49,6 +55,7 @@ const ToastComponent = React.memo((props: ReactToast) => {
     toast,
   } = props;
 
+  const eventMgr = eventManager.get<ReactEventType>();
   const ref = useRef<HTMLDivElement>(null);
 
   const handleVisibilityChange = useCallback(() => {
@@ -64,7 +71,10 @@ const ToastComponent = React.memo((props: ReactToast) => {
   }, [pauseOnFocusLoss, handleVisibilityChange]);
 
   useEffect(() => {
-    eventManager.emit(events.reactDidMount, { ...props, element: ref.current });
+    eventMgr.emit(reactEvents.reactDidMount, {
+      ...props,
+      element: ref.current,
+    });
   }, [props]);
 
   const renderComponent = <T extends ComponentProps>(
@@ -165,7 +175,7 @@ const ToastComponent = React.memo((props: ReactToast) => {
         style={style}
         onClick={e => {
           e.preventDefault();
-          eventManager.emit(events.click, id);
+          eventMgr.emit(events.click, id);
           hideOnClick && hide(true);
         }}
         onMouseEnter={pauseOnHover ? () => pause() : undefined}

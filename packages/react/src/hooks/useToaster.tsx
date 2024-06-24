@@ -12,12 +12,15 @@ import {
 } from "@toastup/core";
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
+  ReactEventType,
   ReactToast,
   ReactToastConfig,
   ReactToasterConfig,
 } from "../reactTypes";
 
 export function useToaster(toasterConfig: ReactToasterConfig) {
+  const eventMgr = eventManager.get<ReactEventType>();
+
   const [isLoaded, setIsLoaded] = useState(false);
   const [toasterId] = useState(`toaster-${uuid()}`);
 
@@ -39,12 +42,12 @@ export function useToaster(toasterConfig: ReactToasterConfig) {
   );
 
   const handleDidMountToast = useCallback((toast: ToastEntity) => {
-    eventManager.emit(events.mounted, toast);
+    eventMgr.emit(events.mounted, toast);
   }, []);
 
   const handleRemoveToast = useCallback(
     (toastId: string, withAnimation: boolean) => {
-      eventManager.emit(events.hide, {
+      eventMgr.emit(events.hide, {
         toastId,
         withAnimation,
         callback: () => {
@@ -75,7 +78,7 @@ export function useToaster(toasterConfig: ReactToasterConfig) {
       const toast = getToast(config);
 
       setToastIds(ids => {
-        eventManager.emit(events.added, toast);
+        eventMgr.emit(events.added, toast);
         return [...ids, toast.id];
       });
     },
@@ -101,27 +104,27 @@ export function useToaster(toasterConfig: ReactToasterConfig) {
       const { toastId, withAnimation } = event.detail;
       handleRemoveToast(toastId, withAnimation);
     };
-    eventManager.on(events.remove, callback);
+    eventMgr.on(events.remove, callback);
 
-    return () => eventManager.off(events.remove, callback);
+    return () => eventMgr.off(events.remove, callback);
   }, [handleRemoveToast]);
 
   useEffect(() => {
     const callback = async (event: CustomEvent<ReactToast>) => {
       await handleDidMountToast(event.detail);
     };
-    eventManager.on(reactEvents.reactDidMount, callback);
+    eventMgr.on(reactEvents.reactDidMount, callback);
 
-    return () => eventManager.off(reactEvents.reactDidMount, callback);
+    return () => eventMgr.off(reactEvents.reactDidMount, callback);
   }, [handleDidMountToast]);
 
   useEffect(() => {
     const callback = (event: CustomEvent<Partial<ReactToastConfig>>) => {
       handleAddToast(event.detail);
     };
-    eventManager.on(events.add, callback);
+    eventMgr.on(events.add, callback);
 
-    return () => eventManager.off(events.add, callback);
+    return () => eventMgr.off(events.add, callback);
   }, [toastIds, handleAddToast]);
 
   useEffect(() => {

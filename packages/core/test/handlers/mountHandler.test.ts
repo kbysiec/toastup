@@ -18,6 +18,11 @@ import { toastBase } from "../mocks";
 describe("mountHandler", () => {
   const reindexToastsForPositionStub = vi.fn();
   const emitStub = vi.fn();
+  const eventManagerStub = {
+    on: vi.fn(),
+    off: vi.fn(),
+    emit: emitStub,
+  };
 
   let queue: Map<string, ToastEntity>;
   let toast = {
@@ -37,7 +42,7 @@ describe("mountHandler", () => {
       toastPositionManager,
       "reindexToastsForPosition"
     ).mockImplementation(reindexToastsForPositionStub);
-    vi.spyOn(eventManager, "emit").mockImplementation(emitStub);
+    vi.spyOn(eventManager, "get").mockReturnValue(eventManagerStub);
   });
 
   afterEach(() => {

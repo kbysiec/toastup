@@ -15,9 +15,14 @@ import { toastBase } from "../mock/mocks";
 
 describe("Toast", () => {
   const emitStub = vi.fn();
+  const eventManagerStub = {
+    on: vi.fn(),
+    off: vi.fn(),
+    emit: emitStub,
+  };
 
   beforeEach(() => {
-    vi.spyOn(eventManager, "emit").mockImplementation(emitStub);
+    vi.spyOn(eventManager, "get").mockReturnValue(eventManagerStub);
   });
 
   afterEach(() => {
