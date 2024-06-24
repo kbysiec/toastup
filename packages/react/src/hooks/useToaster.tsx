@@ -1,3 +1,4 @@
+import { reactEvents } from "@/constants";
 import {
   ToastEntity,
   eventManager,
@@ -109,9 +110,9 @@ export function useToaster(toasterConfig: ReactToasterConfig) {
     const callback = async (event: CustomEvent<ReactToast>) => {
       await handleDidMountToast(event.detail);
     };
-    eventManager.on(events.reactDidMount, callback);
+    eventManager.on(reactEvents.reactDidMount, callback);
 
-    return () => eventManager.off(events.reactDidMount, callback);
+    return () => eventManager.off(reactEvents.reactDidMount, callback);
   }, [handleDidMountToast]);
 
   useEffect(() => {

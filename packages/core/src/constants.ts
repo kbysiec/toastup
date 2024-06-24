@@ -1,5 +1,4 @@
 export const events = {
-  reactDidMount: "toastup:react_did_mount_toast",
   add: "toastup:add",
   added: "toastup:added",
   remove: "toastup:remove",

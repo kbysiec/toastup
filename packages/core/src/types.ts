@@ -18,7 +18,6 @@ declare global {
     [events.added]: CustomEvent;
     [events.remove]: CustomEvent;
     [events.mounted]: CustomEvent;
-    [events.reactDidMount]: CustomEvent;
     [events.show]: CustomEvent;
     [events.hide]: CustomEvent;
     [events.click]: CustomEvent;

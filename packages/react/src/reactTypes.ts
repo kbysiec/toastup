@@ -5,6 +5,13 @@ import {
   ToasterConfig,
   ToastType,
 } from "@toastup/core";
+import { reactEvents } from "./constants";
+
+declare global {
+  interface DocumentEventMap {
+    [reactEvents.reactDidMount]: CustomEvent;
+  }
+}
 
 export interface ContainerProps {
   className: string;
