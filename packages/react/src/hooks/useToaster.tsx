@@ -6,6 +6,7 @@ import {
   getDefaultConfig,
   getToastPropsForCreate,
   registerToastupEventHandlers,
+  remove,
   uuid,
 } from "@toastup/core";
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -80,9 +81,16 @@ export function useToaster(toasterConfig: ReactToasterConfig) {
     [getToast]
   );
 
+  const removeToastsImmediately = useCallback(() => {
+    setToastIds([]);
+    remove();
+  }, []);
+
   useEffect(() => {
     !toastManagerListenersRegistered.current && registerToastupEventHandlers();
     toastManagerListenersRegistered.current = true;
+
+    return removeToastsImmediately();
   }, []);
 
   useEffect(() => {

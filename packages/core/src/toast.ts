@@ -10,7 +10,7 @@ import {
   startDragging,
   stopDragging,
 } from "./handlers/dragHandler";
-import { handleHideToast } from "./handlers/hideHandler";
+import { handleHideToast, hideToastImmediately } from "./handlers/hideHandler";
 import { handleMountedToast } from "./handlers/mountHandler";
 import { handleShowToast } from "./handlers/showHandler";
 import { toastQueue } from "./toastQueue";
@@ -31,8 +31,13 @@ export function add<T extends ToastConfig>(overriddenConfig: Partial<T> = {}) {
   return overriddenConfig.id;
 }
 
-export function remove(id: string) {
-  eventManager.emit(events.remove, { toastId: id, withAnimation: true });
+export function remove(id?: string) {
+  if (id) {
+    eventManager.emit(events.remove, { toastId: id, withAnimation: true });
+  } else {
+    const toastMap = toastQueue.get();
+    Array.from(toastMap.values()).forEach(toast => hideToastImmediately(toast));
+  }
 }
 
 export function registerToastupEventHandlers() {

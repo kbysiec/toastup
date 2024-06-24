@@ -18,6 +18,17 @@ import {
 import { Action, HidePayload, ToastEntity } from "../types";
 import { sleep } from "../utils";
 
+export async function hideToastImmediately(toast: ToastEntity) {
+  const toastMap = toastQueue.get();
+  toastMap.delete(toast.id);
+  executeToastCallback(toast, t => t.onHiding);
+
+  setToastVisibility(toast, false);
+  clearInterval(toast.autoHideDetails?.intervalId);
+
+  executeToastCallback(toast, t => t.onHide);
+}
+
 async function hideToast(toast: ToastEntity, withAnimation: boolean) {
   executeToastCallback(toast, t => t.onHiding);
 
