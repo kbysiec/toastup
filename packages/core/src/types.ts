@@ -12,19 +12,6 @@ import {
   type,
 } from "./constants";
 
-// declare global {
-//   interface DocumentEventMap {
-//     [events.add]: CustomEvent;
-//     [events.added]: CustomEvent;
-//     [events.remove]: CustomEvent;
-//     [events.removeAll]: CustomEvent;
-//     [events.mounted]: CustomEvent;
-//     [events.show]: CustomEvent;
-//     [events.hide]: CustomEvent;
-//     [events.click]: CustomEvent;
-//   }
-// }
-
 export type PartialBy<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
 export type RequireOnlyOne<T, Keys extends keyof T = keyof T> = Pick<
   T,
@@ -140,8 +127,6 @@ export interface ToastProps {
 
 export type ToastConfig = Omit<ToastProps, "visibleToasts">;
 
-// export type ToastConfig = Toast;
-
 export interface ToastOnlyProps {
   element: HTMLElement | null;
   uuid: string;
@@ -186,10 +171,7 @@ export interface ToastEntity
 
 export type ToastPauseHandler = () => void;
 export type ToastHideHandler = (withAnimation?: boolean) => void;
-export type ToastDragHandler = (
-  event: TouchEvent
-  // id: string
-) => void | Promise<void>;
+export type ToastDragHandler = (event: TouchEvent) => void | Promise<void>;
 export type ToastCallback = ((props: ToastPublicProps) => void) | undefined;
 export type EventCallback = (event: CustomEvent) => void;
 
