@@ -5,12 +5,17 @@
   "module": "./src/index.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./src/index.ts",
       "require": "./src/index.ts"
     },
     "./src/": {
       "import": "./src/",
       "require": "./src/"
+    },
+    "./style": {
+      "import": "./src/style.scss",
+      "require": "./src/style.scss"
     }
   },
   "types": "./dist/index.d.ts",
@@ -41,5 +46,6 @@
     "typescript": "^5.3.3",
     "vite": "^5.0.12",
     "vitest": "^1.2.1"
-  }
+  },
+  "license": "MIT"
 }
