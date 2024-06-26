@@ -41,18 +41,24 @@ export function useToaster(toasterConfig: ReactToasterConfig) {
     [toasterConfig]
   );
 
-  const handleDidMountToast = useCallback((toast: ToastEntity) => {
+  const handleDidMountToast = useCallback(
+    (toast: ToastEntity) => {
     eventMgr.emit(events.mounted, toast);
-  }, []);
+    },
+    [eventMgr]
+  );
 
-  const handleRemoveAllToasts = useCallback((withAnimation: boolean) => {
+  const handleRemoveAllToasts = useCallback(
+    (withAnimation: boolean) => {
     eventMgr.emit(events.hideAll, {
       withAnimation,
       callback: () => {
         setToastIds([]);
       },
     });
-  }, []);
+    },
+    [eventMgr]
+  );
 
   const handleRemoveToast = useCallback(
     (toastId: string, withAnimation: boolean) => {
@@ -64,7 +70,7 @@ export function useToaster(toasterConfig: ReactToasterConfig) {
         },
       });
     },
-    []
+    [eventMgr]
   );
 
   const getToast = useCallback(
@@ -91,7 +97,7 @@ export function useToaster(toasterConfig: ReactToasterConfig) {
         return [...ids, toast.id];
       });
     },
-    [getToast]
+    [eventMgr, getToast]
   );
 
   useEffect(() => {
@@ -109,7 +115,7 @@ export function useToaster(toasterConfig: ReactToasterConfig) {
     eventMgr.on(events.removeAll, callback);
 
     return () => eventMgr.off(events.removeAll, callback);
-  }, [handleRemoveAllToasts]);
+  }, [eventMgr, handleRemoveAllToasts]);
 
   useEffect(() => {
     const callback = (
@@ -130,7 +136,7 @@ export function useToaster(toasterConfig: ReactToasterConfig) {
     eventMgr.on(reactEvents.reactDidMount, callback);
 
     return () => eventMgr.off(reactEvents.reactDidMount, callback);
-  }, [handleDidMountToast]);
+  }, [eventMgr, handleDidMountToast]);
 
   useEffect(() => {
     const callback = (event: CustomEvent<Partial<ReactToastConfig>>) => {
@@ -139,7 +145,7 @@ export function useToaster(toasterConfig: ReactToasterConfig) {
     eventMgr.on(events.add, callback);
 
     return () => eventMgr.off(events.add, callback);
-  }, [toastIds, handleAddToast]);
+  }, [toastIds, eventMgr, handleAddToast]);
 
   useEffect(() => {
     const body = document.getElementsByTagName("body")[0];

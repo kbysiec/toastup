@@ -75,7 +75,7 @@ const ToastComponent = React.memo((props: ReactToast) => {
       ...props,
       element: ref.current,
     });
-  }, [props]);
+  }, [eventMgr, props]);
 
   const renderComponent = <T extends ComponentProps>(
     DefaultComponent: React.FC<T>,
