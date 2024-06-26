@@ -1,0 +1,5 @@
+[data-theme="dark"] {
+  :global(.main-wrapper) {
+    background-color: var(--ifm-background-color);
+  }
+}
