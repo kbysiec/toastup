@@ -14,13 +14,13 @@
   0% {
     opacity: 1;
     transform: translate(var(--startTranslateX), var(--startTranslateY))
-      scale(0);
+      scale(1);
   }
 
   100% {
     opacity: 0;
     transform: translate(var(--startTranslateX), var(--startTranslateY))
-      scale(1);
+      scale(0);
   }
 }
 
