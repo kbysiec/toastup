@@ -209,11 +209,12 @@ export type ToastPublicProps = Omit<
 export type HidePayload = {
   toastId: string;
   withAnimation: boolean;
-  callback: () => void;
+  callback?: () => void;
 };
-export type RemovePayload = {
-  toastId: string;
+
+export type HideAllPayload = {
   withAnimation: boolean;
+  callback?: () => void;
 };
 
 export type RemoveAllPayload = {
@@ -224,7 +225,7 @@ export type Payload =
   | Partial<ToastProps>
   | ToastEntity
   | HidePayload
-  | RemovePayload
+  | HideAllPayload
   | RemoveAllPayload
   | string;
 

@@ -72,11 +72,13 @@ describe("toast", () => {
 
   describe("remove", () => {
     it("should emit event for removing toast", () => {
-      remove("11");
+      const callbackStub = vi.fn();
+      remove("11", callbackStub);
 
-      expect(emitStub).toBeCalledWith(events.remove, {
+      expect(emitStub).toBeCalledWith(events.hide, {
         toastId: "11",
         withAnimation: true,
+        callback: callbackStub,
       });
     });
   });

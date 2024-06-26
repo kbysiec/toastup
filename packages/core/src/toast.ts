@@ -36,9 +36,9 @@ export function add<T extends ToastConfig>(overriddenConfig: Partial<T> = {}) {
   return overriddenConfig.id;
 }
 
-export function remove(id: string) {
+export function remove(id: string, callback?: () => void) {
   const eventMgr = eventManager.get();
-  eventMgr.emit(events.remove, { toastId: id, withAnimation: true });
+  eventMgr.emit(events.hide, { toastId: id, withAnimation: true, callback });
 }
 
 export function removeAll(withAnimation = true, callback?: () => void) {
