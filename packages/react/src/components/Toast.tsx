@@ -7,7 +7,7 @@ import {
   isFunction,
   isHTMLElement,
 } from "@toastup/core";
-import React, { useCallback, useEffect, useRef } from "react";
+import React, { useCallback, useEffect, useMemo, useRef } from "react";
 import {
   ReactComponent,
   ReactEventType,
@@ -55,7 +55,7 @@ const ToastComponent = React.memo((props: ReactToast) => {
     toast,
   } = props;
 
-  const eventMgr = eventManager.get<ReactEventType>();
+  const eventMgr = useMemo(() => eventManager.get<ReactEventType>(), []);
   const ref = useRef<HTMLDivElement>(null);
 
   const handleVisibilityChange = useCallback(() => {

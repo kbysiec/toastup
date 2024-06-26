@@ -10,7 +10,7 @@ import {
   removeAll,
   uuid,
 } from "@toastup/core";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   ReactEventType,
   ReactToast,
@@ -19,7 +19,7 @@ import {
 } from "../reactTypes";
 
 export function useToaster(toasterConfig: ReactToasterConfig) {
-  const eventMgr = eventManager.get<ReactEventType>();
+  const eventMgr = useMemo(() => eventManager.get<ReactEventType>(), []);
 
   const [isLoaded, setIsLoaded] = useState(false);
   const [toasterId] = useState(`toaster-${uuid()}`);
