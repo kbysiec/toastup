@@ -43,19 +43,19 @@ export function useToaster(toasterConfig: ReactToasterConfig) {
 
   const handleDidMountToast = useCallback(
     (toast: ToastEntity) => {
-    eventMgr.emit(events.mounted, toast);
+      eventMgr.emit(events.mounted, toast);
     },
     [eventMgr]
   );
 
   const handleRemoveAllToasts = useCallback(
     (withAnimation: boolean) => {
-    eventMgr.emit(events.hideAll, {
-      withAnimation,
-      callback: () => {
-        setToastIds([]);
-      },
-    });
+      eventMgr.emit(events.hideAll, {
+        withAnimation,
+        callback: () => {
+          setToastIds([]);
+        },
+      });
     },
     [eventMgr]
   );
@@ -116,18 +116,6 @@ export function useToaster(toasterConfig: ReactToasterConfig) {
 
     return () => eventMgr.off(events.removeAll, callback);
   }, [eventMgr, handleRemoveAllToasts]);
-
-  useEffect(() => {
-    const callback = (
-      event: CustomEvent<{ toastId: string; withAnimation: boolean }>
-    ) => {
-      const { toastId, withAnimation } = event.detail;
-      handleRemoveToast(toastId, withAnimation);
-    };
-    eventMgr.on(events.remove, callback);
-
-    return () => eventMgr.off(events.remove, callback);
-  }, [handleRemoveToast]);
 
   useEffect(() => {
     const callback = async (event: CustomEvent<ReactToast>) => {
