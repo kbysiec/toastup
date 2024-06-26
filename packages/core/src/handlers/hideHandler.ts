@@ -15,14 +15,31 @@ import {
   toggleAnimation,
   updateToastsExceedingVisibleLimit,
 } from "../toastUtils";
-import { Action, HidePayload, ToastEntity } from "../types";
+import { Action, HideAllPayload, HidePayload, ToastEntity } from "../types";
 import { sleep } from "../utils";
 
-export async function hideToastImmediately(toast: ToastEntity) {
+export async function hideAllToastsImmediately(
+  withAnimation: boolean,
+  callback?: () => void
+) {
   const toastMap = toastQueue.get();
-  toastMap.delete(toast.id);
-  executeToastCallback(toast, t => t.onHiding);
+  const toastArr = Array.from(toastMap.values());
+  for (let i = 0; i < toastArr.length; i++) {
+    const toast = toastArr[i];
+    hideToastImmediately(toast, withAnimation);
+    toastMap.delete(toast.id);
+  }
 
+  const highestSleep =
+    toastArr.map(t => t.outAnimation.animationTime).sort()[0] || 0;
+
+  withAnimation && (await sleep(highestSleep));
+  callback && callback();
+}
+
+function hideToastImmediately(toast: ToastEntity, withAnimation: boolean) {
+  executeToastCallback(toast, t => t.onHiding);
+  withAnimation && toggleAnimation(toast, t => t.outAnimation, true);
   setToastVisibility(toast, false);
   clearInterval(toast.autoHideDetails?.intervalId);
 
@@ -72,14 +89,14 @@ async function hideAndReposition(toast: ToastEntity, withAnimation: boolean) {
 export async function hide(
   toast: ToastEntity,
   withAnimation: boolean,
-  callback: () => void
+  callback?: () => void
 ) {
   const toastMap = toastQueue.get();
   await hideAndReposition(toast, withAnimation);
   const toasts = Array.from(toastMap.values());
   await assureToastsPosition(toast, toasts);
   toastMap.delete(toast.id);
-  callback();
+  callback && callback();
 }
 
 export async function handleHideToast(event: CustomEvent<HidePayload>) {
@@ -95,4 +112,9 @@ export async function handleHideToast(event: CustomEvent<HidePayload>) {
     fn: hide.bind(null, toast, withAnimation, callback),
   };
   await register(action);
+}
+
+export async function handleHideAllToasts(event: CustomEvent<HideAllPayload>) {
+  const { withAnimation, callback } = event.detail;
+  await hideAllToastsImmediately(withAnimation, callback);
 }

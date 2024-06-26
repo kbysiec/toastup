@@ -10,7 +10,11 @@ import {
   startDragging,
   stopDragging,
 } from "./handlers/dragHandler";
-import { handleHideToast, hideToastImmediately } from "./handlers/hideHandler";
+import {
+  handleHideAllToasts,
+  handleHideToast,
+  hideAllToastsImmediately,
+} from "./handlers/hideHandler";
 import { handleMountedToast } from "./handlers/mountHandler";
 import { handleShowToast } from "./handlers/showHandler";
 import { toastQueue } from "./toastQueue";
@@ -32,14 +36,16 @@ export function add<T extends ToastConfig>(overriddenConfig: Partial<T> = {}) {
   return overriddenConfig.id;
 }
 
-export function remove(id?: string) {
-  if (id) {
-    const eventMgr = eventManager.get();
-    eventMgr.emit(events.remove, { toastId: id, withAnimation: true });
-  } else {
-    const toastMap = toastQueue.get();
-    Array.from(toastMap.values()).forEach(toast => hideToastImmediately(toast));
-  }
+export function remove(id: string) {
+  const eventMgr = eventManager.get();
+  eventMgr.emit(events.remove, { toastId: id, withAnimation: true });
+}
+
+export function removeAll(withAnimation = true, callback?: () => void) {
+  const eventMgr = eventManager.get();
+  withAnimation
+    ? eventMgr.emit(events.removeAll, { withAnimation })
+    : hideAllToastsImmediately(withAnimation, callback);
 }
 
 export function registerToastupEventHandlers() {
@@ -50,6 +56,7 @@ export function registerToastupEventHandlers() {
     [events.mounted]: handleMountedToast,
     [events.show]: handleShowToast,
     [events.hide]: handleHideToast,
+    [events.hideAll]: handleHideAllToasts,
     [events.click]: handleClickToast,
   };
 

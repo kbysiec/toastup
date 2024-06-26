@@ -20,6 +20,7 @@ import {
   pause,
   registerToastupEventHandlers,
   remove,
+  removeAll,
   unpause,
 } from "../src/toast";
 import { toastQueue } from "../src/toastQueue";
@@ -71,15 +72,42 @@ describe("toast", () => {
 
   describe("remove", () => {
     it("should emit event for removing toast", () => {
-      add({ id: "11" });
-      add({ id: "22" });
-
       remove("11");
 
       expect(emitStub).toBeCalledWith(events.remove, {
         toastId: "11",
         withAnimation: true,
       });
+    });
+  });
+
+  describe("removeAll", () => {
+    it("should emit event for removing all toasts if withAnimation equals to true", () => {
+      const toast = { ...toastBase, id: "1" };
+      const toast2 = { ...toastBase, id: "2" };
+
+      queue.set("1", toast);
+      queue.set("2", toast2);
+
+      removeAll();
+
+      expect(emitStub).toBeCalledWith(events.removeAll, {
+        withAnimation: true,
+      });
+    });
+
+    it("should clear the queue immediately if withAnimation equals to false", () => {
+      const toast = { ...toastBase, id: "1" };
+      const toast2 = { ...toastBase, id: "2" };
+
+      queue.set("1", toast);
+      queue.set("2", toast2);
+
+      expect(queue.size).toEqual(2);
+
+      removeAll(false);
+
+      expect(queue.size).toEqual(0);
     });
   });
 
@@ -269,10 +297,10 @@ describe("toast", () => {
   });
 
   describe("registerToastupEventHandlers", () => {
-    it("should register 4 event listeners", () => {
+    it("should register 6 event listeners", () => {
       registerToastupEventHandlers();
 
-      expect(onStub).toHaveBeenCalledTimes(5);
+      expect(onStub).toHaveBeenCalledTimes(6);
     });
   });
 });

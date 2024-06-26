@@ -7,7 +7,7 @@ import {
   getDefaultConfig,
   getToastPropsForCreate,
   registerToastupEventHandlers,
-  remove,
+  removeAll,
   uuid,
 } from "@toastup/core";
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -43,6 +43,15 @@ export function useToaster(toasterConfig: ReactToasterConfig) {
 
   const handleDidMountToast = useCallback((toast: ToastEntity) => {
     eventMgr.emit(events.mounted, toast);
+  }, []);
+
+  const handleRemoveAllToasts = useCallback((withAnimation: boolean) => {
+    eventMgr.emit(events.hideAll, {
+      withAnimation,
+      callback: () => {
+        setToastIds([]);
+      },
+    });
   }, []);
 
   const handleRemoveToast = useCallback(
@@ -85,17 +94,22 @@ export function useToaster(toasterConfig: ReactToasterConfig) {
     [getToast]
   );
 
-  const removeToastsImmediately = useCallback(() => {
-    setToastIds([]);
-    remove();
-  }, []);
-
   useEffect(() => {
     !toastManagerListenersRegistered.current && registerToastupEventHandlers();
     toastManagerListenersRegistered.current = true;
 
-    return removeToastsImmediately();
+    return removeAll(false, () => setToastIds([]));
   }, []);
+
+  useEffect(() => {
+    const callback = (event: CustomEvent<{ withAnimation: boolean }>) => {
+      const { withAnimation } = event.detail;
+      handleRemoveAllToasts(withAnimation);
+    };
+    eventMgr.on(events.removeAll, callback);
+
+    return () => eventMgr.off(events.removeAll, callback);
+  }, [handleRemoveAllToasts]);
 
   useEffect(() => {
     const callback = (

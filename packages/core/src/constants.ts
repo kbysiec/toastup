@@ -2,9 +2,11 @@ export const events = {
   add: "toastup:add",
   added: "toastup:added",
   remove: "toastup:remove",
+  removeAll: "toastup:remove_all",
   mounted: "toastup:mounted",
   show: "toastup:show",
   hide: "toastup:hide",
+  hideAll: "toastup:hide_all",
   click: "toastup:click",
 } as const;
 
