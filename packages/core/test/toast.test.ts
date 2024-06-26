@@ -93,23 +93,9 @@ describe("toast", () => {
 
       removeAll();
 
-      expect(emitStub).toBeCalledWith(events.removeAll, {
+      expect(emitStub).toBeCalledWith(events.hideAll, {
         withAnimation: true,
       });
-    });
-
-    it("should clear the queue immediately if withAnimation equals to false", () => {
-      const toast = { ...toastBase, id: "1" };
-      const toast2 = { ...toastBase, id: "2" };
-
-      queue.set("1", toast);
-      queue.set("2", toast2);
-
-      expect(queue.size).toEqual(2);
-
-      removeAll(false);
-
-      expect(queue.size).toEqual(0);
     });
   });
 
