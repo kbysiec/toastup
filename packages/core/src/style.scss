@@ -87,8 +87,6 @@ $namespace: "toastup";
     #f76060
   );
 
-  --toastup-box-shadow-1: #cfcfcf;
-  --toastup-box-shadow-2: #fff;
   --toastup-body-color: #313131;
   --toastup-hide-button-color: #cfcfcf;
   --toastup-hide-button-color-hover: #313131;
@@ -226,9 +224,6 @@ $namespace: "toastup";
   &-container {
     align-items: center;
     border-radius: 0.5rem;
-    box-shadow:
-      5px 11px 21px -4px var(--toastup-box-shadow-1),
-      0 10px 7px -4px var(--toastup-box-shadow-2);
     display: flex;
     opacity: 1;
     width: 100%;
