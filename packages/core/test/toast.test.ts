@@ -93,7 +93,7 @@ describe("toast", () => {
 
       removeAll();
 
-      expect(emitStub).toBeCalledWith(events.hideAll, {
+      expect(emitStub).toBeCalledWith(events.removeAll, {
         withAnimation: true,
       });
     });
@@ -131,6 +131,7 @@ describe("toast", () => {
         dragOnMobile: true,
         removeOnDraggingPercent: 70,
         theme: theme.light,
+        visibleToasts: 0,
         iconStyle: {},
         hideButtonStyle: {},
         contentStyle: {},
@@ -247,6 +248,7 @@ describe("toast", () => {
         dragOnMobile: true,
         removeOnDraggingPercent: 70,
         theme: theme.light,
+        visibleToasts: 0,
         iconStyle: {},
         hideButtonStyle: {},
         contentStyle: {},
