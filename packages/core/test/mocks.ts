@@ -74,5 +74,5 @@ export const toastBase: ToastEntity = {
     wasMoved: false,
   },
   exceedVisibleToastsLimit: false,
-  visibleToasts: 5,
+  visibleToasts: 0,
 };
