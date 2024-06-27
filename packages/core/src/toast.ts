@@ -111,7 +111,6 @@ export function getToastPropsForCreate(config: ToastConfig) {
       wasMoved: false,
     },
     exceedVisibleToastsLimit: false,
-    visibleToasts: 5,
   };
   return commonProps;
 }
@@ -155,12 +154,12 @@ export function getDefaultConfig() {
     dragOnMobile: true,
     removeOnDraggingPercent: 70,
     theme: theme.light,
+    visibleToasts: 0,
     onShowing: undefined,
     onHiding: undefined,
     onShow: undefined,
     onHide: undefined,
     onClick: undefined,
-    // visibleToasts: 5,
   };
 
   return defaultConfig;

@@ -172,6 +172,9 @@ export function updateToastsExceedingVisibleLimit(
   toastsArr.sort((a, b) => a.index - b.index);
 
   toastsArr.forEach(
-    (t, i) => (t.exceedVisibleToastsLimit = toast.visibleToasts <= i)
+    (t, i) =>
+      (t.exceedVisibleToastsLimit = toast.visibleToasts
+        ? toast.visibleToasts <= i
+        : false)
   );
 }

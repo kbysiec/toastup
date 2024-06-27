@@ -103,6 +103,7 @@ export interface ToastProps {
   dragOnMobile: boolean;
   removeOnDraggingPercent: number;
   theme: ToastTheme;
+  visibleToasts: number;
   iconClassName: string;
   hideButtonClassName: string;
   contentClassName: string;
@@ -155,11 +156,14 @@ export interface ToastOnlyProps {
   stopDragging: ToastDragHandler;
   duringDragging: ToastDragHandler;
   exceedVisibleToastsLimit: boolean;
-  visibleToasts: number;
 }
 
 export interface ComponentProps {
   className: string;
+}
+
+export interface PrivateToastProps {
+  visibleToasts: number;
 }
 
 export interface ToastEntity
