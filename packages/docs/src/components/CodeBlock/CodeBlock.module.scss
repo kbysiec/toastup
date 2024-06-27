@@ -1,0 +1,29 @@
+.codeBlock {
+  position: relative;
+}
+
+.row {
+  display: table-row;
+}
+
+.lineNumber {
+  color: rgb(107 114 128/1);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  text-align: right;
+  padding-right: 1rem;
+  user-select: none;
+  display: table-cell;
+}
+
+.lineContent {
+  display: table-cell;
+}
+
+.copyButton {
+  background-color: darkgray;
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  border-radius: 0.5em;
+}
