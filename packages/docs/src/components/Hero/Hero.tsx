@@ -14,6 +14,7 @@ import {
   type,
 } from "@toastup/react";
 import { useEffect, useState } from "react";
+import { ToggleSwitch } from "../ToggleSwitch/ToggleSwitch";
 import styles from "./Hero.module.scss";
 import {
   InAnimation,
@@ -50,6 +51,14 @@ export function Hero() {
     useState<InBodyAnimation>(
       inBodyAnimation["slide horizontally with fade"].name
     );
+  const [hideOnClick, setHideOnClick] = useState(true);
+  const [showProgress, setShowProgress] = useState(true);
+  const [showIcon, setShowIcon] = useState(true);
+  const [showHideButton, setShowHideButton] = useState(true);
+  const [animateBody, setAnimateBody] = useState(true);
+  const [rtl, setRtl] = useState(false);
+  const [pauseOnHover, setPauseOnHover] = useState(true);
+  const [dragOnMobile, setDragOnMobile] = useState(true);
 
   useEffect(() => {
     setAvailableTheme(isDarkTheme ? theme.dark : theme.colorful);
@@ -68,12 +77,17 @@ export function Hero() {
       inAnimation: inAnimation[inAnimationName].animation,
       outAnimation: outAnimation[outAnimationName].animation,
       inBodyAnimation: inBodyAnimation[inBodyAnimationName].animation,
-      hideOnClick: true,
       id: toastId.toString(),
       autoHide,
-      animateBody: true,
       theme: availableTheme,
-      dragOnMobile: true,
+      hideOnClick,
+      showProgress,
+      showIcon,
+      showHideButton,
+      animateBody,
+      rtl,
+      pauseOnHover,
+      dragOnMobile,
     };
     add(overriddenConfig);
 
@@ -94,6 +108,7 @@ export function Hero() {
   return (
     <>
       <div className={styles.container}>
+        <div className={styles.basicSettings}>
         <div className={styles.row}>
           <div className={styles.element}>
             <label className={styles.label} htmlFor="autoHide">
@@ -188,7 +203,9 @@ export function Hero() {
               name="inAnimation"
               className={styles.select}
               value={inAnimationName}
-              onChange={e => setInAnimationName(e.target.value as InAnimation)}
+                onChange={e =>
+                  setInAnimationName(e.target.value as InAnimation)
+                }
             >
               {Object.keys(inAnimation).map(key => (
                 <option key={key} value={key}>
@@ -234,10 +251,52 @@ export function Hero() {
                 </option>
               ))}
             </select>
+            </div>
+          </div>
+        </div>
+        <div className={styles.additionalSettings}>
+          <div className={styles.row}>
+            <ToggleSwitch
+              label="hide on click"
+              value={hideOnClick}
+              onValueChange={setHideOnClick}
+            />
+            <ToggleSwitch
+              value={showProgress}
+              onValueChange={setShowProgress}
+              label="show progress"
+            />
+            <ToggleSwitch
+              value={showIcon}
+              onValueChange={setShowIcon}
+              label="show icon"
+            />
+            <ToggleSwitch
+              value={showHideButton}
+              onValueChange={setShowHideButton}
+              label="show hide button"
+            />
+          </div>
+          <div className={styles.row}>
+            <ToggleSwitch
+              value={animateBody}
+              onValueChange={setAnimateBody}
+              label="animate body"
+            />
+            <ToggleSwitch value={rtl} onValueChange={setRtl} label="rtl" />
+            <ToggleSwitch
+              value={pauseOnHover}
+              onValueChange={setPauseOnHover}
+              label="pause on hover"
+            />
+            <ToggleSwitch
+              value={dragOnMobile}
+              onValueChange={setDragOnMobile}
+              label="drag on mobile"
+            />
           </div>
         </div>
 
-        <br />
         <div className={styles.buttons}>
           <button className={styles.button} onClick={handleClick}>
             Add toast
