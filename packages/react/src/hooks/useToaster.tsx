@@ -77,7 +77,7 @@ export function useToaster(toasterConfig: ReactToasterConfig) {
     (config: Partial<ReactToastConfig>) => {
       const toastConfig = getConfig(config);
       const toastPropsForCreate = getToastPropsForCreate(toastConfig);
-      const toast: ReactToast = {
+      const toast: ToastEntity = {
         ...toastConfig,
         ...toastPropsForCreate,
         hide: (withAnimation = true) =>

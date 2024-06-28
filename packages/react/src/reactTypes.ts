@@ -1,5 +1,6 @@
 import {
   ComponentProps,
+  PrivateToastProps,
   ToastConfig,
   ToastEntity,
   ToasterConfig,
@@ -65,6 +66,8 @@ type ReactConfigProps = {
   body?: ReactComponent<BodyProps>;
 };
 
-export type ReactToastConfig = ToastConfig & ReactConfigProps;
+export type ReactToastConfig = ToastConfig &
+  ReactConfigProps &
+  PrivateToastProps;
 export type ReactToast = ToastEntity & ReactConfigProps;
 export type ReactToasterConfig = ToasterConfig & ReactConfigProps;
