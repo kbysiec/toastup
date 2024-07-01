@@ -3,6 +3,7 @@ import {
   animationElementSelector,
   cssClassNames,
 } from "./constants";
+import { pause, unpause } from "./toast";
 import {
   ActionType,
   AnimationElementSelector,
@@ -17,8 +18,8 @@ export const updateToastTranslateAndOpacity = (
   translateYValue: number,
   withStyle = true
 ) => {
-  updateToastTranslate(toast, translateXValue, translateYValue, withStyle);
   updateToastOpacity(toast);
+  updateToastTranslate(toast, translateXValue, translateYValue, withStyle);
 };
 
 const updateToastOpacity = (toast: ToastEntity) => {
@@ -163,3 +164,7 @@ export function updateToastsExceedingVisibleLimit(
         : false)
   );
 }
+
+export const togglePauseIfExceedVisibleToastLimit = (toast: ToastEntity) => {
+  toast.exceedVisibleToastsLimit ? pause(toast.id) : unpause(toast.id);
+};

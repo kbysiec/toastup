@@ -9,10 +9,12 @@ import {
 } from "vitest";
 import { fadeIn, flipXIn } from "../src/animations/inAnimation";
 import { actionType, cssClassNames, position } from "../src/constants";
+import * as toastModule from "../src/toast";
 import {
   setToastVisibility,
   sleepForAnimationTime,
   toggleAnimation,
+  togglePauseIfExceedVisibleToastLimit,
   updateToastTranslateAndOpacity,
   updateToastsExceedingVisibleLimit,
 } from "../src/toastUtils";
@@ -295,6 +297,24 @@ describe("toastUtils", () => {
         expect(toast.exceedVisibleToastsLimit).toEqual(false);
         expect(toast2.exceedVisibleToastsLimit).toEqual(false);
         expect(toast3.exceedVisibleToastsLimit).toEqual(true);
+      });
+    });
+
+    describe("togglePauseIfExceedVisibleToastLimit", () => {
+      const pauseStub = vi.fn();
+      beforeEach(() => {
+        vi.spyOn(toastModule, "pause").mockImplementation(pauseStub);
+      });
+      it("should pause toast if it exceeds visibleToasts limit", () => {
+        const toast = {
+          ...toastBase,
+          id: "1",
+          exceedVisibleToastsLimit: true,
+        };
+
+        togglePauseIfExceedVisibleToastLimit(toast);
+
+        expect(pauseStub).toHaveBeenCalledOnce();
       });
     });
   });

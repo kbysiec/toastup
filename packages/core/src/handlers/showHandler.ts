@@ -19,6 +19,7 @@ import {
   setToastVisibility,
   sleepForAnimationTime,
   toggleAnimation,
+  togglePauseIfExceedVisibleToastLimit,
   updateToastTranslateAndOpacity,
   updateToastsExceedingVisibleLimit,
 } from "../toastUtils";
@@ -167,6 +168,7 @@ async function showAndReposition(toast: ToastEntity) {
     ? await showAndRepositionNormalOrder(toast, toastsFromTheSameGroup)
     : await showAndRepositionReversedOrder(toast, toastsFromTheSameGroup);
 
+  togglePauseIfExceedVisibleToastLimit(toast);
   setToastAutoHide(toast);
 }
 
