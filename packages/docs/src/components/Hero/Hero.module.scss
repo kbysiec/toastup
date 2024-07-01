@@ -14,11 +14,16 @@
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
+.additionalSettings {
+  margin-top: 2em;
+}
+
 .row {
   display: flex;
   flex-direction: row;
   width: 100%;
   margin: 1em 0;
+  gap: 0.5em;
 }
 
 .element {
@@ -31,6 +36,7 @@
 .buttons {
   display: flex;
   flex-direction: row;
+  margin-top: 2em;
 }
 
 .button {
@@ -104,6 +110,7 @@
 .codeBlocks {
   display: flex;
   gap: 1em;
+  justify-content: center;
 }
 
 .codeBlock {

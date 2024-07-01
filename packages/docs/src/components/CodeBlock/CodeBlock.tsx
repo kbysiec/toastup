@@ -4,10 +4,12 @@ import { useCopyToClipboard } from "react-use";
 import styles from "./CodeBlock.module.scss";
 
 interface CodeBlockProps {
+  language: string;
   code: string;
 }
 
 export const CodeBlock: React.FC<CodeBlockProps> = ({
+  language,
   code,
 }: CodeBlockProps) => {
   const [state, copyToClipboard] = useCopyToClipboard();
@@ -19,7 +21,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
   };
 
   return (
-    <ReactCodeBlock code={code} language="tsx" theme={themes.oceanicNext}>
+    <ReactCodeBlock code={code} language={language} theme={themes.oceanicNext}>
       <div className={styles.codeBlock}>
         <ReactCodeBlock.Code className="bg-gray-900 !p-6 rounded-xl shadow-lg">
           <div className={styles.row}>

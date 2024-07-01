@@ -1,5 +1,6 @@
 .codeBlock {
   position: relative;
+  margin-top: 0.5em;
 }
 
 .row {
@@ -23,7 +24,7 @@
 .copyButton {
   background-color: darkgray;
   position: absolute;
-  top: 0.5rem;
+  bottom: 0.5rem;
   right: 0.5rem;
   border-radius: 0.5em;
 }
