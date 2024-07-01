@@ -118,7 +118,7 @@ export function getToastPropsForCreate(config: ToastConfig) {
 export function getDefaultConfig() {
   const defaultConfig: ToastProps = {
     id: uuid(),
-    message: "Awesome 🎉",
+    message: "Have a good day 🙂",
     title: type.base,
     position: position.bottomRight,
     type: type.base,

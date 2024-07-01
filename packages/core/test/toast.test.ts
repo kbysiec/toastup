@@ -103,7 +103,7 @@ describe("toast", () => {
     it("should return toast props necessary for getting toast", () => {
       const config: ToastProps = {
         id: "123",
-        message: "Awesome 🎉",
+        message: "Have a good day 🙂",
         title: type.base,
         position: position.bottomRight,
         type: type.base,
@@ -220,7 +220,7 @@ describe("toast", () => {
       const defaultConfig: PartialBy<ToastProps, "id"> = getDefaultConfig();
       const expectedConfig: PartialBy<ToastProps, "id"> = {
         id: "123",
-        message: "Awesome 🎉",
+        message: "Have a good day 🙂",
         title: type.base,
         position: position.bottomRight,
         type: type.base,
