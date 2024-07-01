@@ -8,12 +8,13 @@ import {
   vi,
 } from "vitest";
 import { fadeIn, flipXIn } from "../src/animations/inAnimation";
-import { cssClassNames, position } from "../src/constants";
+import { actionType, cssClassNames, position } from "../src/constants";
 import {
   setToastVisibility,
   sleepForAnimationTime,
   toggleAnimation,
   updateToastTranslateAndOpacity,
+  updateToastsExceedingVisibleLimit,
 } from "../src/toastUtils";
 import * as utils from "../src/utils";
 import { toastBase } from "./mocks";
@@ -266,6 +267,35 @@ describe("toastUtils", () => {
       toggleAnimation(toast, t => t.inAnimation, true);
 
       expect(container.className).toEqual(`${cssClassNames.container}`);
+    });
+
+    describe("updateToastsExceedingVisibleLimit", () => {
+      it(`should set exceedingToastsLimit prop to true
+        for appropriate toasts if there is more toasts in a stack`, () => {
+        const toast = {
+          ...toastBase,
+          id: "1",
+          visibleToasts: 2,
+        };
+        const toast2 = {
+          ...toastBase,
+          id: "2",
+          visibleToasts: 2,
+        };
+        const toast3 = {
+          ...toastBase,
+          id: "3",
+          visibleToasts: 2,
+        };
+
+        const toasts = [toast2, toast3];
+
+        updateToastsExceedingVisibleLimit(toast, toasts, actionType.add);
+
+        expect(toast.exceedVisibleToastsLimit).toEqual(false);
+        expect(toast2.exceedVisibleToastsLimit).toEqual(false);
+        expect(toast3.exceedVisibleToastsLimit).toEqual(true);
+      });
     });
   });
 });
