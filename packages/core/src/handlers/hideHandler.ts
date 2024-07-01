@@ -58,7 +58,7 @@ async function hideToast(toast: ToastEntity, withAnimation: boolean) {
 }
 
 async function hideAndReposition(toast: ToastEntity, withAnimation: boolean) {
-  const DELAY_AFTER_REPOSITION_IN_MS = 200;
+  const DELAY_AFTER_REPOSITION_IN_MS = 160;
   await hideToast(toast, withAnimation);
 
   const toastMap = toastQueue.get();
