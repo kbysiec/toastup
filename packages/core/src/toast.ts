@@ -185,7 +185,6 @@ function getPublicProps(toast: ToastEntity) {
     showProgress: toast.showProgress,
     showIcon: toast.showIcon,
     showHideButton: toast.showHideButton,
-    // autoHideDetails: toast.autoHideDetails,
     iconClassName: toast.iconClassName,
     hideButtonClassName: toast.hideButtonClassName,
     contentClassName: toast.contentClassName,

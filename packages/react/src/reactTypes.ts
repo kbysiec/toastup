@@ -56,7 +56,6 @@ export type ToastComponentProps = ToastEntity & {
 export type ReactComponent<T> =
   | React.ReactNode
   | ((props: T) => React.ReactNode);
-// | (() => React.ReactNode)
 
 type ReactConfigProps = {
   toast?: ReactComponent<ToastComponentProps>;

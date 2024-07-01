@@ -24,10 +24,6 @@ export function repositionToasts(
   actType: ActionType
 ) {
   toasts.forEach(t => repositionToast(t, toast, actType));
-  // toasts.forEach(t => {
-  // setToastOverloadingStackXXX(t);
-  // repositionToast(t, toast, actType);
-  // });
 }
 
 function setToastIndex(toast: ToastEntity, toasts: ToastEntity[]) {
@@ -112,14 +108,6 @@ export function getVisibleToastsWithSamePosition(
 ) {
   return toasts.filter(t => t.isVisible && toast.position === t.position);
 }
-
-// export function getToastsForShowXXX(toasts: ToastEntity[], toast: ToastEntity) {
-//   return toasts.filter(t => t.isVisible && toast.position === t.position);
-// }
-
-// export function getToastsForHideXXX(toasts: ToastEntity[], toast: ToastEntity) {
-//   return getVisibleToastsWithSamePosition(toasts, toast);
-// }
 
 function assureToastPosition(
   toast: ToastEntity,

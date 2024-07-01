@@ -49,11 +49,6 @@ describe("toastUtils", () => {
   describe("setToastVisibility", () => {
     it("should set the visibility of the given toast", () => {
       const toastEl = document.createElement("div");
-      // const containerEl = document.createElement("div");
-
-      // containerEl.setAttribute("data-component", "container");
-      // containerEl.classList.add("toastup__toast-container");
-      // toastEl.appendChild(containerEl);
       toast.element.appendChild(toastEl);
 
       setToastVisibility(toast, true);
@@ -67,15 +62,6 @@ describe("toastUtils", () => {
 
       expect(toast.isVisible).toBe(false);
     });
-
-    // it("should do nothing if for the given toast containerEl is not found", () => {
-    //   const toastEl = document.createElement("div");
-    //   toast.element?.appendChild(toastEl);
-
-    //   setToastVisibility(toast, true);
-
-    //   expect(toast.isVisible).toBe(false);
-    // });
   });
 
   describe("updateToastTranslateAndOpacity", () => {

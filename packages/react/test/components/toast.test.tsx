@@ -349,18 +349,4 @@ describe("Toast", () => {
     fireEvent.click(getByLabelText("close"));
     expect(hideStub).toHaveBeenCalled();
   });
-
-  // it("should pause function be invoked on window loosing focus if pauseOnFocusLoss prop equals to true", () => {
-  //   const pauseStub = vi.fn();
-  //   render(<Toast {...toastBase} pauseOnFocusLoss={true} pause={pauseStub} />);
-
-  //   expect(pauseStub).not.toHaveBeenCalled();
-
-  //   act(() => {
-  //     document.visibilityState = "visible";
-  //     document.dispatchEvent(new Event("visibilitychange"));
-  //   });
-
-  //   expect(pauseStub).toHaveBeenCalled();
-  // });
 });

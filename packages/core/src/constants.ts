@@ -48,7 +48,6 @@ export const cssClassNames = {
   toast: `${cssNamespace}__toast`,
   toastDefault: `${cssNamespace}__toast--default`,
   toastVisible: `${cssNamespace}__toast--visible`,
-  // toastOverloadingStackXXX: `${cssNamespace}__toast--overloading-stack`,
   container: `${cssNamespace}__toast-container`,
   containerVisible: `${cssNamespace}__toast-container--visible`,
   body: `${cssNamespace}__toast-body`,

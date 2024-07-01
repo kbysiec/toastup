@@ -143,25 +143,10 @@ export async function sleepForAnimationTime(animation: ToastAnimation) {
 
 export function setToastVisibility(toast: ToastEntity, isVisible: boolean) {
   if (!toast.element || !toast.element) return;
-  // const containerEl = toast.element.querySelector(
-  //   animationElementSelector.container
-  // );
-  // if (!containerEl) return;
 
   toast.isVisible = isVisible;
-
-  // containerEl.classList.toggle(`${cssClassNames.containerVisible}`, isVisible);
   toast.element.classList.toggle(`${cssClassNames.toastVisible}`, isVisible);
 }
-
-// export function setToastOverloadingStackXXX(toast: ToastEntity) {
-//   if (!toast.element || !toast.element) return;
-
-//   toast.element.classList.toggle(
-//     `${cssClassNames.toastOverloadingStackXXX}`,
-//     toast.isOverloadingStack
-//   );
-// }
 
 export function updateToastsExceedingVisibleLimit(
   toast: ToastEntity,
