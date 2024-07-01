@@ -12,6 +12,7 @@ import { slideHorizontalWithFadeInBody } from "../src/animations/inBodyAnimation
 import { slideVerticallyOut } from "../src/animations/outAnimation";
 import { displayOrder, events, position, theme, type } from "../src/constants";
 import { eventManager } from "../src/eventManager";
+import * as hideHandler from "../src/handlers/hideHandler";
 import {
   add,
   executeToastCallback,
@@ -84,6 +85,14 @@ describe("toast", () => {
   });
 
   describe("removeAll", () => {
+    const hideAllToastsImmediatelyStub = vi.fn();
+
+    beforeEach(() => {
+      vi.spyOn(hideHandler, "hideAllToastsImmediately").mockImplementation(
+        hideAllToastsImmediatelyStub
+      );
+    });
+
     it("should emit event for removing all toasts if withAnimation equals to true", () => {
       const toast = { ...toastBase, id: "1" };
       const toast2 = { ...toastBase, id: "2" };
@@ -96,6 +105,20 @@ describe("toast", () => {
       expect(emitStub).toBeCalledWith(events.removeAll, {
         withAnimation: true,
       });
+      expect(hideAllToastsImmediatelyStub).not.toBeCalled();
+    });
+
+    it("should hideAllToastsImmediately method be invoked if withAnimation equals to false", () => {
+      const toast = { ...toastBase, id: "1" };
+      const toast2 = { ...toastBase, id: "2" };
+
+      queue.set("1", toast);
+      queue.set("2", toast2);
+
+      removeAll(false);
+
+      expect(emitStub).not.toBeCalled();
+      expect(hideAllToastsImmediatelyStub).toHaveBeenCalledOnce();
     });
   });
 
