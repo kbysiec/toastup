@@ -10,7 +10,6 @@ import {
 import * as actionManager from "../../src/actionManager";
 import { events } from "../../src/constants";
 import { handleHideToast, hide } from "../../src/handlers/hideHandler";
-import * as toastModule from "../../src/toast";
 import * as toastPositionManager from "../../src/toastPositionManager";
 import { toastQueue } from "../../src/toastQueue";
 import * as toastUtils from "../../src/toastUtils";
@@ -78,7 +77,7 @@ describe("hideHandler", () => {
       vi.spyOn(toastUtils, "sleepForAnimationTime").mockImplementation(
         sleepForAnimationTimeStub
       );
-      vi.spyOn(toastModule, "executeToastCallback").mockImplementation(
+      vi.spyOn(toastUtils, "executeToastCallback").mockImplementation(
         executeToastCallbackStub
       );
       vi.spyOn(utils, "sleep").mockImplementation(sleepStub);

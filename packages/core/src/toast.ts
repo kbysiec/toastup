@@ -17,15 +17,8 @@ import {
 } from "./handlers/hideHandler";
 import { handleMountedToast } from "./handlers/mountHandler";
 import { handleShowToast } from "./handlers/showHandler";
-import { toastQueue } from "./toastQueue";
-import {
-  ToastCallback,
-  ToastConfig,
-  ToastEntity,
-  ToastOnlyProps,
-  ToastProps,
-  ToastPublicProps,
-} from "./types";
+import { pause, unpause } from "./toastProgressManager";
+import { ToastConfig, ToastOnlyProps, ToastProps } from "./types";
 import { uuid } from "./utils";
 
 export function add<T extends ToastConfig>(overriddenConfig: Partial<T> = {}) {
@@ -65,22 +58,6 @@ export function registerToastupEventHandlers() {
     const cb = callbacks[ev];
     eventMgr.on(ev, cb);
   });
-}
-
-function togglePause(id: string, isPaused: boolean) {
-  const toastMap = toastQueue.get();
-  const toast = toastMap.get(id);
-
-  if (!toast) return;
-  toast.autoHideDetails.isPaused = isPaused;
-}
-
-export function pause(id: string) {
-  togglePause(id, true);
-}
-
-export function unpause(id: string) {
-  togglePause(id, false);
 }
 
 export function getToastPropsForCreate(config: ToastConfig) {
@@ -163,60 +140,4 @@ export function getDefaultConfig() {
   };
 
   return defaultConfig;
-}
-
-function getPublicProps(toast: ToastEntity) {
-  const props: ToastPublicProps = {
-    id: toast.id,
-    isVisible: toast.isVisible,
-    title: toast.title,
-    message: toast.message,
-    position: toast.position,
-    type: toast.type,
-    order: toast.order,
-    dimensions: { ...toast.dimensions },
-    translate: { ...toast.translate },
-    inAnimation: toast.inAnimation,
-    outAnimation: toast.outAnimation,
-    inBodyAnimation: toast.inBodyAnimation,
-    hideOnClick: toast.hideOnClick,
-    autoHide: toast.autoHide,
-    delayBeforeShow: toast.delayBeforeShow,
-    showProgress: toast.showProgress,
-    showIcon: toast.showIcon,
-    showHideButton: toast.showHideButton,
-    iconClassName: toast.iconClassName,
-    hideButtonClassName: toast.hideButtonClassName,
-    contentClassName: toast.contentClassName,
-    containerClassName: toast.containerClassName,
-    bodyClassName: toast.bodyClassName,
-    progressBarClassName: toast.progressBarClassName,
-    className: toast.className,
-    role: toast.role,
-    iconStyle: toast.iconStyle,
-    hideButtonStyle: toast.hideButtonStyle,
-    contentStyle: toast.contentStyle,
-    containerStyle: toast.containerStyle,
-    bodyStyle: toast.bodyStyle,
-    progressBarStyle: toast.progressBarStyle,
-    style: toast.style,
-    animateBody: toast.animateBody,
-    rtl: toast.rtl,
-    pauseOnHover: toast.pauseOnHover,
-    pauseOnFocusLoss: toast.pauseOnFocusLoss,
-    dragOnMobile: toast.dragOnMobile,
-    removeOnDraggingPercent: toast.removeOnDraggingPercent,
-    dragDetails: { ...toast.dragDetails },
-    theme: toast.theme,
-  };
-  return props;
-}
-
-export function executeToastCallback<T extends ToastCallback>(
-  toast: ToastEntity,
-  getCallback: (toast: ToastEntity) => T
-) {
-  const callback = getCallback(toast);
-  const props = getPublicProps(toast);
-  callback && callback(props);
 }

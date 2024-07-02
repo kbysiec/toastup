@@ -6,7 +6,6 @@ import {
   displayOrder,
   measureType,
 } from "../constants";
-import { executeToastCallback } from "../toast";
 import {
   assureToastsPosition,
   getToastsForReposition,
@@ -14,12 +13,13 @@ import {
   repositionToasts,
   toggleToastsRepositionTransition,
 } from "../toastPositionManager";
+import { togglePauseIfExceedVisibleToastLimit } from "../toastProgressManager";
 import { toastQueue } from "../toastQueue";
 import {
+  executeToastCallback,
   setToastVisibility,
   sleepForAnimationTime,
   toggleAnimation,
-  togglePauseIfExceedVisibleToastLimit,
   updateToastTranslateAndOpacity,
   updateToastsExceedingVisibleLimit,
 } from "../toastUtils";

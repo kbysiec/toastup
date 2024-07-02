@@ -9,19 +9,21 @@ import {
 } from "vitest";
 import { fadeIn, flipXIn } from "../src/animations/inAnimation";
 import { actionType, cssClassNames, position } from "../src/constants";
-import * as toastModule from "../src/toast";
+import { toastQueue } from "../src/toastQueue";
 import {
+  executeToastCallback,
   setToastVisibility,
   sleepForAnimationTime,
   toggleAnimation,
-  togglePauseIfExceedVisibleToastLimit,
   updateToastTranslateAndOpacity,
   updateToastsExceedingVisibleLimit,
 } from "../src/toastUtils";
+import { ToastEntity } from "../src/types";
 import * as utils from "../src/utils";
 import { toastBase } from "./mocks";
 
 describe("toastUtils", () => {
+  let queue: Map<string, ToastEntity>;
   let toast = {
     ...toastBase,
     element: document.createElement("div"),
@@ -39,6 +41,8 @@ describe("toastUtils", () => {
     vi.spyOn(utils, "getTransformOtherThan").mockImplementation(
       getTransformOtherThanStub
     );
+    queue = new Map<string, ToastEntity>();
+    vi.spyOn(toastQueue, "get").mockReturnValue(queue);
   });
 
   afterEach(() => {
@@ -300,21 +304,14 @@ describe("toastUtils", () => {
       });
     });
 
-    describe("togglePauseIfExceedVisibleToastLimit", () => {
-      const pauseStub = vi.fn();
-      beforeEach(() => {
-        vi.spyOn(toastModule, "pause").mockImplementation(pauseStub);
-      });
-      it("should pause toast if it exceeds visibleToasts limit", () => {
-        const toast = {
-          ...toastBase,
-          id: "1",
-          exceedVisibleToastsLimit: true,
-        };
+    describe("executeToastCallback", () => {
+      it("should execute chosen toast callback", () => {
+        const stub = vi.fn();
+        const toast = { ...toastBase, onHide: stub };
 
-        togglePauseIfExceedVisibleToastLimit(toast);
+        executeToastCallback(toast, t => t.onHide);
 
-        expect(pauseStub).toHaveBeenCalledOnce();
+        expect(stub).toBeCalledTimes(1);
       });
     });
   });

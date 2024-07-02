@@ -23,8 +23,8 @@ import {
   setToastAutoHide,
   show,
 } from "../../src/handlers/showHandler";
-import * as toast from "../../src/toast";
 import * as toastPositionManager from "../../src/toastPositionManager";
+import * as toastProgressManager from "../../src/toastProgressManager";
 import { toastQueue } from "../../src/toastQueue";
 import * as toastUtils from "../../src/toastUtils";
 import { ToastEntity } from "../../src/types";
@@ -268,6 +268,8 @@ describe("showHandler", () => {
     const setToastVisibilityStub = vi.fn();
     const sleepStub = vi.fn();
     const updateToastTranslateAndOpacityStub = vi.fn();
+    const pauseStub = vi.fn();
+    const unpauseStub = vi.fn();
 
     beforeEach(() => {
       const toast2 = {
@@ -302,10 +304,12 @@ describe("showHandler", () => {
       vi.spyOn(toastUtils, "toggleAnimation").mockImplementation(
         toggleAnimationStub
       );
-      vi.spyOn(toast, "executeToastCallback").mockImplementation(
+      vi.spyOn(toastUtils, "executeToastCallback").mockImplementation(
         executeToastCallbackStub
       );
       vi.spyOn(utils, "sleep").mockImplementation(sleepStub);
+      vi.spyOn(toastProgressManager, "pause").mockImplementation(pauseStub);
+      vi.spyOn(toastProgressManager, "unpause").mockImplementation(unpauseStub);
     });
 
     afterEach(() => {

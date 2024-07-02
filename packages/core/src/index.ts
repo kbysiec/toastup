@@ -12,6 +12,7 @@ export * from "./handlers/mountHandler";
 export * from "./handlers/showHandler";
 export * from "./toast";
 export * from "./toastPositionManager";
+export * from "./toastProgressManager";
 export * from "./toastQueue";
 export * from "./toastUtils";
 export * from "./types";

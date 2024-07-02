@@ -9,8 +9,8 @@ import {
 } from "vitest";
 import { events } from "../../src/constants";
 import { handleClickToast } from "../../src/handlers/clickHandler";
-import * as toastModule from "../../src/toast";
 import * as toastQueue from "../../src/toastQueue";
+import * as toastUtils from "../../src/toastUtils";
 import { ToastEntity } from "../../src/types";
 import { toastBase } from "../mocks";
 
@@ -33,7 +33,7 @@ describe("clickHandler", () => {
     queue.set(toast.id, toast);
 
     vi.spyOn(toastQueue.toastQueue, "get").mockReturnValue(queue);
-    vi.spyOn(toastModule, "executeToastCallback").mockImplementation(
+    vi.spyOn(toastUtils, "executeToastCallback").mockImplementation(
       executeToastCallbackStub
     );
   });

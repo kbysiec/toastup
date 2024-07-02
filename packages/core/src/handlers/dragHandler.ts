@@ -1,5 +1,5 @@
 import { cssClassNames } from "../constants";
-import { pause, unpause } from "../toast";
+import { pause, unpause } from "../toastProgressManager";
 import { toastQueue } from "../toastQueue";
 import { updateToastTranslateAndOpacity } from "../toastUtils";
 import { ToastEntity } from "../types";

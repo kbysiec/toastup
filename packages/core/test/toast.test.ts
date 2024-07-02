@@ -15,14 +15,11 @@ import { eventManager } from "../src/eventManager";
 import * as hideHandler from "../src/handlers/hideHandler";
 import {
   add,
-  executeToastCallback,
   getDefaultConfig,
   getToastPropsForCreate,
-  pause,
   registerToastupEventHandlers,
   remove,
   removeAll,
-  unpause,
 } from "../src/toast";
 import { toastQueue } from "../src/toastQueue";
 import { PartialBy, ToastEntity, ToastProps } from "../src/types";
@@ -198,46 +195,6 @@ describe("toast", () => {
     });
   });
 
-  describe("pause", () => {
-    it("should set toast autoHideDetails isPaused property to true", () => {
-      const toast = {
-        ...toastBase,
-        autoHideDetails: { isPaused: false, timeVisible: 0 },
-      };
-      queue.set(toast.id, toast);
-
-      pause(toast.id);
-
-      expect(toast.autoHideDetails.isPaused).toBe(true);
-    });
-  });
-
-  describe("unpause", () => {
-    it("should set toast autoHideDetails isPaused property to false", () => {
-      const toast = {
-        ...toastBase,
-        autoHideDetails: { isPaused: true, timeVisible: 0 },
-      };
-      queue.set(toast.id, toast);
-
-      unpause(toast.id);
-
-      expect(toast.autoHideDetails.isPaused).toBe(false);
-    });
-
-    it("should do nothing if there isn't toast in the queue for given id", () => {
-      const toast = {
-        ...toastBase,
-        autoHideDetails: { isPaused: true, timeVisible: 0 },
-      };
-      queue.set("999", toast);
-
-      unpause(toast.id);
-
-      expect(toast.autoHideDetails.isPaused).toBe(true);
-    });
-  });
-
   describe("getDefaultConfig", () => {
     it("should return default config for toast", () => {
       const defaultConfig: PartialBy<ToastProps, "id"> = getDefaultConfig();
@@ -295,17 +252,6 @@ describe("toast", () => {
 
       expect(defaultConfigId.length).toBe(expectedConfigId.length);
       expect(defaultConfig).toEqual(expectedConfig);
-    });
-  });
-
-  describe("executeToastCallback", () => {
-    it("should execute chosen toast callback", () => {
-      const stub = vi.fn();
-      const toast = { ...toastBase, onHide: stub };
-
-      executeToastCallback(toast, t => t.onHide);
-
-      expect(stub).toBeCalledTimes(1);
     });
   });
 

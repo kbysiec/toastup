@@ -15,6 +15,7 @@ import {
   stopDragging,
   toggleToastDragTransition,
 } from "../../src/handlers/dragHandler";
+import * as toastProgressManager from "../../src/toastProgressManager";
 import { toastQueue } from "../../src/toastQueue";
 import * as toastUtils from "../../src/toastUtils";
 import { ToastEntity } from "../../src/types";
@@ -44,8 +45,8 @@ describe("dragHandler", () => {
     queue.set(toast.id, toast);
 
     vi.spyOn(toastQueue, "get").mockReturnValue(queue);
-    vi.spyOn(toast, "pause").mockImplementation(pauseStub);
-    vi.spyOn(toast, "unpause").mockImplementation(unpauseStub);
+    vi.spyOn(toastProgressManager, "pause").mockImplementation(pauseStub);
+    vi.spyOn(toastProgressManager, "unpause").mockImplementation(unpauseStub);
     vi.spyOn(toastUtils, "updateToastTranslateAndOpacity").mockImplementation(
       updateToastTranslateAndOpacityStub
     );

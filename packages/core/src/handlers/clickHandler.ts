@@ -1,5 +1,5 @@
-import { executeToastCallback } from "../toast";
 import { toastQueue } from "../toastQueue";
+import { executeToastCallback } from "../toastUtils";
 
 export function handleClickToast(event: CustomEvent<string>) {
   const toastId = event.detail;

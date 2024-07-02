@@ -3,12 +3,13 @@ import {
   animationElementSelector,
   cssClassNames,
 } from "./constants";
-import { pause, unpause } from "./toast";
 import {
   ActionType,
   AnimationElementSelector,
   ToastAnimation,
+  ToastCallback,
   ToastEntity,
+  ToastPublicProps,
 } from "./types";
 import { getTransformOtherThan, sleep } from "./utils";
 
@@ -165,6 +166,58 @@ export function updateToastsExceedingVisibleLimit(
   );
 }
 
-export const togglePauseIfExceedVisibleToastLimit = (toast: ToastEntity) => {
-  toast.exceedVisibleToastsLimit ? pause(toast.id) : unpause(toast.id);
-};
+function getPublicProps(toast: ToastEntity) {
+  const props: ToastPublicProps = {
+    id: toast.id,
+    isVisible: toast.isVisible,
+    title: toast.title,
+    message: toast.message,
+    position: toast.position,
+    type: toast.type,
+    order: toast.order,
+    dimensions: { ...toast.dimensions },
+    translate: { ...toast.translate },
+    inAnimation: toast.inAnimation,
+    outAnimation: toast.outAnimation,
+    inBodyAnimation: toast.inBodyAnimation,
+    hideOnClick: toast.hideOnClick,
+    autoHide: toast.autoHide,
+    delayBeforeShow: toast.delayBeforeShow,
+    showProgress: toast.showProgress,
+    showIcon: toast.showIcon,
+    showHideButton: toast.showHideButton,
+    iconClassName: toast.iconClassName,
+    hideButtonClassName: toast.hideButtonClassName,
+    contentClassName: toast.contentClassName,
+    containerClassName: toast.containerClassName,
+    bodyClassName: toast.bodyClassName,
+    progressBarClassName: toast.progressBarClassName,
+    className: toast.className,
+    role: toast.role,
+    iconStyle: toast.iconStyle,
+    hideButtonStyle: toast.hideButtonStyle,
+    contentStyle: toast.contentStyle,
+    containerStyle: toast.containerStyle,
+    bodyStyle: toast.bodyStyle,
+    progressBarStyle: toast.progressBarStyle,
+    style: toast.style,
+    animateBody: toast.animateBody,
+    rtl: toast.rtl,
+    pauseOnHover: toast.pauseOnHover,
+    pauseOnFocusLoss: toast.pauseOnFocusLoss,
+    dragOnMobile: toast.dragOnMobile,
+    removeOnDraggingPercent: toast.removeOnDraggingPercent,
+    dragDetails: { ...toast.dragDetails },
+    theme: toast.theme,
+  };
+  return props;
+}
+
+export function executeToastCallback<T extends ToastCallback>(
+  toast: ToastEntity,
+  getCallback: (toast: ToastEntity) => T
+) {
+  const callback = getCallback(toast);
+  const props = getPublicProps(toast);
+  callback && callback(props);
+}

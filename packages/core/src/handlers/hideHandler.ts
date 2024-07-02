@@ -1,6 +1,5 @@
 import { register } from "../actionManager";
 import { actionType } from "../constants";
-import { executeToastCallback } from "../toast";
 import {
   assureToastsPosition,
   getToastsForReposition,
@@ -10,6 +9,7 @@ import {
 } from "../toastPositionManager";
 import { toastQueue } from "../toastQueue";
 import {
+  executeToastCallback,
   setToastVisibility,
   sleepForAnimationTime,
   toggleAnimation,
