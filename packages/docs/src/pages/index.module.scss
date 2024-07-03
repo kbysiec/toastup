@@ -1,10 +1,10 @@
 .blob1 {
-  position: absolute;
-  width: 19em;
-  left: 23em;
-  top: -8%;
-  z-index: -1;
   animation: blob1 6s infinite;
+  left: 23em;
+  position: absolute;
+  top: -8%;
+  width: 19em;
+  z-index: -1;
 
   path {
     fill: #fce6d1;
@@ -12,12 +12,12 @@
 }
 
 .blob2 {
+  animation: blob2 6s infinite;
   position: absolute;
-  width: 19em;
   right: 6em;
   top: 0%;
+  width: 19em;
   z-index: -1;
-  animation: blob2 6s infinite;
 
   path {
     fill: #fce6d1;
@@ -25,13 +25,13 @@
 }
 
 .blob3 {
+  animation: blob3 40s infinite;
+  bottom: -10%;
+  left: 6em;
+  opacity: 0.7;
   position: absolute;
   width: 14em;
-  left: 6em;
-  bottom: -10%;
   z-index: -1;
-  opacity: 0.7;
-  animation: blob3 40s infinite;
 
   path {
     fill: #f6b070;
@@ -39,13 +39,13 @@
 }
 
 .blob4 {
-  position: absolute;
-  height: 14em;
-  right: 17%;
-  bottom: 5%;
-  z-index: -1;
-  opacity: 0.7;
   animation: blob4 10s infinite;
+  bottom: 5%;
+  height: 14em;
+  opacity: 0.7;
+  position: absolute;
+  right: 17%;
+  z-index: -1;
 
   path {
     fill: #f6b070;
@@ -114,6 +114,7 @@
   .blob3,
   .blob4 {
     z-index: 1;
+
     path {
       fill: var(--ifm-pre-background);
     }

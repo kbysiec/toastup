@@ -1,6 +1,6 @@
 .codeBlock {
-  position: relative;
   margin-top: 0.5em;
+  position: relative;
 }
 
 .row {
@@ -9,12 +9,12 @@
 
 .lineNumber {
   color: rgb(107 114 128/1);
+  display: table-cell;
   font-size: 0.875rem;
   line-height: 1.25rem;
-  text-align: right;
   padding-right: 1rem;
+  text-align: right;
   user-select: none;
-  display: table-cell;
 }
 
 .lineContent {
@@ -22,9 +22,9 @@
 }
 
 .copyButton {
-  background-color: darkgray;
-  position: absolute;
-  bottom: 0.5rem;
-  right: 0.5rem;
+  background-color: #a9a9a9;
   border-radius: 0.5em;
+  bottom: 0.5rem;
+  position: absolute;
+  right: 0.5rem;
 }
