@@ -1,122 +1,18 @@
-.blob1 {
-  animation: blob1 6s infinite;
-  left: 23em;
-  position: absolute;
-  top: -8%;
-  width: 19em;
-  z-index: -1;
-
-  path {
-    fill: #fce6d1;
-  }
+[class^="tableOfContents"] {
+  margin-left: 2em;
 }
 
-.blob2 {
-  animation: blob2 6s infinite;
-  position: absolute;
-  right: 6em;
-  top: 0%;
-  width: 19em;
-  z-index: -1;
-
-  path {
-    fill: #fce6d1;
-  }
-}
-
-.blob3 {
-  animation: blob3 40s infinite;
-  bottom: -10%;
-  left: 6em;
-  opacity: 0.7;
-  position: absolute;
-  width: 14em;
-  z-index: -1;
-
-  path {
-    fill: #f6b070;
-  }
-}
-
-.blob4 {
-  animation: blob4 10s infinite;
-  bottom: 5%;
-  height: 14em;
-  opacity: 0.7;
-  position: absolute;
-  right: 17%;
-  z-index: -1;
-
-  path {
-    fill: #f6b070;
-  }
-}
-
-@keyframes blob1 {
-  0% {
-    transform: translate(0, 0);
-  }
-
-  50% {
-    transform: translate(3em, 2em);
-  }
-
-  100% {
-    transform: translate(0, 0);
-  }
-}
-
-@keyframes blob2 {
-  0% {
-    transform: translate(0, 0);
-  }
-
-  40% {
-    transform: translate(-2em, 2.5em);
-  }
-
-  100% {
-    transform: translate(0, 0);
-  }
-}
-
-@keyframes blob3 {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes blob4 {
-  0% {
-    transform: translate(0, 0);
-  }
-
-  50% {
-    transform: translate(0, 3em);
-  }
-
-  100% {
-    transform: translate(0, 0);
+.features {
+  li {
+    font-size: 16px;
+    color: #000;
   }
 }
 
 [data-theme="dark"] {
-  :global(.main-wrapper) {
-    background-color: var(--ifm-background-color);
-  }
-
-  .blob1,
-  .blob2,
-  .blob3,
-  .blob4 {
-    z-index: 1;
-
-    path {
-      fill: var(--ifm-pre-background);
+  .features {
+    li {
+      color: inherit;
     }
   }
 }
