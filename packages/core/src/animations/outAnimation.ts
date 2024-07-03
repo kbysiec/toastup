@@ -43,14 +43,15 @@ export const singleBounceHorizontallyOut: ToastOutAnimation = {
   animationTime: 350,
 };
 
-export const flipXOut: ToastOutAnimation = {
-  type: animationType.out,
-  className: "animate__animated animate__flipOutX",
-  animationTime: 350,
-};
-
 export const singleBounceVerticallyOut: ToastOutAnimation = {
   type: animationType.out,
   animationName: "single-bounce-vertically-out",
   animationTime: 350,
 };
+
+// example of animation based on a className not keyframes directly
+// export const flipXOut: ToastOutAnimation = {
+//   type: animationType.out,
+//   className: "animate__animated animate__flipOutX",
+//   animationTime: 350,
+// };

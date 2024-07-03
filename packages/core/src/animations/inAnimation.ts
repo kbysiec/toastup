@@ -44,14 +44,15 @@ export const singleBounceHorizontallyIn: ToastInAnimation = {
   animationTime: 350,
 };
 
-export const flipXIn: ToastInAnimation = {
-  type: animationType.in,
-  className: "animate__animated animate__flipInX",
-  animationTime: 350,
-};
-
 export const singleBounceVerticallyIn: ToastInAnimation = {
   type: animationType.in,
   animationName: "single-bounce-vertically-in",
   animationTime: 350,
 };
+
+// example of animation based on a className not keyframes directly
+// export const flipXIn: ToastInAnimation = {
+//   type: animationType.in,
+//   className: "animate__animated animate__flipInX",
+//   animationTime: 350,
+// };
