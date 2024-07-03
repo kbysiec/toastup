@@ -15,6 +15,11 @@
     "no-descending-specificity": null,
     "max-nesting-depth": 2,
     "selector-max-id": 1,
-    "order/properties-alphabetical-order": true
+    "order/properties-alphabetical-order": true,
+    "selector-class-pattern": "(^[a-z][a-zA-Z0-9]+$)|(^([a-z][a-z0-9]*)(-[a-z0-9]+)*$)",
+    "selector-pseudo-class-no-unknown": [
+      true,
+      { "ignorePseudoClasses": ["global"] }
+    ]
   }
 }
