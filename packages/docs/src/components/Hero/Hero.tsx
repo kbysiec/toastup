@@ -39,7 +39,7 @@ export function Hero() {
   const { isDarkTheme } = useColorMode();
 
   const [toastId, setToastId] = useState(0);
-  const [autoHide, setAutoHide] = useState(0);
+  const [autoHide, setAutoHide] = useState(7000);
   const [availableType, setAvailableType] = useState<ToastType>(type.base);
   const [availablePosition, setAvailablePosition] = useState<ToastPosition>(
     position.bottomRight
