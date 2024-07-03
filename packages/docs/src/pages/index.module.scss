@@ -1,5 +1,121 @@
+.blob1 {
+  position: absolute;
+  width: 19em;
+  left: 23em;
+  top: -8%;
+  z-index: -1;
+  animation: blob1 6s infinite;
+
+  path {
+    fill: #fce6d1;
+  }
+}
+
+.blob2 {
+  position: absolute;
+  width: 19em;
+  right: 6em;
+  top: 0%;
+  z-index: -1;
+  animation: blob2 6s infinite;
+
+  path {
+    fill: #fce6d1;
+  }
+}
+
+.blob3 {
+  position: absolute;
+  width: 14em;
+  left: 6em;
+  bottom: -10%;
+  z-index: -1;
+  opacity: 0.7;
+  animation: blob3 40s infinite;
+
+  path {
+    fill: #f6b070;
+  }
+}
+
+.blob4 {
+  position: absolute;
+  height: 14em;
+  right: 17%;
+  bottom: 5%;
+  z-index: -1;
+  opacity: 0.7;
+  animation: blob4 10s infinite;
+
+  path {
+    fill: #f6b070;
+  }
+}
+
+@keyframes blob1 {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(3em, 2em);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes blob2 {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  40% {
+    transform: translate(-2em, 2.5em);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes blob3 {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes blob4 {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(0, 3em);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
 [data-theme="dark"] {
   :global(.main-wrapper) {
     background-color: var(--ifm-background-color);
+  }
+
+  .blob1,
+  .blob2,
+  .blob3,
+  .blob4 {
+    z-index: 1;
+    path {
+      fill: var(--ifm-pre-background);
+    }
   }
 }
