@@ -29,4 +29,28 @@
   --ifm-color-primary-lighter: #fbd3be;
   --ifm-color-primary-lightest: #fef7f4;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+
+  --toastup-docs-blob-primary: var(--ifm-pre-background);
+  --toastup-docs-blob-secondary: var(--ifm-pre-background);
+}
+
+h3 {
+  margin: 1em 0 !important;
+}
+
+h4 {
+  margin: 1em 0 0.5em !important;
+}
+
+li {
+  font-size: 14px;
+  margin-bottom: 1em;
+}
+
+.container article {
+  position: relative;
+}
+
+[data-theme="dark"] .main-wrapper {
+  background-color: var(--ifm-background-color);
 }
