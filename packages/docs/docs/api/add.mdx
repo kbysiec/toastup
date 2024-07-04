@@ -1,0 +1,84 @@
+---
+title: add
+description: Use this to display a toast notification. It can be invoked from any context, even outside of React.
+---
+
+Function for creating a toast notification based on the provided configuration.
+
+:::info
+When a toast is created, it inherits options from the Toaster, but the toast's own options will override the Toaster's properties.
+:::
+
+:::info
+`id` option is available only for the add function.
+:::
+
+| Title                   | Description                                                                        | Type                               | Default                         |
+| ----------------------- | ---------------------------------------------------------------------------------- | ---------------------------------- | ------------------------------- |
+| id                      | Unique identifier for the toast.                                                   | `string`                           | `uuid`                          |
+| message                 | The main content or message displayed in the toast.                                | `string`                           | `Have a good day 🙂`            |
+| title                   | The title of the toast, displayed above the title. First word will be capitalized. | `string`                           | `base`                          |
+| position                | Defines where the toast will appear on the screen.                                 | `ToastPosition`                    | `bottom-right`                  |
+| type                    | Specifies the type of toast (e.g., success, error).                                | `ToastType`                        | `base`                          |
+| order                   | Determines the display order of the toast.                                         | `DisplayOrder`                     | `normal`                        |
+| inAnimation             | Animation applied when the toast appears.                                          | `ToastInAnimation`                 | `slideVerticallyIn`             |
+| outAnimation            | Animation applied when the toast disappears.                                       | `ToastOutAnimation`                | `slideHorizontalWithFadeInBody` |
+| inBodyAnimation         | Animation for the toast body when it appears.                                      | `ToastInBodyAnimation`             | `slideVerticallyOut`            |
+| hideOnClick             | If true, the toast hides when clicked.                                             | `boolean`                          | `true`                          |
+| autoHide                | Duration before the toast automatically hides.                                     | `number`                           | `3000`                          |
+| delayBeforeShow         | Delay before the toast is shown.                                                   | `number`                           | `0`                             |
+| showProgress            | If true, displays a progress bar indicating remaining time.                        | `boolean`                          | `true`                          |
+| showIcon                | If true, shows an icon in the toast.                                               | `boolean`                          | `true`                          |
+| showHideButton          | If true, shows a button to manually hide the toast.                                | `boolean`                          | `true`                          |
+| animateBody             | If true, the body of the toast will have animation.                                | `boolean`                          | `true`                          |
+| rtl                     | If true, displays the toast in right-to-left layout.                               | `boolean`                          | `false`                         |
+| pauseOnHover            | If true, pauses auto-hide timer when the toast is hovered.                         | `boolean`                          | `true`                          |
+| pauseOnFocusLoss        | If true, pauses auto-hide timer when window loses focus.                           | `boolean`                          | `true`                          |
+| dragOnMobile            | If true, the toast can be dragged on mobile devices.                               | `boolean`                          | `true`                          |
+| removeOnDraggingPercent | Percentage of drag distance on mobile before removal.                              | `number`                           | `70`                            |
+| theme                   | Specifies the theme className of the toast.                                        | `ToastTheme`                       | `""`                            |
+| iconClassName           | Custom class name for the icon.                                                    | `string`                           | `""`                            |
+| hideButtonClassName     | Custom class name for the hide button.                                             | `string`                           | `""`                            |
+| contentClassName        | Custom class name for the toast content.                                           | `string`                           | `""`                            |
+| containerClassName      | Custom class name for the toast container.                                         | `string`                           | `""`                            |
+| bodyClassName           | Custom class name for the toast body.                                              | `string`                           | `""`                            |
+| progressBarClassName    | Custom class name for the progress bar.                                            | `string`                           | `""`                            |
+| className               | Custom class name for the entire toast.                                            | `string`                           | `""`                            |
+| role                    | ARIA role attribute for accessibility.                                             | `string`                           | `alert`                         |
+| iconStyle               | Custom CSS styles for the icon.                                                    | `CSS.Properties<string \| number>` | `{}`                            |
+| hideButtonStyle         | Custom CSS styles for the hide button.                                             | `CSS.Properties<string \| number>` | `{}`                            |
+| contentStyle            | Custom CSS styles for the toast content.                                           | `CSS.Properties<string \| number>` | `{}`                            |
+| containerStyle          | Custom CSS styles for the toast container.                                         | `CSS.Properties<string \| number>` | `{}`                            |
+| bodyStyle               | Custom CSS styles for the toast body.                                              | `CSS.Properties<string \| number>` | `{}`                            |
+| progressBarStyle        | Custom CSS styles for the progress bar.                                            | `CSS.Properties<string \| number>` | `{}`                            |
+| style                   | Custom CSS styles for the entire toast.                                            | `CSS.Properties<string \| number>` | `{}`                            |
+| onShowing               | Callback function triggered when the toast starts to show.                         | `ToastCallback`                    | `undefined`                     |
+| onHiding                | Callback function triggered when the toast starts to hide.                         | `ToastCallback`                    | `undefined`                     |
+| onShow                  | Callback function triggered when the toast is fully shown.                         | `ToastCallback`                    | `undefined`                     |
+| onHide                  | Callback function triggered when the toast is fully hidden.                        | `ToastCallback`                    | `undefined`                     |
+| onClick                 | Callback function triggered when the toast is clicked.                             | `ToastCallback`                    | `undefined`                     |
+
+## Example
+
+```ts
+const config: Partial<ReactToastConfig> = {
+  position: "bottom-right",
+  type: "base",
+  title: "base",
+  order: "normal",
+  inAnimation: slideVerticallyIn,
+  outAnimation: slideVerticallyOut,
+  inBodyAnimation: slideHorizontalWithFadeInBody,
+  autoHide: 7000,
+  theme: "toastup__toast-theme--colorful",
+  hideOnClick: true,
+  showProgress: true,
+  showIcon: true,
+  showHideButton: true,
+  animateBody: true,
+  rtl: false,
+  pauseOnHover: true,
+  dragOnMobile: true,
+};
+add(config);
+```
