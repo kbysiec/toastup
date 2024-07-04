@@ -26,7 +26,6 @@
     "react-code-block": "^1.0.0",
     "react-dom": "^18.0.0",
     "react-use": "^17.5.0",
-    "rsuite": "^5.64.2",
     "sass": "^1.77.6"
   },
   "devDependencies": {
