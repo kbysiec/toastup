@@ -29,6 +29,17 @@ const sidebars: SidebarsConfig = {
       },
       items: ["api/add", "api/remove", "api/removeAll", "api/toaster"],
     },
+    {
+      type: "category",
+      label: "📖 Guides",
+      link: {
+        type: "generated-index",
+        title: "📖 Guides",
+        description: "📖 Guides description",
+        keywords: ["guides"],
+      },
+      items: ["guides/custom-animation"],
+    },
   ],
 
   // But you can create a sidebar manually

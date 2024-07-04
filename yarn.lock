@@ -6893,6 +6893,7 @@ __metadata:
     "@docusaurus/tsconfig": "npm:3.4.0"
     "@docusaurus/types": "npm:3.4.0"
     "@mdx-js/react": "npm:^3.0.0"
+    animate.css: "npm:^4.1.1"
     clsx: "npm:^2.0.0"
     docusaurus-plugin-sass: "npm:^0.2.5"
     nodemon: "npm:^3.1.4"

@@ -1,0 +1,32 @@
+---
+title: Custom animation
+description: How to easily integrate custom animation libraries with toastup.
+---
+
+How to easily integrate custom animation libraries with toastup.
+
+import { CustomAnimationExample } from "@site/src/components/examples/CustomAnimationExample";
+
+<CustomAnimationExample />
+
+## Example
+
+Using animate.css
+
+```ts
+const animateCssFlipXInAnimation = {
+  type: animationType.in,
+  className: "animate__animated animate__flipInX",
+  animationTime: 450,
+};
+const animateCssFlipXOutAnimation = {
+  type: animationType.out,
+  className: "animate__animated animate__flipOutX",
+  animationTime: 450,
+};
+
+add({
+  inAnimation: animateCssFlipXInAnimation,
+  outAnimation: animateCssFlipXOutAnimation,
+});
+```
