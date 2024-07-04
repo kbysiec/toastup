@@ -20,8 +20,8 @@ const position = {
   bottomCenter: "bottom-center",
   bottomRight: "bottom-right",
 } as const;
-const positions = Object.keys(position);
 
+const positions = Object.keys(position);
 const randomIndex = Math.floor(Math.random() * positions.length);
 const randomKey = positions[randomIndex];
 

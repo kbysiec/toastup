@@ -19,8 +19,8 @@ export const type = {
   warning: "warning",
   error: "error",
 } as const;
-const types = Object.keys(types);
 
+const types = Object.keys(types);
 const randomIndex = Math.floor(Math.random() * positions.length);
 const randomKey = types[randomIndex];
 
