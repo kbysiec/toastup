@@ -1,3 +1,4 @@
+import { useColorMode } from "@docusaurus/theme-common";
 import { themes } from "prism-react-renderer";
 import { CodeBlock as ReactCodeBlock } from "react-code-block/dist/code-block";
 import { useCopyToClipboard } from "react-use";
@@ -12,6 +13,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
   language,
   code,
 }: CodeBlockProps) => {
+  const { isDarkTheme } = useColorMode();
   const [state, copyToClipboard] = useCopyToClipboard();
 
   const copyCode = () => {
@@ -21,7 +23,11 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
   };
 
   return (
-    <ReactCodeBlock code={code} language={language} theme={themes.oceanicNext}>
+    <ReactCodeBlock
+      code={code}
+      language={language}
+      theme={isDarkTheme ? themes.vsDark : themes.vsLight}
+    >
       <div className={styles.codeBlock}>
         <ReactCodeBlock.Code className="bg-gray-900 !p-6 rounded-xl shadow-lg">
           <div className={styles.row}>

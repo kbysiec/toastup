@@ -51,6 +51,18 @@ li {
   position: relative;
 }
 
+code {
+  background-color: #c7c7c74d;
+}
+
+pre {
+  box-shadow: var(--ifm-global-shadow-lw);
+  backdrop-filter: blur(20px);
+}
+
 [data-theme="dark"] .main-wrapper {
   background-color: var(--ifm-background-color);
+}
+[data-theme="dark"] code {
+  background-color: var(--ifm-code-background);
 }

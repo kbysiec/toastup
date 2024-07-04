@@ -1,6 +1,8 @@
 .codeBlock {
   margin-top: 0.5em;
   position: relative;
+
+  --ifm-pre-background: var(--prism-background-color);
 }
 
 .row {
@@ -22,9 +24,16 @@
 }
 
 .copyButton {
-  background-color: #a9a9a9;
+  background-color: #f8f8f8;
   border-radius: 0.5em;
+  border: 0;
   bottom: 0.5rem;
   position: absolute;
   right: 0.5rem;
+}
+
+[data-theme="dark"] {
+  .codeBlock {
+    --ifm-pre-background: var(--ifm-code-background);
+  }
 }
