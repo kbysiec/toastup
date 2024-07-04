@@ -38,7 +38,7 @@ const sidebars: SidebarsConfig = {
         description: "📖 Guides description",
         keywords: ["guides"],
       },
-      items: ["guides/custom-animation"],
+      items: ["guides/custom-animation", "guides/right-to-left"],
     },
   ],
 
