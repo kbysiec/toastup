@@ -1,8 +1,6 @@
-interface Blob4Props {
-  className: string;
-}
+import sharedStyles from "@site/src/css/shared.module.scss";
 
-export const Blob4: React.FC<Blob4Props> = ({ className }: Blob4Props) => {
+export const Blob4 = () => {
   return (
     <svg
       width="313"
@@ -10,7 +8,7 @@ export const Blob4: React.FC<Blob4Props> = ({ className }: Blob4Props) => {
       viewBox="0 0 313 538"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={className}
+      className={sharedStyles.blob4}
     >
       <path
         fillRule="evenodd"
