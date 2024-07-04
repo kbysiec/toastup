@@ -1,6 +1,62 @@
+@use "sass:color";
+
 :root {
   --toastup-docs-blob-primary: #fce6d1;
   --toastup-docs-blob-secondary: #f6b070;
+}
+
+.buttonPrimary {
+  cursor: pointer;
+  background-color: #ff9c3f;
+  border: 0;
+  border-radius: 5px;
+  box-shadow: 0 2px 25px #f6d6b8;
+  color: #000;
+  font-weight: bold;
+  height: 3em;
+  margin: 0.5em;
+  text-transform: uppercase;
+  transition: all 0.2s ease-in;
+  width: 50%;
+
+  &:focus,
+  &:hover {
+    background-color: color.adjust($color: #ff9c3f, $lightness: -5%);
+    outline: 0;
+    transform: scale(0.95);
+  }
+
+  &:active {
+    background-color: color.adjust($color: #ff9c3f, $lightness: -10%);
+    transform: scale(0.9);
+  }
+}
+
+.buttonSecondary {
+  cursor: pointer;
+  background-color: #f6d6b8;
+  border: 0;
+  border-radius: 5px;
+  box-shadow: 0 2px 25px #f6d6b8;
+  color: #000;
+  font-weight: bold;
+  height: 3em;
+  margin: 0.5em;
+  text-transform: uppercase;
+  transition: all 0.2s ease-in;
+  width: 50%;
+
+  &:focus,
+  &:hover {
+    outline: 0;
+    transform: scale(0.95);
+    background-color: color.adjust($color: #f6d6b8, $lightness: -5%);
+  }
+
+  &:active {
+    transform: scale(0.9);
+    background-color: color.adjust($color: #f6d6b8, $lightness: -10%);
+  }
 }
 
 .blob1 {

@@ -1,4 +1,5 @@
 import { useColorMode } from "@docusaurus/theme-common";
+import sharedStyles from "@site/src/css/shared.module.scss";
 import {
   DisplayOrder,
   ReactToastConfig,
@@ -341,11 +342,11 @@ add(config);`;
         </div>
 
         <div className={styles.buttons}>
-          <button className={styles.button} onClick={handleClick}>
+          <button className={sharedStyles.buttonPrimary} onClick={handleClick}>
             Add toast
           </button>
           <button
-            className={`${styles.button} ${styles.closeAllButton}`}
+            className={sharedStyles.buttonSecondary}
             onClick={handleCloseAll}
           >
             Close all
