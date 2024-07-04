@@ -17,7 +17,6 @@ import {
 import { useEffect, useState } from "react";
 import { CodeBlock } from "../CodeBlock/CodeBlock";
 import { ToggleSwitch } from "../ToggleSwitch/ToggleSwitch";
-import styles from "./Hero.module.scss";
 import {
   InAnimation,
   InBodyAnimation,
@@ -26,6 +25,7 @@ import {
   inBodyAnimation,
   outAnimation,
 } from "./animations";
+import styles from "./Hero.module.scss";
 
 type ToastPositionKey = keyof typeof position;
 type ToastThemeKey = keyof typeof theme;
@@ -129,16 +129,15 @@ export function Hero() {
 add(config);`;
 
   const toasterCode = `<Toaster
-  visibleToasts={5}
-  position={availablePosition}
-  type={availableType}
-  title={availableType}
-  order={order}
-  inAnimation: ${inAnimation[inAnimationName].techName},
-  outAnimation: ${outAnimation[outAnimationName].techName},
-  inBodyAnimation: ${inBodyAnimation[inBodyAnimationName].techName},
-  autoHide={autoHide}
-  theme={availableTheme}
+  position={"${availablePosition}"}
+  type={"${availableType}"}
+  title={"${availableType}"}
+  order={"${order}"}
+  inAnimation={${inAnimation[inAnimationName].techName}}
+  outAnimation={${outAnimation[outAnimationName].techName}}
+  inBodyAnimation={${inBodyAnimation[inBodyAnimationName].techName}}
+  autoHide={${autoHide}}
+  theme={"${availableTheme}"}
   ${hideOnClick ? "hideOnClick" : "hideOnClick={false}"}
   ${showProgress ? "showProgress" : "showProgress={false}"}
   ${showIcon ? "showIcon" : "showIcon={false}"}
@@ -147,6 +146,7 @@ add(config);`;
   ${rtl ? "rtl" : "rtl={false}"}
   ${pauseOnHover ? "pauseOnHover" : "pauseOnHover={false}"}
   ${dragOnMobile ? "dragOnMobile" : "dragOnMobile={false}"}
+  visibleToasts={5}
 />`;
 
   return (
