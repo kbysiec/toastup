@@ -1,0 +1,34 @@
+---
+title: Choose type
+description: Choose from 5 types of toasts - success, error, warning, info, and default - each providing a distinct style and purpose for your notifications.
+---
+
+Choose from 5 types of toasts: success, error, warning, info, and default, each providing a distinct style and purpose for your notifications.
+
+import { ChooseTypeExample } from "@site/src/components/examples/ChooseTypeExample";
+
+<ChooseTypeExample />
+
+## Example
+
+```ts
+export const type = {
+  base: "base",
+  info: "info",
+  success: "success",
+  warning: "warning",
+  error: "error",
+} as const;
+const types = Object.keys(types);
+
+const randomIndex = Math.floor(Math.random() * positions.length);
+const randomKey = types[randomIndex];
+
+add({
+  type: type[randomKey],
+});
+```
+
+import { Blob1 } from "@site/src/components/Blobs/Blob1";
+
+<Blob1 />

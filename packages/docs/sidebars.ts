@@ -42,6 +42,7 @@ const sidebars: SidebarsConfig = {
         "guides/custom-animation",
         "guides/right-to-left",
         "guides/change-position",
+        "guides/choose-type",
       ],
     },
   ],
