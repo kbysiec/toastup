@@ -1,0 +1,38 @@
+---
+title: Getting started
+description: Steps to quickly integrate and use the toastup lib in your project.
+---
+
+### 1. Install
+
+npm
+
+```bash
+npm install @toastup/react
+```
+
+yarn
+
+```bash
+yarn add @toastup/react
+```
+
+### 2. Integrate
+
+```tsx
+function App() {
+  return (
+    <div>
+      <button onClick={() => add({ type: "success", title: "test" })}>
+        Add toast
+      </button>
+      <Toaster />
+    </div>
+  );
+}
+```
+
+:::warning
+Make sure to include the Toaster component exactly once in your application structure.
+If you're unsure where to place it, best place is the root of your application.
+:::
