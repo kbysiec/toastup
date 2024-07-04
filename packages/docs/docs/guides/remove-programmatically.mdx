@@ -1,0 +1,33 @@
+---
+title: Remove programmatically
+description: Ability to remove toasts programmatically, allowing for precise control over which notifications should be dismissed.
+---
+
+Ability to remove toasts programmatically, allowing for precise control over which notifications should be dismissed.
+
+import { RemoveProgrammaticallyExample } from "@site/src/components/examples/RemoveProgrammaticallyExample";
+
+<RemoveProgrammaticallyExample />
+
+## Example
+
+remove one toast
+
+```ts
+const id = add();
+remove(id);
+```
+
+
+or all at once
+
+```ts
+for(let i = 0; i < 10; i++) {
+  add();
+}
+remove(id);
+```
+
+import { Blob1 } from "@site/src/components/Blobs/Blob1";
+
+<Blob1 />

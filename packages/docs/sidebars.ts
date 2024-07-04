@@ -43,6 +43,7 @@ const sidebars: SidebarsConfig = {
         "guides/right-to-left",
         "guides/change-position",
         "guides/choose-type",
+        "guides/remove-programmatically",
       ],
     },
   ],
