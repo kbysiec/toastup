@@ -4,6 +4,7 @@ import {
   animationType,
   Toaster,
   ToastInAnimation,
+  ToastInBodyAnimation,
   ToastOutAnimation,
 } from "@toastup/react";
 import "animate.css";
@@ -21,11 +22,19 @@ const animateCssFlipXOutAnimation: ToastOutAnimation = {
   animationTime: 450,
 };
 
+const animateCssFlipXInBodyAnimation: ToastInBodyAnimation = {
+  type: animationType.body,
+  className: "animate__animated animate__flipInX",
+  animationTime: 450,
+};
+
 export function CustomAnimationExample() {
   const handleClick = () =>
     add({
       inAnimation: animateCssFlipXInAnimation,
       outAnimation: animateCssFlipXOutAnimation,
+      inBodyAnimation: animateCssFlipXInBodyAnimation,
+      animateBody: true
     });
   return (
     <div>
