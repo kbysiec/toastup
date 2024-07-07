@@ -39,6 +39,7 @@ const sidebars: SidebarsConfig = {
         keywords: ["guides"],
       },
       items: [
+        "guides/enter-exit-animation",
         "guides/body-animation",
         "guides/custom-animation",
         "guides/right-to-left",

@@ -1,0 +1,28 @@
+---
+title: Enter and exit animations
+description: How to change enter and exit animations.
+---
+
+There are eight built-in enter and exit animations: `fade`, `zoom`, `zoom with bounce`, `slide vertically`, `slide horizontally`, `bounce horizontally`, `single bounce horizontally`, `single bounce vertically`.
+
+import { EnterExitAnimationExample } from "@site/src/components/examples/EnterExitAnimationExample";
+
+<EnterExitAnimationExample />
+
+## Example
+
+You can change the default by setting `inAnimation` and `outAnimation` properties.
+`inAnimation` can be different from `outAnimation`.
+
+```ts
+import { bounceHorizontallyIn, singleBounceVerticallyOut } from "@toastup/react";
+
+add({
+  inAnimation: bounceHorizontallyIn,
+  outAnimation: singleBounceVerticallyOut,
+});
+```
+
+import { Blob1 } from "@site/src/components/Blobs/Blob1";
+
+<Blob1 />
