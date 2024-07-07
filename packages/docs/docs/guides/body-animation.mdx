@@ -1,0 +1,35 @@
+---
+title: Body animation
+description: How to enable body animation.
+---
+
+Enabling body animation is as simple as adding the `animateBody` property to the `add` function.
+
+import { BodyAnimationExample } from "@site/src/components/examples/BodyAnimationExample";
+
+<BodyAnimationExample />
+
+## Example
+
+To enable body animation set `animateBody` to `true`.
+
+```ts
+add({ animateBody: true });
+```
+
+
+There are three built-in body animations: `zoom`, `slideHorizontal` and `slideVertical`.
+You can change the default by setting `inBodyAnimation` property.
+
+```ts
+import { slideVerticallyWithFadeInBody } from "@toastup/react";
+
+add({
+  animateBody: true,
+  inBodyAnimation: slideVerticallyWithFadeInBody
+});
+```
+
+import { Blob1 } from "@site/src/components/Blobs/Blob1";
+
+<Blob1 />
