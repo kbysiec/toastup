@@ -44,6 +44,7 @@ const sidebars: SidebarsConfig = {
         "guides/change-position",
         "guides/choose-type",
         "guides/remove-programmatically",
+        "guides/accessibility",
       ],
     },
   ],
