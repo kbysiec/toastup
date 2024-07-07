@@ -5,6 +5,7 @@
 }
 
 .label {
+  margin-left: 0.5em;
 }
 
 .input {
@@ -56,5 +57,11 @@
     &:checked {
       background-color: #ff9c3f;
     }
+  }
+}
+
+@media screen and (max-width: 1270px) {
+  .label {
+    font-size: 0.8em;
   }
 }

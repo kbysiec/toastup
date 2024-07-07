@@ -1,6 +1,7 @@
 import sharedStyles from "@site/src/css/shared.module.scss";
 import { add, Toaster, type } from "@toastup/react";
 import "animate.css";
+import styles from "./examples.module.scss";
 
 export function ChooseTypeExample() {
   const types = Object.keys(type);
@@ -15,7 +16,7 @@ export function ChooseTypeExample() {
   };
   return (
     <div>
-      <button className={sharedStyles.buttonPrimary} onClick={handleClick}>
+      <button className={`${sharedStyles.buttonPrimary} ${styles.button}`} onClick={handleClick}>
         Add toast
       </button>
       <Toaster />

@@ -36,6 +36,7 @@
   display: flex;
   flex-direction: row;
   margin-top: 2em;
+  gap: 1em;
 }
 
 // .button {
@@ -140,9 +141,9 @@
   }
 }
 
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 1205px) {
   .label {
-    font-size: 1em;
+    font-size: 0.9em;
   }
 
   .codeBlocks {

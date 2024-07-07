@@ -1,6 +1,7 @@
 import sharedStyles from "@site/src/css/shared.module.scss";
 import { add, position, Toaster } from "@toastup/react";
 import "animate.css";
+import styles from "./examples.module.scss";
 
 export function ChangePositionExample() {
   const positions = Object.keys(position);
@@ -15,7 +16,7 @@ export function ChangePositionExample() {
   };
   return (
     <div>
-      <button className={sharedStyles.buttonPrimary} onClick={handleClick}>
+      <button className={`${sharedStyles.buttonPrimary} ${styles.button}`} onClick={handleClick}>
         Add toast
       </button>
       <Toaster />

@@ -7,6 +7,7 @@ import {
   ToastOutAnimation,
 } from "@toastup/react";
 import "animate.css";
+import styles from "./examples.module.scss";
 
 const animateCssFlipXInAnimation: ToastInAnimation = {
   type: animationType.in,
@@ -28,7 +29,7 @@ export function CustomAnimationExample() {
     });
   return (
     <div>
-      <button className={sharedStyles.buttonPrimary} onClick={handleClick}>
+      <button className={`${sharedStyles.buttonPrimary} ${styles.button}`} onClick={handleClick}>
         Add toast with animate.css
       </button>
       <Toaster />
