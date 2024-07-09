@@ -46,5 +46,10 @@ module.exports = defineConfig({
       external: ["react", "react-dom", "react/jsx-runtime"],
     },
     sourcemap: true,
+    minify: false,
+    terserOptions: {
+      compress: false,
+      mangle: false,
+    },
   },
 });

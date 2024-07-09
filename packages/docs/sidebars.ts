@@ -49,7 +49,8 @@ const sidebars: SidebarsConfig = {
         "guides/accessibility",
         "guides/limit-visible-toasts",
         "guides/auto-hiding",
-        "guides/custom-icon"
+        "guides/custom-icon",
+        "guides/custom-toast",
       ],
     },
   ],

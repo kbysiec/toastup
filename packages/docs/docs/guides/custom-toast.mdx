@@ -1,0 +1,51 @@
+---
+title: Custom toast
+description: How to render anything as a Toast component.
+---
+
+Allows to render anything as a Toast component.
+
+import { CustomToastExample } from "@site/src/components/examples/CustomToastExample";
+
+<CustomToastExample />
+
+## Example
+
+```tsx
+import Beach from "@site/static/img/beach.svg";
+import {
+  add,
+  cssClassNames,
+  ToastComponentProps,
+  Toaster,
+} from "@toastup/react";
+
+const CustomToast = (props: ToastComponentProps) => {
+  return (
+    <div ref={props.ref} className={cssClassNames.toast}>
+      <Beach className={styles.customImageToast} />
+    </div>
+  );
+};
+
+export function CustomToastExample() {
+  const handleClick = () =>
+    add({
+      toast: CustomToast,
+    });
+  return (
+    <div>
+      <button onClick={handleClick}>Add toast</button>
+      <Toaster />
+    </div>
+  );
+}
+```
+
+:::info
+To have the custom Toast animated, remember to pass `ref` prop to the Toast component.
+:::
+
+import { Blob1 } from "@site/src/components/Blobs/Blob1";
+
+<Blob1 />
