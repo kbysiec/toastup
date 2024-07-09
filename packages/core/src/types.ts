@@ -169,7 +169,8 @@ export interface PrivateToastProps {
 export interface ToastEntity
   extends ToastProps,
     ToastOnlyProps,
-    ComponentProps {
+    ComponentProps,
+    PrivateToastProps {
   hide: ToastHideHandler;
 }
 

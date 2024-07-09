@@ -1,6 +1,7 @@
 import { reactEvents } from "@/constants";
 import {
   ToastEntity,
+  ToastProps,
   eventManager,
   events,
   getCoalesced,
@@ -29,10 +30,11 @@ export function useToaster(toasterConfig: ReactToasterConfig) {
 
   const getConfig = useCallback(
     (toastConfig: Partial<ReactToastConfig>) => {
-      const config: ReactToastConfig = getCoalesced<
-        ReactToastConfig,
-        Partial<ReactToastConfig>
-      >(getDefaultConfig(), toasterConfig, toastConfig);
+      const config: ToastProps = getCoalesced(
+        getDefaultConfig(),
+        toasterConfig,
+        toastConfig
+      );
       config.title = toastConfig.title ? toastConfig.title : config.type;
       config.id = toastConfig.id ? toastConfig.id : uuid();
 
