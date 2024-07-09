@@ -1,0 +1,37 @@
+---
+title: Custom icon
+description: Allows to render a custom component as an icon.
+---
+
+Allows to render a custom component as an icon.
+
+import { CustomIconExample } from "@site/src/components/examples/CustomIconExample";
+
+<CustomIconExample />
+
+## Example
+
+```tsx
+import CustomIcon from "@site/static/img/toast.svg";
+import { add, Toaster } from "@toastup/react";
+
+export function CustomIconExample() {
+  const handleClick = () => add({
+    icon: () => <CustomIcon />,
+  });
+
+  return (
+    <div>
+      <button onClick={handleClick}>
+        Add toast
+      </button>
+      <Toaster />
+    </div>
+  );
+}
+
+```
+
+import { Blob1 } from "@site/src/components/Blobs/Blob1";
+
+<Blob1 />
