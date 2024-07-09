@@ -7,8 +7,13 @@ import {
   it,
   vi,
 } from "vitest";
-import { fadeIn, flipXIn } from "../src/animations/inAnimation";
-import { actionType, cssClassNames, position } from "../src/constants";
+import { fadeIn } from "../src/animations/inAnimation";
+import {
+  actionType,
+  animationType,
+  cssClassNames,
+  position,
+} from "../src/constants";
 import { toastQueue } from "../src/toastQueue";
 import {
   executeToastCallback,
@@ -141,6 +146,12 @@ describe("toastUtils", () => {
   });
 
   describe("toggleAnimation", () => {
+    const flipXIn = {
+      className: "test-animation-name",
+      animationTime: 100,
+      type: animationType.in,
+    };
+
     it("should add class to toast container if animation contains className instead of animationName", () => {
       toast.inAnimation = flipXIn;
 
