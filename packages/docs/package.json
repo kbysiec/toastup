@@ -13,7 +13,7 @@
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "typecheck": "tsc",
-    "watch": "nodemon --verbose --watch src --exec \"npm run build\" -e ts,tsx,css,scss,md,mdx"
+    "watch": "nodemon --verbose --watch src --watch docs --exec \"npm run build\" -e ts,tsx,css,scss,md,mdx"
   },
   "dependencies": {
     "@docusaurus/core": "3.4.0",
