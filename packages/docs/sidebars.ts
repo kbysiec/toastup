@@ -48,6 +48,7 @@ const sidebars: SidebarsConfig = {
         "guides/remove-programmatically",
         "guides/accessibility",
         "guides/limit-visible-toasts",
+        "guides/auto-hiding"
       ],
     },
   ],
