@@ -42,6 +42,7 @@ const sidebars: SidebarsConfig = {
         "guides/enter-exit-animation",
         "guides/body-animation",
         "guides/custom-animation",
+        "guides/custom-id",
         "guides/right-to-left",
         "guides/change-position",
         "guides/choose-type",
