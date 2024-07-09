@@ -308,8 +308,12 @@ describe("showHandler", () => {
         executeToastCallbackStub
       );
       vi.spyOn(utils, "sleep").mockImplementation(sleepStub);
-      vi.spyOn(toastProgressManager, "pause").mockImplementation(pauseStub);
-      vi.spyOn(toastProgressManager, "unpause").mockImplementation(unpauseStub);
+      vi.spyOn(toastProgressManager, "pauseInternal").mockImplementation(
+        pauseStub
+      );
+      vi.spyOn(toastProgressManager, "unpauseInternal").mockImplementation(
+        unpauseStub
+      );
     });
 
     afterEach(() => {

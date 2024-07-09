@@ -9,14 +9,16 @@ function togglePause(id: string, isPaused: boolean) {
   toast.autoHideDetails.isPaused = isPaused;
 }
 
-export function pause(id: string) {
+export function pauseInternal(id: string) {
   togglePause(id, true);
 }
 
-export function unpause(id: string) {
+export function unpauseInternal(id: string) {
   togglePause(id, false);
 }
 
 export const togglePauseIfExceedVisibleToastLimit = (toast: ToastEntity) => {
-  toast.exceedVisibleToastsLimit ? pause(toast.id) : unpause(toast.id);
+  toast.exceedVisibleToastsLimit
+    ? pauseInternal(toast.id)
+    : unpauseInternal(toast.id);
 };

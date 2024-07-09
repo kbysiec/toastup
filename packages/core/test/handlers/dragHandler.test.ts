@@ -45,8 +45,12 @@ describe("dragHandler", () => {
     queue.set(toast.id, toast);
 
     vi.spyOn(toastQueue, "get").mockReturnValue(queue);
-    vi.spyOn(toastProgressManager, "pause").mockImplementation(pauseStub);
-    vi.spyOn(toastProgressManager, "unpause").mockImplementation(unpauseStub);
+    vi.spyOn(toastProgressManager, "pauseInternal").mockImplementation(
+      pauseStub
+    );
+    vi.spyOn(toastProgressManager, "unpauseInternal").mockImplementation(
+      unpauseStub
+    );
     vi.spyOn(toastUtils, "updateToastTranslateAndOpacity").mockImplementation(
       updateToastTranslateAndOpacityStub
     );

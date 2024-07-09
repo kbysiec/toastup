@@ -13,7 +13,7 @@ import { ToastEntity } from "../src/types";
 import * as utils from "../src/utils";
 import { toastBase } from "./mocks";
 
-describe("toastUtils", () => {
+describe("toastProgressManager", () => {
   let queue: Map<string, ToastEntity>;
   const getTransformOtherThanStub = vi.fn();
 
@@ -48,7 +48,7 @@ describe("toastUtils", () => {
     });
   });
 
-  describe("pause", () => {
+  describe("pauseInternal", () => {
     it("should set toast autoHideDetails isPaused property to true", () => {
       const toast = {
         ...toastBase,
@@ -56,13 +56,13 @@ describe("toastUtils", () => {
       };
       queue.set(toast.id, toast);
 
-      toastProgressManager.pause(toast.id);
+      toastProgressManager.pauseInternal(toast.id);
 
       expect(toast.autoHideDetails.isPaused).toBe(true);
     });
   });
 
-  describe("unpause", () => {
+  describe("unpauseInternal", () => {
     it("should set toast autoHideDetails isPaused property to false", () => {
       const toast = {
         ...toastBase,
@@ -70,7 +70,7 @@ describe("toastUtils", () => {
       };
       queue.set(toast.id, toast);
 
-      toastProgressManager.unpause(toast.id);
+      toastProgressManager.unpauseInternal(toast.id);
 
       expect(toast.autoHideDetails.isPaused).toBe(false);
     });
@@ -82,7 +82,7 @@ describe("toastUtils", () => {
       };
       queue.set("999", toast);
 
-      toastProgressManager.unpause(toast.id);
+      toastProgressManager.unpauseInternal(toast.id);
 
       expect(toast.autoHideDetails.isPaused).toBe(true);
     });

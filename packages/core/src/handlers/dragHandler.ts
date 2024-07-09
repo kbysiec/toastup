@@ -1,5 +1,5 @@
 import { cssClassNames } from "../constants";
-import { pause, unpause } from "../toastProgressManager";
+import { pauseInternal, unpauseInternal } from "../toastProgressManager";
 import { toastQueue } from "../toastQueue";
 import { updateToastTranslateAndOpacity } from "../toastUtils";
 import { ToastEntity } from "../types";
@@ -51,7 +51,7 @@ export function toggleToastDragTransition(
 }
 
 export function startDragging(event: TouchEvent, id: string) {
-  pause(id);
+  pauseInternal(id);
   const toastMap = toastQueue.get();
   const toast = toastMap.get(id);
 
@@ -93,7 +93,7 @@ export async function stopDragging(_event: TouchEvent, id: string) {
       : resetToastDragState(toast);
   }
   dragHandler.toggleToastDragTransition(toast, true);
-  unpause(id);
+  unpauseInternal(id);
 }
 
 export function duringDragging(event: TouchEvent, id: string) {

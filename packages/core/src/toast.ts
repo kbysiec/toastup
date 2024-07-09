@@ -17,7 +17,7 @@ import {
 } from "./handlers/hideHandler";
 import { handleMountedToast } from "./handlers/mountHandler";
 import { handleShowToast } from "./handlers/showHandler";
-import { pause, unpause } from "./toastProgressManager";
+import { pauseInternal, unpauseInternal } from "./toastProgressManager";
 import { ToastConfig, ToastOnlyProps, ToastProps } from "./types";
 import { uuid } from "./utils";
 
@@ -69,8 +69,8 @@ export function getToastPropsForCreate(config: ToastConfig) {
     index: -1,
     dimensions: { height: -1, width: -1 },
     translate: { y: 0, x: 0 },
-    pause: () => pause(config.id),
-    unpause: () => unpause(config.id),
+    pause: () => pauseInternal(config.id),
+    unpause: () => unpauseInternal(config.id),
     startDragging: (event: TouchEvent) => startDragging(event, config.id),
     stopDragging: (event: TouchEvent) => stopDragging(event, config.id),
     duringDragging: (event: TouchEvent) => duringDragging(event, config.id),
