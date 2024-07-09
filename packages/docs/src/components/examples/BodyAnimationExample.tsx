@@ -33,11 +33,14 @@ export function BodyAnimationExample() {
   const handleClick = () =>
     add({
       inBodyAnimation: slideVerticallyWithFadeInBody,
-      animateBody: true
+      animateBody: true,
     });
   return (
     <div>
-      <button className={`${sharedStyles.buttonPrimary} ${styles.button}`} onClick={handleClick}>
+      <button
+        className={`${sharedStyles.buttonPrimary} ${styles.button}`}
+        onClick={handleClick}
+      >
         Add toast
       </button>
       <Toaster />

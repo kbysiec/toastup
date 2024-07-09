@@ -6,7 +6,10 @@ export function LimitVisibleToastsExample() {
   const handleClick = () => add();
   return (
     <div>
-      <button className={`${sharedStyles.buttonPrimary} ${styles.button}`} onClick={handleClick}>
+      <button
+        className={`${sharedStyles.buttonPrimary} ${styles.button}`}
+        onClick={handleClick}
+      >
         Add toast
       </button>
       <Toaster visibleToasts={3} />

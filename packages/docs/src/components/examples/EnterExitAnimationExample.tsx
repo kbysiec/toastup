@@ -3,7 +3,7 @@ import {
   add,
   bounceHorizontallyIn,
   singleBounceVerticallyOut,
-  Toaster
+  Toaster,
 } from "@toastup/react";
 import "animate.css";
 import styles from "./examples.module.scss";
@@ -16,7 +16,10 @@ export function EnterExitAnimationExample() {
     });
   return (
     <div>
-      <button className={`${sharedStyles.buttonPrimary} ${styles.button}`} onClick={handleClick}>
+      <button
+        className={`${sharedStyles.buttonPrimary} ${styles.button}`}
+        onClick={handleClick}
+      >
         Add toast
       </button>
       <Toaster />
