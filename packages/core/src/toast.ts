@@ -18,6 +18,7 @@ import {
 import { handleMountedToast } from "./handlers/mountHandler";
 import { handleShowToast } from "./handlers/showHandler";
 import { pauseInternal, unpauseInternal } from "./toastProgressManager";
+import { toastQueue } from "./toastQueue";
 import { ToastConfig, ToastOnlyProps, ToastProps } from "./types";
 import { uuid } from "./utils";
 
@@ -39,6 +40,39 @@ export function removeAll(withAnimation = true, callback?: () => void) {
   withAnimation
     ? eventMgr.emit(events.removeAll, { withAnimation })
     : hideAllToastsImmediately(withAnimation, callback);
+}
+
+export function pause(id?: string) {
+  togglePause(id, true);
+}
+
+export function unpause(id?: string) {
+  togglePause(id, false);
+}
+
+function togglePause(id?: string, pause = true) {
+  if (id) {
+    const toast = getToastById(id);
+    toast &&
+      !toast.exceedVisibleToastsLimit &&
+      (pause ? toast.pause() : toast.unpause());
+  } else {
+    getAllToasts().forEach(
+      toast =>
+        !toast.exceedVisibleToastsLimit &&
+        (pause ? toast.pause() : toast.unpause())
+    );
+  }
+}
+
+function getToastById(id: string) {
+  const toastMap = toastQueue.get();
+  return toastMap.get(id);
+}
+
+function getAllToasts() {
+  const toastMap = toastQueue.get();
+  return Array.from(toastMap.values());
 }
 
 export function registerToastupEventHandlers() {

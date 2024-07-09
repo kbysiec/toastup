@@ -17,9 +17,11 @@ import {
   add,
   getDefaultConfig,
   getToastPropsForCreate,
+  pause,
   registerToastupEventHandlers,
   remove,
   removeAll,
+  unpause,
 } from "../src/toast";
 import { toastQueue } from "../src/toastQueue";
 import { PartialBy, ToastEntity, ToastProps } from "../src/types";
@@ -116,6 +118,136 @@ describe("toast", () => {
 
       expect(emitStub).not.toBeCalled();
       expect(hideAllToastsImmediatelyStub).toHaveBeenCalledOnce();
+    });
+  });
+
+  describe("pause", () => {
+    const pauseStub = vi.fn();
+
+    it("should pause function be invoked for toast for given id", () => {
+      const toast = {
+        ...toastBase,
+        id: "1",
+        exceedVisibleToastsLimit: false,
+        pause: pauseStub,
+      };
+      queue.set("1", toast);
+
+      pause("1");
+
+      expect(pauseStub).toHaveBeenCalledOnce();
+    });
+
+    it("should do nothing if there isn't toast for given id", () => {
+      const toast = {
+        ...toastBase,
+        id: "1",
+        exceedVisibleToastsLimit: false,
+        pause: pauseStub,
+      };
+      queue.set("1", toast);
+
+      pause("12");
+
+      expect(pauseStub).not.toHaveBeenCalledOnce();
+    });
+
+    it("should pause function be invoked for all visible toasts", () => {
+      const pauseStub2 = vi.fn();
+      const pauseStub3 = vi.fn();
+
+      const toast = {
+        ...toastBase,
+        id: "1",
+        exceedVisibleToastsLimit: false,
+        pause: pauseStub,
+      };
+      const toast2 = {
+        ...toastBase,
+        id: "2",
+        exceedVisibleToastsLimit: false,
+        pause: pauseStub2,
+      };
+      const toast3 = {
+        ...toastBase,
+        id: "3",
+        exceedVisibleToastsLimit: true,
+        pause: pauseStub3,
+      };
+      queue.set("1", toast);
+      queue.set("2", toast2);
+      queue.set("3", toast3);
+
+      pause();
+
+      expect(pauseStub).toHaveBeenCalledOnce();
+      expect(pauseStub2).toHaveBeenCalledOnce();
+      expect(pauseStub3).not.toHaveBeenCalledOnce();
+    });
+  });
+
+  describe("unpause", () => {
+    const unpauseStub = vi.fn();
+
+    it("should unpause function be invoked for toast for given id", () => {
+      const toast = {
+        ...toastBase,
+        id: "1",
+        exceedVisibleToastsLimit: false,
+        unpause: unpauseStub,
+      };
+      queue.set("1", toast);
+
+      unpause("1");
+
+      expect(unpauseStub).toHaveBeenCalledOnce();
+    });
+
+    it("should do nothing if there isn't toast for given id", () => {
+      const toast = {
+        ...toastBase,
+        id: "1",
+        exceedVisibleToastsLimit: false,
+        unpause: unpauseStub,
+      };
+      queue.set("1", toast);
+
+      unpause("12");
+
+      expect(unpauseStub).not.toHaveBeenCalledOnce();
+    });
+
+    it("should unpause function be invoked for all visible toasts", () => {
+      const unpauseStub2 = vi.fn();
+      const unpauseStub3 = vi.fn();
+
+      const toast = {
+        ...toastBase,
+        id: "1",
+        exceedVisibleToastsLimit: false,
+        unpause: unpauseStub,
+      };
+      const toast2 = {
+        ...toastBase,
+        id: "2",
+        exceedVisibleToastsLimit: false,
+        unpause: unpauseStub2,
+      };
+      const toast3 = {
+        ...toastBase,
+        id: "3",
+        exceedVisibleToastsLimit: true,
+        unpause: unpauseStub3,
+      };
+      queue.set("1", toast);
+      queue.set("2", toast2);
+      queue.set("3", toast3);
+
+      unpause();
+
+      expect(unpauseStub).toHaveBeenCalledOnce();
+      expect(unpauseStub2).toHaveBeenCalledOnce();
+      expect(unpauseStub3).not.toHaveBeenCalledOnce();
     });
   });
 
