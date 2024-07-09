@@ -10,8 +10,12 @@ import styles from "./examples.module.scss";
 
 const CustomToast = (props: ToastComponentProps) => {
   return (
-    <div ref={props.ref} className={cssClassNames.toast}>
-      <Beach className={styles.customImageToast} />
+    <div
+      ref={props.ref}
+      className={`${cssClassNames.toast} ${styles.customToast}`}
+    >
+      <Beach className={styles.customToastImage} />
+      {props.children}
     </div>
   );
 };
@@ -20,6 +24,7 @@ export function CustomToastExample() {
   const handleClick = () =>
     add({
       toast: CustomToast,
+      animateBody: true,
     });
   return (
     <div>
