@@ -1,0 +1,35 @@
+---
+title: Limit visible toasts
+description: Allows to set a maximum number of toasts that can be displayed on the screen simultaneously.
+---
+
+Allows to set a maximum number of toasts that can be displayed on the screen simultaneously.
+
+import { LimitVisibleToastsExample } from "@site/src/components/examples/LimitVisibleToastsExample";
+
+<LimitVisibleToastsExample />
+
+## Example
+
+```tsx
+function LimitVisibleToastsExample() {
+  const handleClick = () => add();
+
+  return (
+    <div>
+      <button onClick={handleClick}>
+        Add toast
+      </button>
+      <Toaster visibleToasts={3} />
+    </div>
+  );
+}
+```
+
+:::info
+`visibleToasts` option is available only for the Toaster component.
+:::
+
+import { Blob1 } from "@site/src/components/Blobs/Blob1";
+
+<Blob1 />
