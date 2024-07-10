@@ -7,11 +7,10 @@ import {
   ToastTheme,
   ToastType,
   Toaster,
-  add,
   displayOrder,
   position,
-  removeAll,
   theme,
+  toast,
   type,
 } from "@toastup/react";
 import { useEffect, useState } from "react";
@@ -33,6 +32,8 @@ type ToastThemeKey = keyof typeof theme;
 declare global {
   interface Window {
     add: (toastConfig: ReactToastConfig) => string;
+    pause: (id?: string) => void;
+    unpause: (id?: string) => void;
   }
 }
 
@@ -69,7 +70,9 @@ export function Hero() {
   const [dragOnMobile, setDragOnMobile] = useState(true);
 
   useEffect(() => {
-    window.add = add;
+    window.add = toast.add;
+    window.pause = toast.pause;
+    window.unpause = toast.unpause;
   }, []);
 
   useEffect(() => {
@@ -77,7 +80,7 @@ export function Hero() {
   }, [isDarkTheme]);
 
   const handleCloseAll = () => {
-    removeAll();
+    toast.removeAll();
   };
 
   const handleClick = () => {
@@ -102,7 +105,7 @@ export function Hero() {
       dragOnMobile,
     };
 
-    add(config);
+    toast.add(config);
 
     setToastId(toastId + 1);
   };

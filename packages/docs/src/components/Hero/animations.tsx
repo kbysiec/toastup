@@ -1,65 +1,45 @@
-import {
-  bounceHorizontallyIn,
-  bounceHorizontallyOut,
-  fadeIn,
-  fadeOut,
-  singleBounceHorizontallyIn,
-  singleBounceHorizontallyOut,
-  singleBounceVerticallyIn,
-  singleBounceVerticallyOut,
-  slideHorizontalWithFadeInBody,
-  slideHorizontallyIn,
-  slideHorizontallyOut,
-  slideVerticallyIn,
-  slideVerticallyOut,
-  slideVerticallyWithFadeInBody,
-  zoomIn,
-  zoomInBody,
-  zoomOut,
-  zoomWithBounceIn,
-  zoomWithBounceOut,
-} from "@toastup/react";
+import { animation } from "@toastup/react";
 
 export const inAnimation = {
   fade: {
     name: "fade",
     techName: "fadeIn",
-    animation: fadeIn,
+    animation: animation.in.fadeIn,
   },
   zoom: {
     name: "zoom",
     techName: "zoomIn",
-    animation: zoomIn,
+    animation: animation.in.zoomIn,
   },
   "zoom with bounce": {
     name: "zoom with bounce",
     techName: "zoomWithBounceIn",
-    animation: zoomWithBounceIn,
+    animation: animation.in.zoomWithBounceIn,
   },
   "slide vertically": {
     name: "slide vertically",
     techName: "slideVerticallyIn",
-    animation: slideVerticallyIn,
+    animation: animation.in.slideVerticallyIn,
   },
   "slide horizontally": {
     name: "slide horizontally",
     techName: "slideHorizontallyIn",
-    animation: slideHorizontallyIn,
+    animation: animation.in.slideHorizontallyIn,
   },
   "bounce horizontally": {
     name: "bounce horizontally",
     techName: "bounceHorizontallyIn",
-    animation: bounceHorizontallyIn,
+    animation: animation.in.bounceHorizontallyIn,
   },
   "single bounce horizontally": {
     name: "single bounce horizontally",
     techName: "singleBounceHorizontallyIn",
-    animation: singleBounceHorizontallyIn,
+    animation: animation.in.singleBounceHorizontallyIn,
   },
   "single bounce vertically": {
     name: "single bounce vertically",
     techName: "singleBounceVerticallyIn",
-    animation: singleBounceVerticallyIn,
+    animation: animation.in.singleBounceVerticallyIn,
   },
 } as const;
 
@@ -69,42 +49,42 @@ export const outAnimation = {
   fade: {
     name: "fade",
     techName: "fadeOut",
-    animation: fadeOut,
+    animation: animation.out.fadeOut,
   },
   zoom: {
     name: "zoom",
     techName: "zoomOut",
-    animation: zoomOut,
+    animation: animation.out.zoomOut,
   },
   "zoom with bounce": {
     name: "zoom with bounce",
     techName: "zoomWithBounceOut",
-    animation: zoomWithBounceOut,
+    animation: animation.out.zoomWithBounceOut,
   },
   "slide vertically": {
     name: "slide vertically",
     techName: "slideVerticallyOut",
-    animation: slideVerticallyOut,
+    animation: animation.out.slideVerticallyOut,
   },
   "slide horizontally": {
     name: "slide horizontally",
     techName: "slideHorizontallyOut",
-    animation: slideHorizontallyOut,
+    animation: animation.out.slideHorizontallyOut,
   },
   "bounce horizontally": {
     name: "bounce horizontally",
     techName: "bounceHorizontallyOut",
-    animation: bounceHorizontallyOut,
+    animation: animation.out.bounceHorizontallyOut,
   },
   "single bounce horizontally": {
     name: "single bounce horizontally",
     techName: "singleBounceHorizontallyOut",
-    animation: singleBounceHorizontallyOut,
+    animation: animation.out.singleBounceHorizontallyOut,
   },
   "single bounce vertically": {
     name: "single bounce vertically",
     techName: "singleBounceVerticallyOut",
-    animation: singleBounceVerticallyOut,
+    animation: animation.out.singleBounceVerticallyOut,
   },
 } as const;
 export type OutAnimation = keyof typeof outAnimation;
@@ -113,17 +93,17 @@ export const inBodyAnimation = {
   zoom: {
     name: "zoom",
     techName: "zoomInBody",
-    animation: zoomInBody,
+    animation: animation.body.zoomInBody,
   },
   "slide horizontally with fade": {
     name: "slide horizontally with fade",
     techName: "slideHorizontalWithFadeInBody",
-    animation: slideHorizontalWithFadeInBody,
+    animation: animation.body.slideHorizontalWithFadeInBody,
   },
   "slide vertically with fade": {
     name: "slide vertically with fade",
     techName: "slideVerticallyWithFadeInBody",
-    animation: slideVerticallyWithFadeInBody,
+    animation: animation.body.slideVerticallyWithFadeInBody,
   },
 } as const;
 export type InBodyAnimation = keyof typeof inBodyAnimation;
