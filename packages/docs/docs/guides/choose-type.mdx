@@ -11,22 +11,37 @@ import { ChooseTypeExample } from "@site/src/components/examples/ChooseTypeExamp
 
 ## Example
 
-```ts
-export const type = {
+```tsx
+import { toast, Toaster } from "@toastup/react";
+
+/*
+const type = {
   base: "base",
   info: "info",
   success: "success",
   warning: "warning",
   error: "error",
 } as const;
+*/
 
-const types = Object.keys(types);
-const randomIndex = Math.floor(Math.random() * positions.length);
-const randomKey = types[randomIndex];
+export function ChooseTypeExample() {
+  const types = Object.keys(type);
 
-add({
-  type: type[randomKey],
-});
+  const handleClick = () => {
+    const randomIndex = Math.floor(Math.random() * types.length);
+    const randomKey = types[randomIndex];
+
+    toast.add({
+      type: type[randomKey],
+    });
+  };
+  return (
+    <div>
+      <button onClick={handleClick}>Add toast</button>
+      <Toaster />
+    </div>
+  );
+}
 ```
 
 import { Blob1 } from "@site/src/components/Blobs/Blob1";

@@ -12,9 +12,10 @@ import { LimitVisibleToastsExample } from "@site/src/components/examples/LimitVi
 ## Example
 
 ```tsx
-function LimitVisibleToastsExample() {
-  const handleClick = () => add();
+import { toast, Toaster } from "@toastup/react";
 
+export function LimitVisibleToastsExample() {
+  const handleClick = () => toast.add({ autoHide: 15000 });
   return (
     <div>
       <button onClick={handleClick}>Add toast</button>

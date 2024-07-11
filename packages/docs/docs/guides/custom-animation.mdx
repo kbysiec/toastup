@@ -13,6 +13,17 @@ import { CustomAnimationExample } from "@site/src/components/examples/CustomAnim
 
 Using animate.css
 
+```tsx
+import {
+  toast,
+  animationType,
+  Toaster,
+  ToastInAnimation,
+  ToastInBodyAnimation,
+  ToastOutAnimation,
+} from "@toastup/react";
+import "animate.css";
+
 const animateCssFlipXInAnimation: ToastInAnimation = {
   type: animationType.in,
   className: "animate__animated animate__flipInX",
@@ -31,12 +42,21 @@ const animateCssBounceInBodyAnimation: ToastInBodyAnimation = {
   animationTime: 1000,
 };
 
-add({
-  inAnimation: animateCssFlipXInAnimation,
+export function CustomAnimationExample() {
+  const handleClick = () =>
+    toast.add({
+      inAnimation: animateCssFlipXInAnimation,
       outAnimation: animateCssBounceDownOutAnimation,
       inBodyAnimation: animateCssBounceInBodyAnimation,
-  animateBody: true,
-});
+      animateBody: true,
+    });
+  return (
+    <div>
+      <button onClick={handleClick}>Add toast with animate.css</button>
+      <Toaster />
+    </div>
+  );
+}
 ```
 
 import { Blob1 } from "@site/src/components/Blobs/Blob1";

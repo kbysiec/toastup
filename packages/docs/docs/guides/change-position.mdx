@@ -11,7 +11,10 @@ import { ChangePositionExample } from "@site/src/components/examples/ChangePosit
 
 ## Example
 
-```ts
+```tsx
+import { position, toast, Toaster } from "@toastup/react";
+
+/*
 const position = {
   topLeft: "top-left",
   topCenter: "top-center",
@@ -20,14 +23,26 @@ const position = {
   bottomCenter: "bottom-center",
   bottomRight: "bottom-right",
 } as const;
+*/
 
-const positions = Object.keys(position);
-const randomIndex = Math.floor(Math.random() * positions.length);
-const randomKey = positions[randomIndex];
+export function ChangePositionExample() {
+  const positions = Object.keys(position);
 
-add({
-  position: position[randomKey],
-});
+  const handleClick = () => {
+    const randomIndex = Math.floor(Math.random() * positions.length);
+    const randomKey = positions[randomIndex];
+
+    toast.add({
+      position: position[randomKey],
+    });
+  };
+  return (
+    <div>
+      <button onClick={handleClick}>Add toast</button>
+      <Toaster />
+    </div>
+  );
+}
 ```
 
 import { Blob1 } from "@site/src/components/Blobs/Blob1";

@@ -1,5 +1,5 @@
 import sharedStyles from "@site/src/css/shared.module.scss";
-import { add, remove, removeAll, Toaster } from "@toastup/react";
+import { toast, Toaster } from "@toastup/react";
 import { useState } from "react";
 import styles from "./examples.module.scss";
 
@@ -7,12 +7,12 @@ export function RemoveProgrammaticallyExample() {
   const [ids, setIds] = useState<string[]>([]);
 
   const handleAddClick = () => {
-    const id = add({ autoHide: 20000 });
+    const id = toast.add({ autoHide: 20000 });
     setIds(ids => [...ids, id]);
   };
-  const handleRemoveClick = () => remove(ids.pop());
+  const handleRemoveClick = () => toast.remove(ids.pop());
   const handleRemoveAllClick = () => {
-    removeAll();
+    toast.removeAll();
     setIds([]);
   };
   return (

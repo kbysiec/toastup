@@ -13,19 +13,33 @@ import { BodyAnimationExample } from "@site/src/components/examples/BodyAnimatio
 
 To enable body animation set `animateBody` to `true`.
 
-```ts
-add({ animateBody: true });
+```tsx
+import { animation, toast, Toaster } from "@toastup/react";
+import styles from "./examples.module.scss";
+
+export function BodyAnimationExample() {
+  const handleClick = () =>
+    toast.add({
+      animateBody: true,
+    });
+  return (
+    <div>
+      <button onClick={handleClick}>Add toast</button>
+      <Toaster />
+    </div>
+  );
+}
 ```
 
 There are three built-in body animations: `zoom`, `slideHorizontal` and `slideVertical`.
 You can change the default by setting `inBodyAnimation` property.
 
 ```ts
-import { slideVerticallyWithFadeInBody } from "@toastup/react";
+import { animation, toast } from "@toastup/react";
 
-add({
+toast.add({
   animateBody: true,
-  inBodyAnimation: slideVerticallyWithFadeInBody,
+  inBodyAnimation: animation.body.slideVerticallyWithFadeInBody,
 });
 ```
 

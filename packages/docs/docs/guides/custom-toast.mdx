@@ -14,24 +14,29 @@ import { CustomToastExample } from "@site/src/components/examples/CustomToastExa
 ```tsx
 import Beach from "@site/static/img/beach.svg";
 import {
-  add,
   cssClassNames,
+  toast,
   ToastComponentProps,
   Toaster,
 } from "@toastup/react";
 
 const CustomToast = (props: ToastComponentProps) => {
   return (
-    <div ref={props.ref} className={cssClassNames.toast}>
-      <Beach className={styles.customImageToast} />
+    <div
+      ref={props.ref}
+      className={`${cssClassNames.toast} ${styles.customToast}`}
+    >
+      <Beach className={styles.customToastImage} />
+      {props.children}
     </div>
   );
 };
 
 export function CustomToastExample() {
   const handleClick = () =>
-    add({
+    toast.add({
       toast: CustomToast,
+      animateBody: true,
     });
   return (
     <div>

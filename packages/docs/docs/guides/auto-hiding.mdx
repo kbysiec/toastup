@@ -1,5 +1,5 @@
 ---
-title: Auto closing
+title: Auto hide
 description: Allows to set a time in ms after which the toast is hidden automatically.
 ---
 
@@ -11,8 +11,18 @@ import { AutoHideExample } from "@site/src/components/examples/AutoHideExample";
 
 ## Example
 
-```ts
-add({ autoHide: 10000 });
+```tsx
+import { toast, Toaster } from "@toastup/react";
+
+export function AutoHideExample() {
+  const handleClick = () => toast.add({ autoHide: 10000 });
+  return (
+    <div>
+      <button onClick={handleClick}>Add toast</button>
+      <Toaster />
+    </div>
+  );
+}
 ```
 
 import { Blob1 } from "@site/src/components/Blobs/Blob1";

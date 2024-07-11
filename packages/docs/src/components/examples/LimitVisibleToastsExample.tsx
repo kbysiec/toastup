@@ -1,9 +1,9 @@
 import sharedStyles from "@site/src/css/shared.module.scss";
-import { add, Toaster } from "@toastup/react";
+import { toast, Toaster } from "@toastup/react";
 import styles from "./examples.module.scss";
 
 export function LimitVisibleToastsExample() {
-  const handleClick = () => add();
+  const handleClick = () => toast.add({ autoHide: 15000 });
   return (
     <div>
       <button

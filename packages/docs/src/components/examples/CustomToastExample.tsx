@@ -1,8 +1,8 @@
 import sharedStyles from "@site/src/css/shared.module.scss";
 import Beach from "@site/static/img/beach.svg";
 import {
-  add,
   cssClassNames,
+  toast,
   ToastComponentProps,
   Toaster,
 } from "@toastup/react";
@@ -22,7 +22,7 @@ const CustomToast = (props: ToastComponentProps) => {
 
 export function CustomToastExample() {
   const handleClick = () =>
-    add({
+    toast.add({
       toast: CustomToast,
       animateBody: true,
     });

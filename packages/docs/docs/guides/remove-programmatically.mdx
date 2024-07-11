@@ -13,18 +13,33 @@ import { RemoveProgrammaticallyExample } from "@site/src/components/examples/Rem
 
 remove one toast
 
-```ts
-const id = add();
-remove(id);
-```
+```tsx
+import { toast, Toaster } from "@toastup/react";
+import { useState } from "react";
 
-or all at once
+export function RemoveProgrammaticallyExample() {
+  const [ids, setIds] = useState<string[]>([]);
 
-```ts
-for (let i = 0; i < 10; i++) {
-  add();
+  const handleAddClick = () => {
+    const id = toast.add({ autoHide: 20000 });
+    setIds(ids => [...ids, id]);
+  };
+  const handleRemoveClick = () => toast.remove(ids.pop());
+  const handleRemoveAllClick = () => {
+    toast.removeAll();
+    setIds([]);
+  };
+  return (
+    <div>
+      <button onClick={handleAddClick}>Add toast</button>
+      <div className={styles.removeButtons}>
+        <button onClick={handleRemoveClick}>Remove last</button>
+        <button onClick={handleRemoveAllClick}>Remove all</button>
+      </div>
+      <Toaster />
+    </div>
+  );
 }
-remove(id);
 ```
 
 import { Blob1 } from "@site/src/components/Blobs/Blob1";

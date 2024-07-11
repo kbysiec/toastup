@@ -1,6 +1,5 @@
 import sharedStyles from "@site/src/css/shared.module.scss";
-import { add, Toaster, type } from "@toastup/react";
-import "animate.css";
+import { toast, Toaster, type } from "@toastup/react";
 import styles from "./examples.module.scss";
 
 export function ChooseTypeExample() {
@@ -10,7 +9,7 @@ export function ChooseTypeExample() {
     const randomIndex = Math.floor(Math.random() * types.length);
     const randomKey = types[randomIndex];
 
-    add({
+    toast.add({
       type: type[randomKey],
     });
   };

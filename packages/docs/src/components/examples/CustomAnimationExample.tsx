@@ -1,7 +1,7 @@
 import sharedStyles from "@site/src/css/shared.module.scss";
 import {
-  add,
   animationType,
+  toast,
   Toaster,
   ToastInAnimation,
   ToastInBodyAnimation,
@@ -30,7 +30,7 @@ const animateCssBounceInBodyAnimation: ToastInBodyAnimation = {
 
 export function CustomAnimationExample() {
   const handleClick = () =>
-    add({
+    toast.add({
       inAnimation: animateCssFlipXInAnimation,
       outAnimation: animateCssBounceDownOutAnimation,
       inBodyAnimation: animateCssBounceInBodyAnimation,
