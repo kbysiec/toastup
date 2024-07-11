@@ -16,24 +16,24 @@ const animateCssFlipXInAnimation: ToastInAnimation = {
   animationTime: 450,
 };
 
-const animateCssFlipXOutAnimation: ToastOutAnimation = {
+const animateCssBounceDownOutAnimation: ToastOutAnimation = {
   type: animationType.out,
-  className: "animate__animated animate__flipOutX",
-  animationTime: 450,
+  className: "animate__animated animate__bounceOutDown",
+  animationTime: 650,
 };
 
-const animateCssFlipXInBodyAnimation: ToastInBodyAnimation = {
+const animateCssBounceInBodyAnimation: ToastInBodyAnimation = {
   type: animationType.body,
-  className: "animate__animated animate__flipInX",
-  animationTime: 450,
+  className: "animate__animated animate__bounceIn",
+  animationTime: 1000,
 };
 
 export function CustomAnimationExample() {
   const handleClick = () =>
     add({
       inAnimation: animateCssFlipXInAnimation,
-      outAnimation: animateCssFlipXOutAnimation,
-      inBodyAnimation: animateCssFlipXInBodyAnimation,
+      outAnimation: animateCssBounceDownOutAnimation,
+      inBodyAnimation: animateCssBounceInBodyAnimation,
       animateBody: true,
     });
   return (
