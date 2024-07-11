@@ -5,6 +5,9 @@
     "packages/*"
   ],
   "scripts": {
+    "build": "yarn workspace @toastup/core run build && yarn workspace @toastup/react run build",
+    "test": "yarn workspace @toastup/core run test && yarn workspace @toastup/react run test",
+    "test:coverage": "yarn workspace @toastup/core run test:coverage && yarn workspace @toastup/react run test:coverage",
     "lint:scripts": "eslint ./packages --ext .ts,.tsx",
     "lint:styles": "stylelint ./packages/**/*.{css,scss}",
     "format:scripts": "prettier ./packages/**/* --write",
