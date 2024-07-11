@@ -27,7 +27,20 @@ const sidebars: SidebarsConfig = {
         description: "⚙️ API description",
         keywords: ["api"],
       },
-      items: ["api/add", "api/remove", "api/removeAll", "api/toaster"],
+      items: [
+        {
+          type: "category",
+          label: "toast",
+          link: {
+            type: "generated-index",
+            title: "toast",
+            description: "toast description",
+            keywords: ["api-toast"],
+          },
+          items: ["api/add", "api/remove", "api/removeAll"],
+        },
+        "api/toaster",
+      ],
     },
     {
       type: "category",
