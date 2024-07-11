@@ -79,7 +79,7 @@ export function Hero() {
     setAvailableTheme(isDarkTheme ? theme.dark : theme.colorful);
   }, [isDarkTheme]);
 
-  const handleCloseAll = () => {
+  const handleRemoveAll = () => {
     toast.removeAll();
   };
 
@@ -350,9 +350,9 @@ add(config);`;
           </button>
           <button
             className={sharedStyles.buttonSecondary}
-            onClick={handleCloseAll}
+            onClick={handleRemoveAll}
           >
-            Close all
+            Remove all
           </button>
         </div>
       </div>
