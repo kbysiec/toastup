@@ -4,20 +4,23 @@ import {
   groupBy,
   toastQueue,
 } from "@toastup/core";
-import React from "react";
+import React, { useState } from "react";
 import { createPortal } from "react-dom";
 import { useToaster } from "../hooks";
 import { Toast } from "./Toast";
 
 export const Toaster: React.FC<ToasterConfig> = React.memo(
   (props: ToasterConfig) => {
-    const { isLoaded, toasterId } = useToaster(props);
+    const { isLoaded, toasterDOMId } = useToaster(props);
+    const [toasterId] = useState(props.toasterId);
 
     const toastMap = toastQueue.get();
-    const groupedToasts = groupBy(
-      Array.from(toastMap.values()),
-      t => t.position
+    const toastArray = Array.from(toastMap.values());
+    const toastsForToasterId = toastArray.filter(
+      toast => toast.toasterId === toasterId
     );
+
+    const groupedToasts = groupBy(toastsForToasterId, t => t.position);
     const positions = Object.keys(groupedToasts) as Array<
       keyof typeof groupedToasts
     >;
@@ -37,7 +40,7 @@ export const Toaster: React.FC<ToasterConfig> = React.memo(
             );
           })}
         </>,
-        document.getElementById(toasterId) as HTMLElement
+        document.getElementById(toasterDOMId) as HTMLElement
       )
     ) : (
       <></>

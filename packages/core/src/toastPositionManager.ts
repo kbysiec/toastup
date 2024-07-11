@@ -36,7 +36,12 @@ function incrementToastsIndexByOne(toasts: ToastEntity[]) {
 }
 
 function getToastsForReindex(toasts: ToastEntity[], toast: ToastEntity) {
-  return toasts.filter(t => toast.position === t.position && toast.id !== t.id);
+  return toasts.filter(
+    t =>
+      toast.position === t.position &&
+      toast.id !== t.id &&
+      toast.toasterId === t.toasterId
+  );
 }
 
 export function reindexToastsForPosition(
@@ -75,7 +80,8 @@ function shouldBeRepositionedOnAdd(
   return (
     toast.isVisible &&
     toast.position === addedToast.position &&
-    toast.id !== addedToast.id
+    toast.id !== addedToast.id &&
+    toast.toasterId === addedToast.toasterId
   );
 }
 
@@ -86,7 +92,8 @@ function shouldBeRepositionedOnRemove(
   return (
     toast.isVisible &&
     toast.position === removedToast.position &&
-    toast.index >= removedToast.index
+    toast.index >= removedToast.index &&
+    toast.toasterId === removedToast.toasterId
   );
 }
 
@@ -106,7 +113,12 @@ export function getVisibleToastsWithSamePosition(
   toasts: ToastEntity[],
   toast: ToastEntity
 ) {
-  return toasts.filter(t => t.isVisible && toast.position === t.position);
+  return toasts.filter(
+    t =>
+      t.isVisible &&
+      toast.position === t.position &&
+      toast.toasterId === t.toasterId
+  );
 }
 
 function assureToastPosition(

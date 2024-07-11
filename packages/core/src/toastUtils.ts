@@ -169,6 +169,7 @@ export function updateToastsExceedingVisibleLimit(
 function getPublicProps(toast: ToastEntity) {
   const props: ToastPublicProps = {
     id: toast.id,
+    toasterId: toast.toasterId,
     isVisible: toast.isVisible,
     title: toast.title,
     message: toast.message,

@@ -23,7 +23,7 @@ export function useToaster(toasterConfig: ReactToasterConfig) {
   const eventMgr = useMemo(() => eventManager.get<ReactEventType>(), []);
 
   const [isLoaded, setIsLoaded] = useState(false);
-  const [toasterId] = useState(`toaster-${uuid()}`);
+  const [toasterDOMId] = useState(`toaster-${uuid()}`);
 
   const [toastIds, setToastIds] = useState<string[]>([]);
   const toastManagerListenersRegistered = useRef(false);
@@ -35,6 +35,7 @@ export function useToaster(toasterConfig: ReactToasterConfig) {
         toasterConfig,
         toastConfig
       );
+      config.toasterId = toastConfig.toasterId;
       config.title = toastConfig.title ? toastConfig.title : config.type;
       config.id = toastConfig.id ? toastConfig.id : uuid();
 
@@ -94,12 +95,13 @@ export function useToaster(toasterConfig: ReactToasterConfig) {
     (config: Partial<ReactToastConfig>) => {
       const toast = getToast(config);
 
-      setToastIds(ids => {
-        eventMgr.emit(events.added, toast);
-        return [...ids, toast.id];
-      });
+      toast.toasterId === toasterConfig.toasterId &&
+        setToastIds(ids => {
+          eventMgr.emit(events.added, toast);
+          return [...ids, toast.id];
+        });
     },
-    [eventMgr, getToast]
+    [eventMgr, getToast, toasterConfig.toasterId]
   );
 
   useEffect(() => {
@@ -140,7 +142,7 @@ export function useToaster(toasterConfig: ReactToasterConfig) {
   useEffect(() => {
     const body = document.getElementsByTagName("body")[0];
     const div = document.createElement("div");
-    div.id = toasterId;
+    div.id = toasterDOMId;
     div.classList.add("toaster");
     body.append(div);
 
@@ -149,7 +151,7 @@ export function useToaster(toasterConfig: ReactToasterConfig) {
     return () => {
       body.removeChild(div);
     };
-  }, [toasterId]);
+  }, [toasterDOMId]);
 
-  return { isLoaded, toasterId };
+  return { isLoaded, toasterDOMId };
 }

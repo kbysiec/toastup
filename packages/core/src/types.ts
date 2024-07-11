@@ -82,6 +82,7 @@ export type ToastAnimation =
 
 export interface ToastProps {
   id: string;
+  toasterId?: string;
   message: string;
   title: string;
   position: ToastPosition;
@@ -164,6 +165,7 @@ export interface ComponentProps {
 
 export interface PrivateToastProps {
   visibleToasts: number;
+  // toasterId: string;
 }
 
 export interface ToastEntity
@@ -235,8 +237,10 @@ export type Payload =
   | string;
 
 const toastOnlyConfigProps = ["id"] as const;
+
 interface ToasterOnlyConfig {
   visibleToasts?: number;
+  // toasterId?: string;
 }
 
 export type ToasterConfig = Partial<
