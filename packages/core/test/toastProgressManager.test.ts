@@ -34,15 +34,24 @@ describe("toastProgressManager", () => {
     vi.restoreAllMocks();
   });
 
-  describe("togglePauseIfExceedVisibleToastLimit", () => {
-    it("should pause toast if it exceeds visibleToasts limit", () => {
+  describe("togglePauseIfToastExceedVisibleLimit", () => {
+    it("should pause all toasts which exceed visibleToasts limit", () => {
       const toast = {
         ...toastBase,
         exceedVisibleToastsLimit: true,
       };
+      const toast2 = {
+        ...toastBase,
+        id: "2",
+        exceedVisibleToastsLimit: true,
+      };
       queue.set(toast.id, toast);
+      queue.set(toast2.id, toast2);
 
-      toastProgressManager.togglePauseIfExceedVisibleToastLimit(toast);
+      toastProgressManager.togglePauseIfToastsExceedVisibleLimit([
+        toast,
+        toast2,
+      ]);
 
       expect(toast.autoHideDetails.isPaused).toBe(true);
     });

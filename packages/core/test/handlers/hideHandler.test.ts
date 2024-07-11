@@ -11,6 +11,7 @@ import * as actionManager from "../../src/actionManager";
 import { events } from "../../src/constants";
 import { handleHideToast, hide } from "../../src/handlers/hideHandler";
 import * as toastPositionManager from "../../src/toastPositionManager";
+import * as toastProgressManager from "../../src/toastProgressManager";
 import { toastQueue } from "../../src/toastQueue";
 import * as toastUtils from "../../src/toastUtils";
 import { HidePayload, ToastEntity } from "../../src/types";
@@ -51,6 +52,7 @@ describe("hideHandler", () => {
     const assureToastsPositionStub = vi.fn();
     const setToastVisibilityStub = vi.fn();
     const sleepStub = vi.fn();
+    const togglePauseIfToastsExceedVisibleLimitStub = vi.fn();
     const callback = vi.fn();
 
     beforeEach(() => {
@@ -81,6 +83,10 @@ describe("hideHandler", () => {
         executeToastCallbackStub
       );
       vi.spyOn(utils, "sleep").mockImplementation(sleepStub);
+      vi.spyOn(
+        toastProgressManager,
+        "togglePauseIfToastsExceedVisibleLimit"
+      ).mockImplementation(togglePauseIfToastsExceedVisibleLimitStub);
     });
 
     it("should hide toast with animation with reposition", async () => {

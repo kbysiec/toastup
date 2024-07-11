@@ -17,8 +17,14 @@ export function unpauseInternal(id: string) {
   togglePause(id, false);
 }
 
-export const togglePauseIfExceedVisibleToastLimit = (toast: ToastEntity) => {
+const togglePauseIfToastExceedVisibleLimit = (toast: ToastEntity) => {
   toast.exceedVisibleToastsLimit
     ? pauseInternal(toast.id)
     : unpauseInternal(toast.id);
+};
+
+export const togglePauseIfToastsExceedVisibleLimit = (
+  toasts: ToastEntity[]
+) => {
+  toasts.forEach(toast => togglePauseIfToastExceedVisibleLimit(toast));
 };

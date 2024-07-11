@@ -7,6 +7,7 @@ import {
   repositionToasts,
   toggleToastsRepositionTransition,
 } from "../toastPositionManager";
+import { togglePauseIfToastsExceedVisibleLimit } from "../toastProgressManager";
 import { toastQueue } from "../toastQueue";
 import {
   executeToastCallback,
@@ -84,6 +85,8 @@ async function hideAndReposition(toast: ToastEntity, withAnimation: boolean) {
   repositionToasts(toastsFromTheSameGroup, toast, actionType.remove);
   await sleep(DELAY_AFTER_REPOSITION_IN_MS);
   toggleToastsRepositionTransition(toastsFromTheSameGroup, false);
+
+  togglePauseIfToastsExceedVisibleLimit(toastsFromTheSameGroup);
 }
 
 export async function hide(

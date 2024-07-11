@@ -13,7 +13,7 @@ import {
   repositionToasts,
   toggleToastsRepositionTransition,
 } from "../toastPositionManager";
-import { togglePauseIfExceedVisibleToastLimit } from "../toastProgressManager";
+import { togglePauseIfToastsExceedVisibleLimit } from "../toastProgressManager";
 import { toastQueue } from "../toastQueue";
 import {
   executeToastCallback,
@@ -168,7 +168,7 @@ async function showAndReposition(toast: ToastEntity) {
     ? await showAndRepositionNormalOrder(toast, toastsFromTheSameGroup)
     : await showAndRepositionReversedOrder(toast, toastsFromTheSameGroup);
 
-  togglePauseIfExceedVisibleToastLimit(toast);
+  togglePauseIfToastsExceedVisibleLimit(toastsFromTheSameGroup);
   setToastAutoHide(toast);
 }
 
