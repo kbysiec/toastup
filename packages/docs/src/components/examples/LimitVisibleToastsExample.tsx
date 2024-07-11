@@ -3,7 +3,7 @@ import { toast, Toaster } from "@toastup/react";
 import styles from "./examples.module.scss";
 
 export function LimitVisibleToastsExample() {
-  const handleClick = () => toast.add({ autoHide: 15000 });
+  const handleClick = () => toast.add({ autoHide: 1000000 });
   return (
     <div>
       <button
