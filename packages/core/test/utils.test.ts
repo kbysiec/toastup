@@ -7,6 +7,7 @@ import {
   it,
   vi,
 } from "vitest";
+import { AnimationBase } from "../dist";
 import { slideVerticallyIn } from "../src/animations/inAnimation";
 import { slideHorizontalWithFadeInBody } from "../src/animations/inBodyAnimation";
 import { slideVerticallyOut } from "../src/animations/outAnimation";
@@ -18,7 +19,7 @@ import {
   theme,
   type,
 } from "../src/constants";
-import { AnimationBase, Config } from "../src/types";
+import { ToastConfig } from "../src/types";
 import {
   getCoalesced,
   getOuter,
@@ -147,7 +148,7 @@ describe("utils", () => {
 
   describe("getCoalesced", () => {
     it("should return combined config", () => {
-      const defaultConfig: Config = {
+      const defaultConfig: ToastConfig = {
         id: "123",
         message: "Test message",
         title: "Test title",
