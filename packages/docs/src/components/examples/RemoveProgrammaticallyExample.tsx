@@ -23,7 +23,7 @@ export function RemoveProgrammaticallyExample() {
       >
         Add toast
       </button>
-      <div className={styles.removeButtons}>
+      <div className={styles.buttonsRow}>
         <button
           className={`${sharedStyles.buttonSecondary} ${styles.button}`}
           onClick={handleRemoveClick}
