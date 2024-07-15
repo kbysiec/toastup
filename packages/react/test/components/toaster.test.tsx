@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
 import { toastQueue } from "@toastup/core";
-import * as React from "react";
+import React from "react";
 import {
   afterAll,
   afterEach,
@@ -33,7 +33,6 @@ describe("Toast", () => {
   });
 
   it("should render toast components inside queue", () => {
-    const queue = new Map([]);
     vi.spyOn(toastQueue, "get").mockImplementation(
       () => new Map([[toastBase.id, toastBase]])
     );
