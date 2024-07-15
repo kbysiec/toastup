@@ -19,7 +19,12 @@ import { handleMountedToast } from "./handlers/mountHandler";
 import { handleShowToast } from "./handlers/showHandler";
 import { pauseInternal, unpauseInternal } from "./toastProgressManager";
 import { toastQueue } from "./toastQueue";
-import { ToastConfig, ToastOnlyProps, ToastProps } from "./types";
+import {
+  ToastConfig,
+  ToastOnlyProps,
+  ToastProps,
+  ToastRemoveParams,
+} from "./types";
 import { uuid } from "./utils";
 
 export function add<T extends ToastConfig>(overriddenConfig: Partial<T> = {}) {
@@ -30,16 +35,19 @@ export function add<T extends ToastConfig>(overriddenConfig: Partial<T> = {}) {
   return overriddenConfig.id;
 }
 
-export function remove(id: string, callback?: () => void) {
+export function remove({
+  toastId,
+  callback,
+  withAnimation = true,
+}: ToastRemoveParams = {}) {
   const eventMgr = eventManager.get();
-  eventMgr.emit(events.hide, { toastId: id, withAnimation: true, callback });
-}
-
-export function removeAll(withAnimation = true, callback?: () => void) {
-  const eventMgr = eventManager.get();
-  withAnimation
-    ? eventMgr.emit(events.removeAll, { withAnimation })
-    : hideAllToastsImmediately(withAnimation, callback);
+  if (toastId) {
+    eventMgr.emit(events.hide, { toastId, withAnimation, callback });
+  } else {
+    withAnimation
+      ? eventMgr.emit(events.removeAll, { withAnimation, callback })
+      : hideAllToastsImmediately(withAnimation, callback);
+  }
 }
 
 export function pause(id?: string) {

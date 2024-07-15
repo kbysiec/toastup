@@ -22,7 +22,6 @@ import {
   pause,
   position,
   remove,
-  removeAll,
   singleBounceHorizontallyIn,
   singleBounceHorizontallyOut,
   singleBounceVerticallyIn,
@@ -63,7 +62,6 @@ export { types };
 const toast = {
   add: add<ReactToastConfig>,
   remove,
-  removeAll,
   pause,
   unpause,
 };

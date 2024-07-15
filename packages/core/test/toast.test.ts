@@ -20,7 +20,6 @@ import {
   pause,
   registerToastupEventHandlers,
   remove,
-  removeAll,
   unpause,
 } from "../src/toast";
 import { toastQueue } from "../src/toastQueue";
@@ -71,19 +70,6 @@ describe("toast", () => {
   });
 
   describe("remove", () => {
-    it("should emit event for removing toast", () => {
-      const callbackStub = vi.fn();
-      remove("11", callbackStub);
-
-      expect(emitStub).toBeCalledWith(events.hide, {
-        toastId: "11",
-        withAnimation: true,
-        callback: callbackStub,
-      });
-    });
-  });
-
-  describe("removeAll", () => {
     const hideAllToastsImmediatelyStub = vi.fn();
 
     beforeEach(() => {
@@ -92,14 +78,28 @@ describe("toast", () => {
       );
     });
 
-    it("should emit event for removing all toasts if withAnimation equals to true", () => {
+    it("should emit event for removing toast if id is provided", () => {
+      const callbackStub = vi.fn();
+      remove({
+        toastId: "11",
+        callback: callbackStub,
+      });
+
+      expect(emitStub).toBeCalledWith(events.hide, {
+        toastId: "11",
+        withAnimation: true,
+        callback: callbackStub,
+      });
+    });
+
+    it("should emit event for removing all toasts if id is not provided and withAnimation equals to true", () => {
       const toast = { ...toastBase, id: "1" };
       const toast2 = { ...toastBase, id: "2" };
 
       queue.set("1", toast);
       queue.set("2", toast2);
 
-      removeAll();
+      remove();
 
       expect(emitStub).toBeCalledWith(events.removeAll, {
         withAnimation: true,
@@ -107,14 +107,14 @@ describe("toast", () => {
       expect(hideAllToastsImmediatelyStub).not.toBeCalled();
     });
 
-    it("should hideAllToastsImmediately method be invoked if withAnimation equals to false", () => {
+    it("should hideAllToastsImmediately method be invoked if id is not provided and withAnimation equals to false", () => {
       const toast = { ...toastBase, id: "1" };
       const toast2 = { ...toastBase, id: "2" };
 
       queue.set("1", toast);
       queue.set("2", toast2);
 
-      removeAll(false);
+      remove({ withAnimation: false });
 
       expect(emitStub).not.toBeCalled();
       expect(hideAllToastsImmediatelyStub).toHaveBeenCalledOnce();

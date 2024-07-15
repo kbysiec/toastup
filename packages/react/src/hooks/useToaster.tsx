@@ -2,7 +2,7 @@ import {
   eventManager,
   events,
   registerToastupEventHandlers,
-  removeAll,
+  remove,
   uuid,
 } from "@toastup/core";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -32,13 +32,21 @@ export function useToaster(toasterConfig: ReactToasterConfig) {
     !toastManagerListenersRegistered.current && registerToastupEventHandlers();
     toastManagerListenersRegistered.current = true;
 
-    return removeAll(false, () => setToastIds([]));
+    return remove({
+      withAnimation: false,
+      callback: () => setToastIds([]),
+    });
   }, []);
 
   useEffect(() => {
-    const callback = (event: CustomEvent<{ withAnimation: boolean }>) => {
-      const { withAnimation } = event.detail;
-      handleRemoveAllToasts(withAnimation, () => setToastIds([]));
+    const callback = (
+      event: CustomEvent<{ withAnimation: boolean; callback?: () => void }>
+    ) => {
+      const { withAnimation, callback: cbk } = event.detail;
+      handleRemoveAllToasts(withAnimation, () => {
+        setToastIds([]);
+        cbk && cbk();
+      });
     };
     eventMgr.on(events.removeAll, callback);
 

@@ -80,6 +80,12 @@ export type ToastAnimation =
   | ToastOutAnimation
   | ToastInBodyAnimation;
 
+export interface ToastRemoveParams {
+  toastId?: string;
+  withAnimation?: boolean;
+  callback?: () => void;
+}
+
 export interface ToastProps {
   id: string;
   toasterId?: string;
@@ -224,16 +230,11 @@ export type HideAllPayload = {
   callback?: () => void;
 };
 
-export type RemoveAllPayload = {
-  withAnimation: boolean;
-};
-
 export type Payload =
   | Partial<ToastProps>
   | ToastEntity
   | HidePayload
   | HideAllPayload
-  | RemoveAllPayload
   | string;
 
 const toastOnlyConfigProps = ["id"] as const;
