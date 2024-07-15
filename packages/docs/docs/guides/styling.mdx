@@ -1,0 +1,301 @@
+---
+title: Styling
+description: How to easily override default styling.
+---
+
+How to easily override default styling.
+
+import { StylingExample } from "@site/src/components/examples/StylingExample";
+
+<StylingExample />
+
+## Example
+
+```tsx
+import { toast, Toaster } from "@toastup/react";
+import { useEffect } from "react";
+
+export function StylingExample() {
+  useEffect(() => {
+    const root = document.documentElement;
+    root.style.setProperty("--toastup-background-color-base", "#d7fc03");
+    root.style.setProperty("--toastup-title-color-base", "#000");
+    root.style.setProperty("--toastup-icon-color-base", "#000");
+    root.style.setProperty("--toastup-border-color-base", "#000");
+    root.style.setProperty("--toastup-progress-bar-base", "#000");
+    root.style.setProperty(
+      "--toastup-progress-bar-progress-overlay-base",
+      "#f6ffbf"
+    );
+  }, []);
+
+  const handleClick = () => toast.add();
+  return (
+    <div>
+      <button onClick={handleClick}>Add toast</button>
+      <Toaster />
+    </div>
+  );
+}
+```
+
+List of all CSS variables. The easiest way to override default styling is to use these CSS variables.
+
+```css
+--toastup-base-gradient: linear-gradient(
+  to left,
+  #7229e5,
+  #854be3,
+  #9667e0,
+  #a582dd,
+  #b39bd8
+);
+--toastup-base-gradient-rtl: linear-gradient(
+  to right,
+  #7229e5,
+  #854be3,
+  #9667e0,
+  #a582dd,
+  #b39bd8
+);
+--toastup-info-gradient: linear-gradient(
+  to left,
+  #0084ff,
+  #1d90fe,
+  #359bfd,
+  #4ba5fa,
+  #60aff7
+);
+--toastup-info-gradient-rtl: linear-gradient(
+  to right,
+  #0084ff,
+  #1d90fe,
+  #359bfd,
+  #4ba5fa,
+  #60aff7
+);
+--toastup-success-gradient: linear-gradient(
+  to left,
+  #27c400,
+  #35d138,
+  #43de57,
+  #51ea73,
+  #60f78d
+);
+--toastup-success-gradient-rtl: linear-gradient(
+  to right,
+  #27c400,
+  #35d138,
+  #43de57,
+  #51ea73,
+  #60f78d
+);
+--toastup-warning-gradient: linear-gradient(
+  to left,
+  #ffba00,
+  #fcc227,
+  #fac93c,
+  #f8d04f,
+  #f7d760
+);
+--toastup-warning-gradient-rtl: linear-gradient(
+  to right,
+  #ffba00,
+  #fcc227,
+  #fac93c,
+  #f8d04f,
+  #f7d760
+);
+--toastup-error-gradient: linear-gradient(
+  to left,
+  #f94747,
+  #f94e4d,
+  #f85454,
+  #f85a5a,
+  #f76060
+);
+--toastup-error-gradient-rtl: linear-gradient(
+  to right,
+  #f94747,
+  #f94e4d,
+  #f85454,
+  #f85a5a,
+  #f76060
+);
+
+--toastup-body-color: #313131;
+--toastup-hide-button-color: #cfcfcf;
+--toastup-hide-button-color-hover: #313131;
+
+--toastup-background-color-base: #fff;
+--toastup-title-color-base: #7229e5;
+--toastup-icon-color-base: #7229e5;
+--toastup-border-color-base: var(--toastup-base-gradient);
+--toastup-progress-bar-base: var(--toastup-base-gradient);
+--toastup-progress-bar-progress-overlay-base: var(
+  --toastup-background-color-base
+);
+--toastup-progress-bar-progress-overlay-base-rtl: var(
+  --toastup-background-color-base
+);
+--toastup-border-color-base-rtl: var(--toastup-base-gradient-rtl);
+--toastup-progress-bar-base-rtl: var(--toastup-base-gradient-rtl);
+
+--toastup-background-color-info: var(--toastup-background-color-base);
+--toastup-title-color-info: #0084ff;
+--toastup-icon-color-info: #0084ff;
+--toastup-border-color-info: var(--toastup-info-gradient);
+--toastup-progress-bar-info: var(--toastup-info-gradient);
+--toastup-progress-bar-progress-overlay-info: var(
+  --toastup-background-color-info
+);
+--toastup-progress-bar-progress-overlay-info-rtl: var(
+  --toastup-background-color-info
+);
+--toastup-border-color-info-rtl: var(--toastup-info-gradient-rtl);
+--toastup-progress-bar-info-rtl: var(--toastup-info-gradient-rtl);
+
+--toastup-background-color-success: var(--toastup-background-color-base);
+--toastup-title-color-success: #27c400;
+--toastup-icon-color-success: #27c400;
+--toastup-border-color-success: var(--toastup-success-gradient);
+--toastup-progress-bar-success: var(--toastup-success-gradient);
+--toastup-progress-bar-progress-overlay-success: var(
+  --toastup-background-color-success
+);
+--toastup-progress-bar-progress-overlay-success-rtl: var(
+  --toastup-background-color-success
+);
+--toastup-border-color-success-rtl: var(--toastup-success-gradient-rtl);
+--toastup-progress-bar-success-rtl: var(--toastup-success-gradient-rtl);
+
+--toastup-background-color-warning: var(--toastup-background-color-base);
+--toastup-title-color-warning: #ffba00;
+--toastup-icon-color-warning: #ffba00;
+--toastup-border-color-warning: var(--toastup-warning-gradient);
+--toastup-progress-bar-warning: var(--toastup-warning-gradient);
+--toastup-progress-bar-progress-overlay-warning: var(
+  --toastup-background-color-warning
+);
+--toastup-progress-bar-progress-overlay-warning-rtl: var(
+  --toastup-background-color-warning
+);
+--toastup-border-color-warning-rtl: var(--toastup-warning-gradient-rtl);
+--toastup-progress-bar-warning-rtl: var(--toastup-warning-gradient-rtl);
+
+--toastup-background-color-error: var(--toastup-background-color-base);
+--toastup-title-color-error: #f94747;
+--toastup-icon-color-error: #f94747;
+--toastup-border-color-error: var(--toastup-error-gradient);
+--toastup-progress-bar-error: var(--toastup-error-gradient);
+--toastup-progress-bar-progress-overlay-error: var(
+  --toastup-background-color-error
+);
+--toastup-progress-bar-progress-overlay-error-rtl: var(
+  --toastup-background-color-error
+);
+--toastup-border-color-error-rtl: var(--toastup-error-gradient-rtl);
+--toastup-progress-bar-error-rtl: var(--toastup-error-gradient-rtl);
+```
+
+Another way is to overrride CSS class from the list below.
+
+```css
+/*** Toast ***/
+.toastup__toast {
+}
+.toastup__toast--default {
+}
+.toastup__toast--visible {
+}
+.toastup__toast-container {
+}
+.toastup__toast-container--visible {
+}
+
+/* Content and its children */
+.toastup__toast-content {
+}
+.toastup__toast-title {
+}
+.toastup__toast-message {
+}
+.toastup__toast-hide-button {
+}
+
+/* Body */
+.toastup__toast-body {
+}
+.toastup__toast-body--visible {
+}
+.toastup__toast-body--invisible {
+}
+
+/* Icon */
+.toastup__toast-icon {
+}
+.toastup__toast-icon--fill {
+}
+.toastup__toast-icon--stroke {
+}
+
+/* Progress bar */
+.toastup__toast-progress-bar {
+}
+.toastup__toast-progress-bar-foreground {
+}
+.toastup__toast-progress-bar-progress-overlay {
+}
+
+/* Types */
+.toastup__toast-type--base {
+}
+.toastup__toast-type--info {
+}
+.toastup__toast-type--warning {
+}
+.toastup__toast-type--success {
+}
+.toastup__toast-type--error {
+}
+
+/* Positioning */
+.toastup__toast--repositioning {
+}
+.toastup__toast--quick-repositioning {
+}
+
+/* Dragging */
+.toastup__toast--dragging {
+}
+
+/* RTL */
+.toastup__toast--rtl {
+}
+
+/* Themes */
+.toastup__toast-theme--light {
+}
+.toastup__toast-theme--dark {
+}
+.toastup__toast-theme--colorful {
+}
+
+/*** Toaster ***/
+.toastup__toaster-top-left {
+}
+.toastup__toaster-top-center {
+}
+.toastup__toaster-top-right {
+}
+.toastup__toaster-bottom-left {
+}
+.toastup__toaster-bottom-center {
+}
+.toastup__toaster-bottom-right {
+}
+```
+
+import { Blob1 } from "@site/src/components/Blobs/Blob1";
+
+<Blob1 />

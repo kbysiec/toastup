@@ -66,6 +66,7 @@ const sidebars: SidebarsConfig = {
         "guides/custom-icon",
         "guides/custom-toast",
         "guides/multi-toaster",
+        "guides/styling",
       ],
     },
   ],
