@@ -10,9 +10,9 @@ export function RemoveProgrammaticallyExample() {
     const id = toast.add({ autoHide: 20000 });
     setIds(ids => [...ids, id]);
   };
-  const handleRemoveClick = () => toast.remove(ids.pop());
+  const handleRemoveClick = () => toast.remove({ toastId: ids.pop() });
   const handleRemoveAllClick = () => {
-    toast.removeAll();
+    toast.remove();
     setIds([]);
   };
   return (

@@ -1,15 +1,31 @@
 ---
 title: remove
-description: Function for deleting a specific toast notification programatically. Simply pass the unique identifier of the toast you received during creation.
+description: Function for deleting toast notifications programatically.
 ---
 
-Function for deleting a specific toast notification programatically. Simply pass the unique identifier of the toast you received during creation.
+Function for deleting toast notifications programatically.
+
+| Title         | Description                                               | Type         | Default     |
+| ------------- | --------------------------------------------------------- | ------------ | ----------- |
+| toastId       | The unique identifier of the toast to be removed.         | `string`     | `undefined` |
+| withAnimation | Whether to remove the toast with an animation effect.     | `boolean`    | `true`      |
+| callback      | Function to be called after the toast(s) is(are) removed. | `() => void` | `undefined` |
 
 ## Example
+
+Simply pass the unique identifier of the toast you received during creation to remove one.
 
 ```ts
 const id = add();
 remove(id);
+```
+
+Leave it blank to remove all at once.
+
+```ts
+add();
+add();
+remove();
 ```
 
 import { Blob1 } from "@site/src/components/Blobs/Blob1";

@@ -32,6 +32,11 @@ type ToastThemeKey = keyof typeof theme;
 declare global {
   interface Window {
     add: (toastConfig: ReactToastConfig) => string;
+    remove: (params: {
+      id?: string;
+      callback?: () => void;
+      withAnimation?: boolean;
+    }) => void;
     pause: (id?: string) => void;
     unpause: (id?: string) => void;
   }
@@ -71,6 +76,7 @@ export function Hero() {
 
   useEffect(() => {
     window.add = toast.add;
+    window.remove = toast.remove;
     window.pause = toast.pause;
     window.unpause = toast.unpause;
   }, []);
@@ -80,7 +86,7 @@ export function Hero() {
   }, [isDarkTheme]);
 
   const handleRemoveAll = () => {
-    toast.removeAll();
+    toast.remove();
   };
 
   const handleClick = () => {
