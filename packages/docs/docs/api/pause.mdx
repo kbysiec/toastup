@@ -1,0 +1,27 @@
+---
+title: pause
+description: Function for pausing toast notifications programmatically.
+---
+
+Function for pausing toast notifications programmatically.
+
+## Example
+
+Pass the unique identifier of the toast you received during creation to pause one.
+
+```ts
+const id = add();
+pause(id);
+```
+
+Leave it blank to pause all at once.
+
+```ts
+add();
+add();
+pause();
+```
+
+import { Blob1 } from "@site/src/components/Blobs/Blob1";
+
+<Blob1 />

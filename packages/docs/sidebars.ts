@@ -37,7 +37,7 @@ const sidebars: SidebarsConfig = {
             description: "toast description",
             keywords: ["api-toast"],
           },
-          items: ["api/add", "api/remove"],
+          items: ["api/add", "api/remove", "api/pause"],
         },
         "api/toaster",
       ],
