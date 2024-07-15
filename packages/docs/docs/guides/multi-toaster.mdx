@@ -1,0 +1,44 @@
+---
+title: Multiple Toaster components
+description: Supports multiple Toaster components within the same view.
+---
+
+Supports multiple Toaster components within the same view.
+
+import { MultiToasterExample } from "@site/src/components/examples/MultiToasterExample";
+
+<MultiToasterExample />
+
+## Example
+
+```tsx
+import { toast, Toaster } from "@toastup/react";
+
+export function MultiToasterExample() {
+  const handleClickLeft = () =>
+    toast.add({
+      rtl: true,
+      toasterId: "toaster-left",
+      type: "success",
+      position: "bottom-left",
+    });
+
+  const handleClickRight = () =>
+    toast.add({ rtl: true, toasterId: "toaster-right" });
+
+  return (
+    <div>
+      <div className={styles.buttonsRow}>
+        <button onClick={handleClickLeft}>Add toast left</button>
+        <button onClick={handleClickRight}>Add toast right</button>
+      </div>
+      <Toaster toasterId="toaster-left" />
+      <Toaster toasterId="toaster-right" />
+    </div>
+  );
+}
+```
+
+import { Blob1 } from "@site/src/components/Blobs/Blob1";
+
+<Blob1 />
