@@ -1,0 +1,27 @@
+---
+title: unpause
+description: Function for unpausing toast notifications programmatically.
+---
+
+Function for pausing toast notifications programmatically.
+
+## Example
+
+Pass the unique identifier of the toast you received during creation to unpause one.
+
+```ts
+const id = add();
+unpause(id);
+```
+
+Leave it blank to unpause all at once.
+
+```ts
+add();
+add();
+unpause();
+```
+
+import { Blob1 } from "@site/src/components/Blobs/Blob1";
+
+<Blob1 />
