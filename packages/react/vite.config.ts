@@ -15,9 +15,6 @@ const fileName = {
 
 module.exports = defineConfig({
   base: "./",
-  // plugins: [react({
-  //   jsxRuntime: 'classic'
-  // })],
   test: {
     globals: true,
     environment: "jsdom",
@@ -46,10 +43,10 @@ module.exports = defineConfig({
       external: ["react", "react-dom", "react/jsx-runtime"],
     },
     sourcemap: true,
-    minify: false,
-    terserOptions: {
-      compress: false,
-      mangle: false,
-    },
+    // minify: false,
+    // terserOptions: {
+    //   compress: false,
+    //   mangle: false,
+    // },
   },
 });

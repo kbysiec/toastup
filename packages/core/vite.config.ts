@@ -24,6 +24,11 @@ module.exports = defineConfig({
       fileName: format => fileName[format],
     },
     sourcemap: true,
+    // minify: false,
+    // terserOptions: {
+    //   compress: false,
+    //   mangle: false,
+    // },
   },
   test: {
     globals: true,
