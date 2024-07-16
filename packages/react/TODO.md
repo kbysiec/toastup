@@ -1,7 +1,0 @@
-- ~~add headless components~~
-- ~~refactor to organize code in logical way~~
-- ~~maybe split into smaller components~~
-- take care of better naming conventions (hide, close, show, add, etc...)
-- refactor tests names
-- ~~nested components to organize it more naturally, e.g. Toast.Header, Toast.Content etc~~
-- ~~add accessibility to toasts~~
