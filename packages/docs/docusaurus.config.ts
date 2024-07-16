@@ -28,7 +28,17 @@ const config: Config = {
     defaultLocale: "en",
     locales: ["en"],
   },
-  plugins: ["docusaurus-plugin-sass"],
+  plugins: [
+    "docusaurus-plugin-sass",
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
+      {
+        // `hashed` is recommended as long-term-cache of index file is possible.
+        hashed: true,
+      },
+    ],
+  ],
   presets: [
     [
       "classic",
@@ -57,17 +67,16 @@ const config: Config = {
         alt: "logo",
         src: "img/toast.svg",
       },
-      // algolia: {
-      //   apiKey: "47ecd3b21be71c5822571b9f59e52544",
-      //   indexName: "docusaurus-2",
-      //   algoliaOptions: {},
-      // },
       items: [
         {
           type: "docSidebar",
           sidebarId: "docs",
           position: "left",
           label: "Documentation",
+        },
+        {
+          type: "search",
+          position: "right",
         },
         {
           href: "https://github.com/facebook/docusaurus",

@@ -21,7 +21,7 @@ export default function NavbarColorModeToggle({
         .querySelector("html")
         .classList.toggle("rs-theme-dark", colorMode === "dark");
     }, 50);
-  }, []);
+  }, [colorMode]);
 
   const onChange = (colorMode: "light" | "dark") => {
     setColorMode(colorMode);
