@@ -53,7 +53,7 @@ export function Hero() {
   );
   const [order, setOrder] = useState<DisplayOrder>(displayOrder.normal);
   const [availableTheme, setAvailableTheme] = useState<ToastTheme>(
-    isDarkTheme ? theme.dark : theme.colorful
+    isDarkTheme ? theme.dark : theme.light
   );
   const [inAnimationName, setInAnimationName] = useState<InAnimation>(
     inAnimation["slide vertically"].name
@@ -82,7 +82,7 @@ export function Hero() {
   }, []);
 
   useEffect(() => {
-    setAvailableTheme(isDarkTheme ? theme.dark : theme.colorful);
+    setAvailableTheme(isDarkTheme ? theme.dark : theme.light);
   }, [isDarkTheme]);
 
   const handleRemoveAll = () => {
@@ -362,7 +362,7 @@ add(config);`;
           </button>
         </div>
       </div>
-      <Toaster visibleToasts={3} />
+      <Toaster visibleToasts={5} />
       <div className={styles.codeBlocks}>
         <div className={styles.codeBlock}>
           <label className={styles.label}>Toast adding</label>
