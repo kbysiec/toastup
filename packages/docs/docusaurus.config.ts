@@ -4,11 +4,11 @@ import { themes as prismThemes } from "prism-react-renderer";
 
 const config: Config = {
   title: "Toastup",
-  tagline: "Dinosaurs are cool",
+  tagline: "Another toast component for React",
   favicon: "img/toast.svg",
 
   // Set the production url of your site here
-  url: "https://your-docusaurus-site.example.com",
+  url: "https://toastup.kbysiec.com/",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/",
@@ -45,10 +45,6 @@ const config: Config = {
       {
         docs: {
           sidebarPath: "./sidebars.ts",
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
         },
         blog: false,
         theme: {
@@ -60,7 +56,7 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
-    image: "img/docusaurus-social-card.jpg",
+    image: "img/toastup-social-card.png",
     navbar: {
       title: "Toastup",
       logo: {
@@ -79,7 +75,7 @@ const config: Config = {
           position: "right",
         },
         {
-          href: "https://github.com/facebook/docusaurus",
+          href: "https://github.com/kbysiec/toastup",
           label: "GitHub",
           position: "right",
         },
@@ -87,7 +83,7 @@ const config: Config = {
     },
     footer: {
       style: "light",
-      copyright: `Copyright © ${new Date().getFullYear()} Toastup. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Kamil Bysiec. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.vsLight,
