@@ -60,9 +60,6 @@ pre {
   backdrop-filter: blur(20px);
 }
 
-[data-theme="dark"] .main-wrapper {
-  background-color: var(--ifm-background-color);
-}
 [data-theme="dark"] code {
   background-color: var(--ifm-code-background);
 }
