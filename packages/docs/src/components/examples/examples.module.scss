@@ -19,6 +19,9 @@
 
 .customToast {
   $customColor: #00a0b0;
+  background: #fff;
+  color: #000;
+  width: 100%;
 
   border: solid 1px $customColor;
 
@@ -51,4 +54,15 @@
 .customToastImage {
   width: 100%;
   height: 100%;
+}
+
+[data-theme="dark"] {
+  .customToast {
+    background-color: #393939;
+    color: #fff;
+  }
+
+  .customToastImage {
+    fill: initial;
+  }
 }

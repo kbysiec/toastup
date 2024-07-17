@@ -13,6 +13,7 @@ const CustomToast = (props: ToastComponentProps) => {
     <div
       ref={props.ref}
       className={`${cssClassNames.toast} ${styles.customToast}`}
+      onClick={() => props.hide()}
     >
       <Beach className={styles.customToastImage} />
       {props.children}
