@@ -17,11 +17,19 @@
   margin-top: 2em;
 }
 
-.row {
+.twoRows {
   display: flex;
   flex-direction: row;
   gap: 0.5em;
   margin: 1em 0;
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5em;
+  // margin: 1em 0;
   width: 100%;
 }
 
@@ -38,32 +46,6 @@
   margin-top: 2em;
   gap: 1em;
 }
-
-// .button {
-//   background-color: #ff9c3f;
-//   border: 0;
-//   border-radius: 5px;
-//   box-shadow: 0 2px 25px #f6d6b8;
-//   color: #000;
-//   font-weight: bold;
-//   height: 3em;
-//   margin: 0.5em;
-//   text-transform: uppercase;
-//   transition: all 0.2s ease-in;
-//   width: 50%;
-
-//   &:focus,
-//   &:hover {
-//     background-color: color.adjust($color: #ff9c3f, $lightness: -5%);
-//     outline: 0;
-//     transform: scale(0.95);
-//   }
-
-//   &:active {
-//     background-color: color.adjust($color: #ff9c3f, $lightness: -10%);
-//     transform: scale(0.9);
-//   }
-// }
 
 .input {
   border: solid 1px;
@@ -117,19 +99,6 @@
   width: 100%;
 }
 
-// .closeAllButton {
-//   background-color: #f6d6b8;
-
-//   &:focus,
-//   &:hover {
-//     background-color: color.adjust($color: #f6d6b8, $lightness: -5%);
-//   }
-
-//   &:active {
-//     background-color: color.adjust($color: #f6d6b8, $lightness: -10%);
-//   }
-// }
-
 [data-theme="dark"] {
   .button {
     box-shadow: 0 2px 25px #aeaeae;
@@ -141,12 +110,21 @@
   }
 }
 
-@media screen and (max-width: 1205px) {
+@media screen and (max-width: 1270px) {
+  .twoRows {
+    flex-direction: column;
+  }
+
   .label {
     font-size: 0.9em;
   }
 
   .codeBlocks {
     flex-direction: column;
+  }
+
+  .blob3,
+  .blob5 {
+    display: none;
   }
 }
