@@ -14,7 +14,11 @@
     "format:styles": "stylelint ./packages/**/*.{css,scss} --fix",
     "format": "npm run format:scripts && npm run format:styles",
     "prepare": "husky install && husky set .husky/pre-commit 'npx lint-staged' && git add .husky/pre-commit",
-    "uninstall-husky": "npm uninstall husky --no-save && git config --unset core.hooksPath && npx rimraf .husky"
+    "uninstall-husky": "npm uninstall husky --no-save && git config --unset core.hooksPath && npx rimraf .husky",
+    "publish:pre": "cp {README.md,LICENSE.md,CHANGELOG.md} ./packages/react",
+    "publish:main": "cd ./packages/react && yarn npm publish --access public && cd ../..",
+    "publish:post": "cd ./packages/react && rm -rf README.md LICENSE.md CHANGELOG.md",
+    "publish": "npm run publish:pre && npm run publish:main && npm run publish:post"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.19.1",
