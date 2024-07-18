@@ -20,7 +20,8 @@
   },
   "types": "./dist/index.d.ts",
   "files": [
-    "src"
+    "src",
+    "./dist/index.d.ts"
   ],
   "keywords": [
     "react",
