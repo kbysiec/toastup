@@ -34,3 +34,8 @@ coverage
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+#project specific
+packages/react/README.md
+packages/react/LICENSE.md
+packages/react/CHANGELOG.md
