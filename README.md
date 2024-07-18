@@ -2,6 +2,7 @@
 
 https://github.com/user-attachments/assets/33e3b44b-dd30-49a0-954e-c401adaa13a7
 
+Toastup is an animation-focused toast component for React.
 
 ## Install
 
