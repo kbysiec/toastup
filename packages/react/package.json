@@ -1,7 +1,7 @@
 {
   "name": "@toastup/react",
-  "private": true,
   "version": "0.0.1",
+  "description": "Animation-focused toast component for React",
   "main": "./dist/toastup-react.cjs",
   "module": "./dist/toastup-react.mjs",
   "exports": {
@@ -76,5 +76,14 @@
     "vite": "^5.0.12",
     "vitest": "^1.6.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "author": "Kamil Bysiec <kamil.bysiec@agileplayers.com>",
+  "homepage": "https://toastup.kbysiec.com/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kbysiec/toastup.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kbysiec/toastup/issues"
+  }
 }
