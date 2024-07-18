@@ -1,6 +1,6 @@
 {
   "name": "@toastup/core",
-  "version": "0.0.4",
+  "version": "0.0.7",
   "main": "./src/index.ts",
   "module": "./src/index.ts",
   "exports": {
