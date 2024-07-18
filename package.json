@@ -15,10 +15,15 @@
     "format": "npm run format:scripts && npm run format:styles",
     "prepare": "husky install && husky set .husky/pre-commit 'npx lint-staged' && git add .husky/pre-commit",
     "uninstall-husky": "npm uninstall husky --no-save && git config --unset core.hooksPath && npx rimraf .husky",
-    "publish:pre": "cp {README.md,LICENSE.md,CHANGELOG.md} ./packages/react",
-    "publish:main": "cd ./packages/react && yarn npm publish --access public && cd ../..",
-    "publish:post": "cd ./packages/react && rm -rf README.md LICENSE.md CHANGELOG.md",
-    "publish": "npm run publish:pre && npm run publish:main && npm run publish:post"
+    "publish:core:pre": "cp {LICENSE.md,CHANGELOG.md} ./packages/core",
+    "publish:core:main": "cd ./packages/core && yarn npm publish --access public && cd ../..",
+    "publish:core:post": "cd ./packages/core && rm -rf LICENSE.md CHANGELOG.md",
+    "publish:core": "npm run publish:core:pre && npm run publish:core:main && npm run publish:core:post",
+    "publish:react:pre": "cp {README.md,LICENSE.md,CHANGELOG.md} ./packages/react",
+    "publish:react:main": "cd ./packages/react && yarn npm publish --access public && cd ../..",
+    "publish:react:post": "cd ./packages/react && rm -rf README.md LICENSE.md CHANGELOG.md",
+    "publish:react": "npm run publish:react:pre && npm run publish:react:main && npm run publish:react:post",
+    "publish:all": "npm run publish:core && npm run publish:react"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.19.1",
