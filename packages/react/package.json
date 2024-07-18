@@ -1,6 +1,6 @@
 {
   "name": "@toastup/react",
-  "version": "0.0.4",
+  "version": "0.0.7",
   "description": "Animation-focused toast component for React",
   "main": "./dist/toastup-react.cjs",
   "module": "./dist/toastup-react.mjs",
