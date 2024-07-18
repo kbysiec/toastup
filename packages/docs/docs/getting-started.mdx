@@ -20,10 +20,13 @@ yarn add @toastup/react
 ### 2. Integrate
 
 ```tsx
+import { Toaster, toast } from "@toastup/react";
+import "@toastup/react/style";
+
 function App() {
   return (
     <div>
-      <button onClick={() => add({ type: "success", title: "test" })}>
+      <button onClick={() => toast.add({ type: "success", title: "test" })}>
         Add toast
       </button>
       <Toaster />
