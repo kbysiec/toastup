@@ -476,4 +476,8 @@ $namespace: "toastup";
     -webkit-tap-highlight-color: transparent;
     width: calc(100% - 2rem);
   }
+
+  [class^="#{$namespace}__toaster-"][class$="center"] {
+    right: initial;
+  }
 }
